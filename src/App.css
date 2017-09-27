@@ -1,0 +1,13 @@
+body{
+  font-family: monospace;
+}
+
+.mapboxgl-popup-content{
+  background-color: black;
+  color: white;
+  font-size: 12px;
+}
+
+.mapboxgl-popup-tip{
+  border-top-color: black;
+}
