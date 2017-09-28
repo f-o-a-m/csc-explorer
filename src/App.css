@@ -11,5 +11,5 @@ body{
 }
 
 .mapboxgl-popup-tip{
-  border-top-color: black;
+  border-top-color: black !important;
 }

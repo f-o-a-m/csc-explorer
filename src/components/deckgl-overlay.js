@@ -19,6 +19,9 @@ const defaultProps = {
   coverage: 1
 };
 
+const pickedColor = [134, 227, 173]
+const defaultColor = [216, 149, 131]
+
 export default class DeckGLOverlay extends Component {
   constructor(props) {
     super(props);
@@ -38,19 +41,22 @@ export default class DeckGLOverlay extends Component {
   render() {
     const {viewport, data, radius, coverage, upperPercentile} = this.props;
 
+    console.log(this.state)
+
     if (!data) {
       return null;
     }
 
-    const layer = new GridCellLayer({
+    let layer = new GridCellLayer({
       id: 'grid-cell-layer',
       data,
-      cellSize: 300,
-      // getColor: cell => cell.color
+      cellSize: 1000,
+      getColor: () => this.props.picked ? defaultColor : pickedColor,
       elevationRange: [0, 3000],
       elevationScale: 1000,
       onHover: this.props.onHover,
       onClick: this.props.onClick,
+      autoHighlight: true,
       opacity: 1,
       pickable: Boolean(this.props.onHover),
       // lightSettings: LIGHT_SETTINGS
