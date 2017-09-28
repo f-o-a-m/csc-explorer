@@ -11,7 +11,7 @@ const LIGHT_SETTINGS = {
   numberOfLights: 3
 };
 
-const elevationScale = {min: 100, max: 1000};
+const elevationScale = {min: 100, max: 10000};
 
 const defaultProps = {
   radius: 1000,
@@ -45,13 +45,15 @@ export default class DeckGLOverlay extends Component {
     const layer = new GridCellLayer({
       id: 'grid-cell-layer',
       data,
-      cellSize: 400,
+      cellSize: 300,
       // getColor: cell => cell.color
+      elevationRange: [0, 3000],
+      elevationScale: 1000,
       onHover: this.props.onHover,
       onClick: this.props.onClick,
       opacity: 1,
       pickable: Boolean(this.props.onHover),
-      lightSettings: LIGHT_SETTINGS
+      // lightSettings: LIGHT_SETTINGS
     });
 
     return <DeckGL {...viewport} layers={[layer]} onWebGLInitialized={this._initialize} />;

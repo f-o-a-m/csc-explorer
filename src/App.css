@@ -1,5 +1,7 @@
 body{
   font-family: monospace;
+  margin: 0;
+  padding: 0;
 }
 
 .mapboxgl-popup-content{
