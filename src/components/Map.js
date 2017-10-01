@@ -4,7 +4,7 @@ import MapGL, {Popup} from 'react-map-gl';
 import DeckGLOverlay from './deckgl-overlay.js';
 import TopBar from './TopBar'
 
-import dataPoints from '../data/newDataPoints4.json'
+import dataPoints from '../data/newDataPoints.json'
 
 // Set your mapbox token here
 // const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN; // eslint-disable-line
@@ -19,8 +19,8 @@ export default class Map extends Component {
         ...DeckGLOverlay.defaultViewport,
         width: 500,
         height: 500,
-        longitude: -122.456,
-        latitude: 37.751,
+        longitude: -73.990173,
+        latitude: 40.726966,
         zoom: 12,
         minZoom: 1,
         maxZoom: 15,

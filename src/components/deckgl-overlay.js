@@ -41,7 +41,6 @@ export default class DeckGLOverlay extends Component {
   render() {
     const {viewport, data, radius, coverage, upperPercentile} = this.props;
 
-    console.log(this.state)
 
     if (!data) {
       return null;
@@ -50,10 +49,10 @@ export default class DeckGLOverlay extends Component {
     let layer = new GridCellLayer({
       id: 'grid-cell-layer',
       data,
-      cellSize: 1000,
+      cellSize: 20,
       getColor: () => this.props.picked ? defaultColor : pickedColor,
       elevationRange: [0, 3000],
-      elevationScale: 1000,
+      elevationScale: 100,
       onHover: this.props.onHover,
       onClick: this.props.onClick,
       autoHighlight: true,
