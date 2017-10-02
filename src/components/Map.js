@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
-import MapGL, {Popup} from 'react-map-gl';
+import React, {Component} from 'react'
+import MapGL, {Popup} from 'react-map-gl'
 
-import DeckGLOverlay from './deckgl-overlay.js';
-import TopBar from './TopBar'
+import DeckGLOverlay from './DeckGLOverlay.js'
 
-import dataPoints from '../data/newDataPoints.json'
+import dataPoints from '../data/data.json'
+
 
 // Set your mapbox token here
-// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN; // eslint-disable-line
+// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN // eslint-disable-line
 
-const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA';
+const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
 export default class Map extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       viewport: {
         ...DeckGLOverlay.defaultViewport,
@@ -29,31 +29,31 @@ export default class Map extends Component {
       },
       data: null,
       coordinates: [-0.13235092163085938,51.518250335096376],
-      info: "Hello"
-    };
+      info: "Hello",
+    }
 
   }
 
   componentWillMount(){
-    this.setState({data: dataPoints});
+    this.setState({data: dataPoints})
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this._resize.bind(this));
-    this._resize();
+    window.addEventListener('resize', this._resize.bind(this))
+    this._resize()
   }
 
   _resize() {
     this._onViewportChange({
       width: window.innerWidth,
       height: window.innerHeight
-    });
+    })
   }
 
   _onViewportChange(viewport) {
     this.setState({
       viewport: {...this.state.viewport, ...viewport}
-    });
+    })
   }
 
   _setName = (info) => {
@@ -74,7 +74,8 @@ export default class Map extends Component {
   }
 
   render() {
-    const {viewport, data} = this.state;
+    const {viewport, data} = this.state
+    console.log(this.props.cellsAreExtruded)
     return (
       <MapGL
         {...viewport}
@@ -90,12 +91,12 @@ export default class Map extends Component {
         <DeckGLOverlay
           viewport={viewport}
           data={data || []}
+          cellsAreExtruded={this.props.cellsAreExtruded}
           onHover={this._onHover}
           onClick={this._onClick}
           callbackFromParent={this._renderPopup}
         />
-        <TopBar {...viewport} {...this.state} />
       </MapGL>
-    );
+    )
   }
 }

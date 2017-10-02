@@ -1,15 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as MapActions from './actions'
+
 import Map from './components/Map'
-import './App.css';
+import TopBar from './components/TopBar'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Map />
-      </div>
-    );
-  }
-}
+import './App.css'
 
-export default App;
+const App = ({actions, cellsAreExtruded}) => (
+  <div className={'app'}>
+    <TopBar
+      //REMINDER : need viewport from store
+      actions={actions}
+      cellsAreExtruded={cellsAreExtruded} />
+    <Map
+      actions={actions}
+      cellsAreExtruded={cellsAreExtruded} />
+  </div>
+)
+
+// `mapStateToProps` filters the results of Redux states (store.getState()) into
+// something that a Smart component needs, and then passes those into
+// component as a prop.
+const mapStateToProps = state => ({
+  cellsAreExtruded: state.mapControls.cellsAreExtruded
+})
+
+// `mapDispatchToProps` takes a set of action creators (which simply return action
+// objects) and make them “dispatchable”. It then passes the object to
+// components as a prop.
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(MapActions, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App)

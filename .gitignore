@@ -23,3 +23,5 @@ yarn-error.log*
 /env-config.js
 .env*.local
 .env
+
+src/data
