@@ -9,7 +9,7 @@ const store = createStore(reducer)
 
 render(
   <Provider store={store}>
-    <App />
+    <App store={store}/>
   </Provider>,
   document.getElementById('root')
 )

@@ -10,15 +10,16 @@ import TopBar from './components/TopBar'
 
 import './App.css'
 
-const App = ({actions, cellsAreExtruded}) => (
+const App = ({store, actions, cellsAreExtruded, viewport}) => (
   <div className={'app'}>
     <TopBar
-      //REMINDER : need viewport from store
       actions={actions}
       cellsAreExtruded={cellsAreExtruded} />
     <Map
+      dispatch={store.dispatch}
       actions={actions}
-      cellsAreExtruded={cellsAreExtruded} />
+      cellsAreExtruded={cellsAreExtruded}
+      viewport={viewport} />
   </div>
 )
 
@@ -26,7 +27,8 @@ const App = ({actions, cellsAreExtruded}) => (
 // something that a Smart component needs, and then passes those into
 // component as a prop.
 const mapStateToProps = state => ({
-  cellsAreExtruded: state.mapControls.cellsAreExtruded
+  cellsAreExtruded: state.mapControls.cellsAreExtruded,
+  viewport: state.viewportControls.viewport,
 })
 
 // `mapDispatchToProps` takes a set of action creators (which simply return action

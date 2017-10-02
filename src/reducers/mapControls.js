@@ -1,5 +1,3 @@
-import { TOGGLE_CELL_EXTRUSION } from '../constants/ActionTypes'
-
 const initialState = {
     cellsAreExtruded: false,
   }

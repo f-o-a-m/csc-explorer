@@ -6,7 +6,7 @@ const TopBar = (props) => {
     <div className='topbar'>
       <span className='address'>{props.latitude + ',' + props.longitude}</span>
       <span>{'selected' + ' ' + props.info}</span>
-      <button onClick={props.actions.toggleCellExtrusion}>{'Toggle Cell Extrusion'}</button>
+      <button onClick={() => props.actions.toggleCellExtrusion()}>{'Toggle Cell Extrusion'}</button>
     </div>
   )
 }

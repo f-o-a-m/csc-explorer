@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 import MapGL, {Popup} from 'react-map-gl'
+import { connect } from 'react-redux'
 
 import DeckGLOverlay from './DeckGLOverlay.js'
+
+import { resizeViewport, onViewportChange } from '../actions'
 
 import dataPoints from '../data/data.json'
 
@@ -11,22 +14,10 @@ import dataPoints from '../data/data.json'
 
 const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
-export default class Map extends Component {
+class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      viewport: {
-        ...DeckGLOverlay.defaultViewport,
-        width: 500,
-        height: 500,
-        longitude: -73.990173,
-        latitude: 40.726966,
-        zoom: 12,
-        minZoom: 1,
-        maxZoom: 15,
-        pitch: 40.5,
-        bearing: -27.396674584323023
-      },
       data: null,
       coordinates: [-0.13235092163085938,51.518250335096376],
       info: "Hello",
@@ -44,16 +35,11 @@ export default class Map extends Component {
   }
 
   _resize() {
-    this._onViewportChange({
-      width: window.innerWidth,
-      height: window.innerHeight
-    })
+    this.props.dispatch(resizeViewport(window.innerWidth,window.innerHeight))
   }
 
   _onViewportChange(viewport) {
-    this.setState({
-      viewport: {...this.state.viewport, ...viewport}
-    })
+    this.props.dispatch(onViewportChange(viewport))
   }
 
   _setName = (info) => {
@@ -74,11 +60,10 @@ export default class Map extends Component {
   }
 
   render() {
-    const {viewport, data} = this.state
-    console.log(this.props.cellsAreExtruded)
+    const {data} = this.state
     return (
       <MapGL
-        {...viewport}
+        {...this.props.viewport}
         mapStyle="mapbox://styles/mapbox/light-v9"
         onViewportChange={this._onViewportChange.bind(this)}
         mapboxApiAccessToken={token}>
@@ -89,7 +74,7 @@ export default class Map extends Component {
           <div>{this.state.info}</div>
         </Popup>
         <DeckGLOverlay
-          viewport={viewport}
+          viewport={this.props.viewport}
           data={data || []}
           cellsAreExtruded={this.props.cellsAreExtruded}
           onHover={this._onHover}
@@ -100,3 +85,7 @@ export default class Map extends Component {
     )
   }
 }
+export default connect(
+  resizeViewport,
+  onViewportChange,
+)(Map)
