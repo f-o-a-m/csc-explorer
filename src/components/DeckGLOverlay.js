@@ -1,6 +1,7 @@
 /* global window */
 import React, {Component} from 'react'
 import DeckGL, {GridCellLayer} from 'deck.gl'
+import { getMapsItemInfo } from '../actions'
 
 const LIGHT_SETTINGS = {
   lightsPosition: [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
@@ -55,7 +56,7 @@ export default class DeckGLOverlay extends Component {
       elevationRange: [0, 3000],
       elevationScale: 100,
       onHover: this.props.onHover,
-      onClick: this.props.onClick,
+      onClick: (e) => this.props.dispatch(getMapsItemInfo(e)),
       autoHighlight: true,
       opacity: 1,
       pickable: Boolean(this.props.onHover),

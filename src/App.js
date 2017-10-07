@@ -10,16 +10,17 @@ import TopBar from './components/TopBar'
 
 import './App.css'
 
-const App = ({store, actions, cellsAreExtruded, viewport}) => (
+const App = ({...mapStateToProps, actions, store}) => (
   <div className={'app'}>
     <TopBar
       actions={actions}
-      cellsAreExtruded={cellsAreExtruded} />
+      cellsAreExtruded={mapStateToProps.cellsAreExtruded} />
     <Map
       dispatch={store.dispatch}
       actions={actions}
-      cellsAreExtruded={cellsAreExtruded}
-      viewport={viewport} />
+      info={mapStateToProps.info}
+      cellsAreExtruded={mapStateToProps.cellsAreExtruded}
+      viewport={mapStateToProps.viewport} />
   </div>
 )
 
@@ -29,6 +30,7 @@ const App = ({store, actions, cellsAreExtruded, viewport}) => (
 const mapStateToProps = state => ({
   cellsAreExtruded: state.mapControls.cellsAreExtruded,
   viewport: state.viewportControls.viewport,
+  info: state.getMapsItemInfo.info,
 })
 
 // `mapDispatchToProps` takes a set of action creators (which simply return action
