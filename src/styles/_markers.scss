@@ -1,78 +1,51 @@
-h6{
-  margin: 0;
-  padding: 0;
-}
-
-.bg-w{
-  background-color: white;
-  color: black;
-}
-
-.pr1{
-  padding-right: 1em;
-}
-
-.pl1{
-  padding-left: 1em;
-}
-
-.pv05{
-  padding-top: .5em;
-  padding-bottom: .5em;
-}
-
-.brr07{
-  border-radius: 0px .7rem .7rem 0px;
-}
-
-.brl07{
-  border-radius: .7rem 0px 0px .7rem;
-}
-
-.ftimg{
-  height: 14px;
-  padding-left: 3px;
-}
-
-.flexAlignCenter{
-  display: flex;
-  align-items: center;
-}
-
-.pinContainer.active .name{
-  background: #18cf82;
-  color:white;
-}
-
-.pinContainer.proposal .name{
-  background: #006DFF;
-  color:white;
-}
-
-.pinContainer:before {
-  content: ' ';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 8px;
-  position: relative;
-}
 
 .pinContainer {
-  color: transparent;
   white-space: nowrap;
   position: relative;
-}
-
-.pinContainer span {
-  font-size: 12px;
-  position: absolute;
-  top:0;
-  left: 0;
-  transform: translate(-14px, -36px);
-  display: flex;
-  border-radius: 12px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  &.proposal {
+    #downArrow {
+      border-top: 8px solid $pendingBlue;
+    }
+    &:before {
+      background: $pendingBlue;
+      border: 1px solid $white;
+    }
+    .name {
+      background: $pendingBlue;
+      color: $white;
+    }
+  }
+  &.active {
+    #downArrow {
+      border-top: 8px solid $activeGreen;
+    }
+    &:before {
+      background: $activeGreen;
+      border: 1px solid $white;
+    }
+    .name {
+      background: $activeGreen;
+      color: $white;
+    }
+  }
+  &:before {
+    content: ' ';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 8px;
+    position: relative;
+  }
+  span {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-14px, -36px);
+    display: flex;
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 }
 
 
@@ -84,28 +57,9 @@ h6{
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 8px solid #006DFF;
-
 }
 
-.pinContainer.active #downArrow {
-  border-top: 8px solid #18cf82;
-}
-
-.pinContainer.proposal #downArrow {
-  border-top: 8px solid #006DFF;
-}
 
 .pinContainer:hover{
   cursor:pointer;
-}
-
-.pinContainer.active::before{
-  background: #18cf82;
-  border: 1px solid white;
-}
-
-.pinContainer.proposal::before{
-  background: #006DFF;
-  border: 1px solid white;
 }

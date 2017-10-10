@@ -47,20 +47,8 @@ table {
 
 body {
   font-family: 'Droid Sans Mono', monospace;
-  margin: 0;
-  padding: 0; }
-
-.mapboxgl-popup-content {
-  background-color: black;
-  color: white;
+  text-rendering: optimizeLegibility;
   font-size: 12px; }
-
-.mapboxgl-popup-tip {
-  border-top-color: black !important; }
-
-h6 {
-  margin: 0;
-  padding: 0; }
 
 .bg-w {
   background-color: white;
@@ -72,15 +60,15 @@ h6 {
 .pl1 {
   padding-left: 1em; }
 
-.pv05 {
-  padding-top: .5em;
-  padding-bottom: .5em; }
+.pv06 {
+  padding-top: .6em;
+  padding-bottom: .6em; }
 
-.brr07 {
-  border-radius: 0px .7rem .7rem 0px; }
+.brr1 {
+  border-radius: 0px 1em 1em 0px; }
 
-.brl07 {
-  border-radius: .7rem 0px 0px .7rem; }
+.brl1 {
+  border-radius: 1em 0px 0px 1em; }
 
 .ftimg {
   height: 14px;
@@ -90,12 +78,42 @@ h6 {
   display: flex;
   align-items: center; }
 
-.pinContainer.active .name {
-  background: #18cf82;
-  color: white; }
+body {
+  margin: 0;
+  padding: 0; }
+
+.mapboxgl-popup-content {
+  background-color: black;
+  color: white;
+  font-size: 12px; }
+
+.mapboxgl-popup-tip {
+  border-top-color: black !important; }
+
+.pinContainer {
+  white-space: nowrap;
+  position: relative; }
+
+.pinContainer.proposal #downArrow {
+  border-top: 8px solid #006DFF; }
+
+.pinContainer.proposal:before {
+  background: #006DFF;
+  border: 1px solid white; }
 
 .pinContainer.proposal .name {
   background: #006DFF;
+  color: white; }
+
+.pinContainer.active #downArrow {
+  border-top: 8px solid #18cf71; }
+
+.pinContainer.active:before {
+  background: #18cf71;
+  border: 1px solid white; }
+
+.pinContainer.active .name {
+  background: #18cf71;
   color: white; }
 
 .pinContainer:before {
@@ -104,11 +122,6 @@ h6 {
   width: 7px;
   height: 7px;
   border-radius: 8px;
-  position: relative; }
-
-.pinContainer {
-  color: transparent;
-  white-space: nowrap;
   position: relative; }
 
 .pinContainer span {
@@ -128,25 +141,10 @@ h6 {
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 8px solid #006DFF; }
-
-.pinContainer.active #downArrow {
-  border-top: 8px solid #18cf82; }
-
-.pinContainer.proposal #downArrow {
-  border-top: 8px solid #006DFF; }
+  border-right: 6px solid transparent; }
 
 .pinContainer:hover {
   cursor: pointer; }
-
-.pinContainer.active::before {
-  background: #18cf82;
-  border: 1px solid white; }
-
-.pinContainer.proposal::before {
-  background: #006DFF;
-  border: 1px solid white; }
 
 .topbar {
   width: 100vw;

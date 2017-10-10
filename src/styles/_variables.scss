@@ -1,7 +1,11 @@
 // VARS
 $black: black;
 $white: white;
-
+$activeGreen: #18cf71;
+$pendingBlue: #006DFF;
+$brassL: #895C51;
+$brassR: #7D4D40;
+$brassT: #D89583;
 
 // MIXINS
 
@@ -9,8 +13,48 @@ $white: white;
   @media (max-width: 500px) { @content; }
 }
 
-
-
-
 // TYPE
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+
+body {
+  font-family: 'Droid Sans Mono', monospace;
+  text-rendering: optimizeLegibility;
+  font-size: 12px;
+}
+
+//ATOMICS
+.bg-w{
+  background-color: $white;
+  color: $black;
+}
+
+.pr1{
+  padding-right: 1em;
+}
+
+.pl1{
+  padding-left: 1em;
+}
+
+.pv06{
+  padding-top: .6em;
+  padding-bottom: .6em;
+}
+
+.brr1{
+  border-radius: 0px 1em 1em 0px;
+}
+
+.brl1{
+  border-radius: 1em 0px 0px 1em;
+}
+
+.ftimg{
+  height: 14px;
+  padding-left: 3px;
+}
+
+.flexAlignCenter{
+  display: flex;
+  align-items: center;
+}

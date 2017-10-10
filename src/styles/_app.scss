@@ -1,15 +1,14 @@
 body{
-  font-family: 'Droid Sans Mono', monospace;
   margin: 0;
   padding: 0;
 }
 
 .mapboxgl-popup-content{
-  background-color: black;
-  color: white;
+  background-color: $black;
+  color: $white;
   font-size: 12px;
 }
 
 .mapboxgl-popup-tip{
-  border-top-color: black !important;
+  border-top-color: $black !important;
 }

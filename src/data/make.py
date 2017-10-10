@@ -3,6 +3,7 @@ import json
 import math
 import random
 import csv
+from arrays import *
 
 ## Controls
 THINNING_THRESHOLD = 0.005
@@ -17,34 +18,6 @@ model = {
 
 newDataPoints = []
 
-categories = [
-    'Food',
-    'Sports',
-    'Tech',
-    'Agriculture',
-    'Cycling',
-    'Transportation'
-]
-
-tokenTitles = [
-    'Take out my Garbage',
-    'Mission Chinese 2',
-    'Dog Park Renovations',
-    'Block Party',
-    'Garden Repair',
-    'Solar Farm CSA',
-    'Parking Share',
-    'Bodega Renovations',
-    'New Dog Park',
-    'Corgi Meetup',
-    'Stump Removal',
-    'Halloween Parade',
-    'CNC Machining Share',
-    'Driverless Juno',
-    'Drone XSC2E-2'
-]
-
-manhattanZips = ['10026', '10027', '10030', '10037', '10039', '10001', '10011', '10018', '10019', '10020', '10036', '10029', '10035', '10010', '10016', '10017', '10022', '10012', '10013', '10014', '10004', '10005', '10006', '10007', '10038', '10280', '10002', '10003', '10009', '10021', '10028', '10044', '10065', '10075', '10128', '10023', '10024', '10025', '10031', '10032', '10033', '10034', '10040']
 fields = ['LON','LAT','NUMBER','STREET','UNIT','CITY','DISTRICT','REGION','POSTCODE','ID','HASH']
 
 def cscStatus( rand ):
@@ -68,7 +41,7 @@ with open('city_of_new_york.csv', 'rb') as csvfile:
             title       =   randomInArr(tokenTitles)
             status      =   cscStatus( random.uniform(0, 1) )
             balance     =   float(str(random.uniform(0, 1000))[:4]) ##lol wtf
-            category    =   randomInArr(categories)
+            category    =   randomInArr(tokenCategories)
             popularity  =   random.uniform(0, 1)
 
             newDataPoint = model
@@ -79,6 +52,10 @@ with open('city_of_new_york.csv', 'rb') as csvfile:
             newDataPoint["status"]     =    status
             newDataPoint["balance"]    =    balance
             newDataPoint["title"]      =    title
+            newDataPoint["popularity"] =    popularity
+            newDataPoint["category"]   =    category
+
+
 
             newDataPoints.append(newDataPoint.copy())
 

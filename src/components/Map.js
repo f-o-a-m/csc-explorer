@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import MapGL, {Marker} from 'react-map-gl'
 import DeckGLOverlay from './DeckGLOverlay.js'
-import dataPoints from '../data/data.json'
 
 
 const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
@@ -18,8 +17,8 @@ const DialogMarker = ({status, title, balance}) => {
   return (
     <div className={`pinContainer ${statusStyle}`}>
       <span>
-        <div className={'name pr1 pl1 pv05 brl07 flexAlignCenter'}>{title}</div>
-        <div className={'balance pl1 pr1 pv05 brr07 bg-w flexAlignCenter'}>
+        <div className={'name pr1 pl1 pv06 brl1 flexAlignCenter'}>{title}</div>
+        <div className={'balance pl1 pr1 pv06 brr1 bg-w flexAlignCenter'}>
           {balance}
           <img className={'ftimg'} src={'/foam_token.png'} />
         </div>
@@ -52,7 +51,7 @@ export default class Map extends Component {
         style={'mapbox://styles/mapbox/streets-v8'}
         onViewportChange={(e) => this.props.actions.onViewportChange(e)}
         mapboxApiAccessToken={token}>
-      { dataPoints.map(this._renderMarker) }
+      { this.props.data.map(this._renderMarker) }
       </MapGL>
     )
   }
