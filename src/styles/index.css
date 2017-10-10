@@ -93,46 +93,38 @@ body {
 .pinContainer {
   white-space: nowrap;
   position: relative; }
-
-.pinContainer.proposal #downArrow {
-  border-top: 8px solid #006DFF; }
-
-.pinContainer.proposal:before {
-  background: #006DFF;
-  border: 1px solid white; }
-
-.pinContainer.proposal .name {
-  background: #006DFF;
-  color: white; }
-
-.pinContainer.active #downArrow {
-  border-top: 8px solid #18cf71; }
-
-.pinContainer.active:before {
-  background: #18cf71;
-  border: 1px solid white; }
-
-.pinContainer.active .name {
-  background: #18cf71;
-  color: white; }
-
-.pinContainer:before {
-  content: ' ';
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 8px;
-  position: relative; }
-
-.pinContainer span {
-  font-size: 12px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-14px, -36px);
-  display: flex;
-  border-radius: 12px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+  .pinContainer.proposal #downArrow {
+    border-top: 8px solid #006DFF; }
+  .pinContainer.proposal:before {
+    background: #006DFF;
+    border: 1px solid white; }
+  .pinContainer.proposal .name {
+    background: #006DFF;
+    color: white; }
+  .pinContainer.active #downArrow {
+    border-top: 8px solid #18cf71; }
+  .pinContainer.active:before {
+    background: #18cf71;
+    border: 1px solid white; }
+  .pinContainer.active .name {
+    background: #18cf71;
+    color: white; }
+  .pinContainer:before {
+    content: ' ';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 8px;
+    position: relative; }
+  .pinContainer span {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-14px, -36px);
+    display: flex;
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
 
 #downArrow {
   position: absolute;

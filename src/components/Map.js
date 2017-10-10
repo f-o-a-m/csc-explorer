@@ -28,14 +28,8 @@ const DialogMarker = ({status, title, balance}) => {
   )
 }
 
-export default class Map extends Component {
-
-  componentDidMount() {
-    window.addEventListener('resize', this.props.actions.resizeViewport(window.innerWidth, window.innerHeight))
-  }
-
-  _renderMarker(location, i) {
-  const { title, position, status, balance } = location
+const _renderMarker = (datum, i) => {
+  const { title, position, status, balance } = datum
   return (
     <Marker key={i} longitude={position[0]} latitude={position[1]}>
       <DialogMarker status={status} title={title} balance={balance}/>
@@ -43,16 +37,17 @@ export default class Map extends Component {
   )
 }
 
-
-  render() {
-    return (
-      <MapGL
-        {...this.props.viewport}
-        style={'mapbox://styles/mapbox/streets-v8'}
-        onViewportChange={(e) => this.props.actions.onViewportChange(e)}
-        mapboxApiAccessToken={token}>
-      { this.props.data.map(this._renderMarker) }
-      </MapGL>
-    )
-  }
+const Map = (props) => {
+  console.log('Component Map Rendered')
+  return (
+    <MapGL
+      {...props.viewport}
+      style={'mapbox://styles/mapbox/streets-v8'}
+      onViewportChange={(e) => props.actions.onViewportChange(e)}
+      mapboxApiAccessToken={token}>
+      { props.mapData.length > 0 ? props.mapData.map((datum, i) => { return _renderMarker(datum, i)}) : null }
+    </MapGL>
+  )
 }
+
+export default Map

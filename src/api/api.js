@@ -9,7 +9,7 @@ addPOI(position, name){
   }).then(newLocation => {
     var generatedKey = newLocation.key;
   }).catch(err => {
-    //handle error
+    console.error(err)
   });
   //available immediately, you don't have to wait for the Promise to resolve
   var generatedKey = immediatelyAvailableReference.key;
