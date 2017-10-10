@@ -1,16 +1,10 @@
 import React, {Component} from 'react'
-import MapGL, {Popup} from 'react-map-gl'
+import MapGL, {Marker} from 'react-map-gl'
 import { connect } from 'react-redux'
-
+import './Markers.css'
 import DeckGLOverlay from './DeckGLOverlay.js'
-
-// import { resizeViewport, onViewportChange } from '../actions'
-
 import dataPoints from '../data/data.json'
 
-
-// Set your mapbox token here
-// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN // eslint-disable-line
 
 const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
@@ -22,7 +16,7 @@ export default class Map extends Component {
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.setState({data: dataPoints})
   }
 
@@ -30,6 +24,15 @@ export default class Map extends Component {
     window.addEventListener('resize', this.props.actions.resizeViewport(window.innerWidth,window.innerHeight))
 
   }
+
+  _renderMarker(location, i) {
+  const {name, position} = location;
+  return (
+    <Marker key={i} longitude={position[0]} latitude={position[1]} >
+      <div className="location"><span>{name}</span></div>
+    </Marker>
+  );
+}
 
 
   render() {
@@ -39,26 +42,10 @@ export default class Map extends Component {
         {...this.props.viewport}
         mapStyle="mapbox://styles/mapbox/light-v9"
         onViewportChange={(e) => this.props.actions.onViewportChange(e)}
-        mapboxApiAccessToken={token}>
-        <Popup
-          // onClick={}
-          longitude={this.props.viewport.longitude}
-          latitude={this.props.viewport.latitude}>
-          <div>{this.props.info.hasOwnProperty('object') ? this.props.info.object.name : ''}</div>
-        </Popup>
-        <DeckGLOverlay
-          dispatch={this.props.dispatch}
-          viewport={this.props.viewport}
-          data={data || []}
-          cellsAreExtruded={this.props.cellsAreExtruded}
-          onHover={this._onHover}
-          callbackFromParent={this._renderPopup}
-        />
+        mapboxApiAccessToken={token}
+        data={data || []}>
+      { dataPoints.map(this._renderMarker) }
       </MapGL>
     )
   }
 }
-// export default connect(
-//   resizeViewport,
-//   onViewportChange,
-// )(Map)
