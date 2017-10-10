@@ -1,0 +1,101 @@
+h6{
+  margin: 0;
+  padding: 0;
+}
+
+.bg-w{
+  background-color: white;
+  color: black;
+}
+
+.pr{
+  padding-right: 1em;
+}
+
+.pl{
+  padding-left: 1em;
+}
+
+.pv{
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.brr{
+  border-radius: 0px 12px 12px 0px;
+}
+
+.brl{
+  border-radius: 12px 0px 0px 12px;
+}
+
+.pinContainer.active .name{
+  background: #18cf82;
+  color:white;
+}
+
+.pinContainer.proposal .name{
+  background: #006DFF;
+  color:white;
+}
+
+.pinContainer:before {
+  content: ' ';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.pinContainer {
+  color: transparent;
+  white-space: nowrap;
+  position: relative;
+}
+
+.pinContainer span {
+  font-size: 12px;
+  position: absolute;
+  top:0;
+  left: 0;
+  transform: translate(-14px, -36px);
+  display: flex;
+  border-radius: 12px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+
+#downArrow{
+  position: absolute;
+  bottom:-8px;
+  left: 12px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #006DFF;
+
+}
+
+.pinContainer.active #downArrow {
+  border-top: 8px solid #18cf82;
+}
+
+.pinContainer.proposal #downArrow {
+  border-top: 8px solid #006DFF;
+}
+
+.pinContainer:hover{
+  cursor:pointer;
+}
+
+.pinContainer.active::before{
+  background: #18cf82;
+  border: 1px solid white;
+}
+
+.pinContainer.proposal::before{
+  background: #006DFF;
+  border: 1px solid white;
+}

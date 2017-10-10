@@ -1,5 +1,4 @@
 import React from 'react'
-import './TopBar.css'
 
 const TopBar = (props) => {
   return (

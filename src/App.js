@@ -8,8 +8,6 @@ import * as MapActions from './actions'
 import Map from './components/Map'
 import TopBar from './components/TopBar'
 
-import './App.css'
-
 const App = ({...mapStateToProps, actions, store}) => (
   <div className={'app'}>
     <TopBar

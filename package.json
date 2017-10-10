@@ -6,6 +6,8 @@
     "d3-request": "^1.0.6",
     "deck.gl": "^4.1.2",
     "luma.gl": "^4.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
     "rbush": "^2.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -15,8 +17,11 @@
     "redux": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

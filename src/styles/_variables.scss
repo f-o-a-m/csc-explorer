@@ -1,0 +1,16 @@
+// VARS
+$black: black;
+$white: white;
+
+
+// MIXINS
+
+@mixin for-phone-only {
+  @media (max-width: 500px) { @content; }
+}
+
+
+
+
+// TYPE
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
