@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import MapGL, {Marker} from 'react-map-gl'
-import { connect } from 'react-redux'
 import DeckGLOverlay from './DeckGLOverlay.js'
 import dataPoints from '../data/data.json'
 
 
 const token = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
-const DialogMarker = ({status, name, balance}) => {
+const DialogMarker = ({status, title, balance}) => {
   let statusStyle
   switch (status) {
     case 'STATUS_ACTIVE': statusStyle = 'active'
@@ -19,8 +18,11 @@ const DialogMarker = ({status, name, balance}) => {
   return (
     <div className={`pinContainer ${statusStyle}`}>
       <span>
-        <div className={'name pr pl pv brl'}>{name}</div>
-        <div className={'balance pl pr pv brr bg-w'}>{balance}</div>
+        <div className={'name pr1 pl1 pv05 brl07 flexAlignCenter'}>{title}</div>
+        <div className={'balance pl1 pr1 pv05 brr07 bg-w flexAlignCenter'}>
+          {balance}
+          <img className={'ftimg'} src={'/foam_token.png'} />
+        </div>
         <div id={'downArrow'} />
       </span>
     </div>
@@ -34,10 +36,10 @@ export default class Map extends Component {
   }
 
   _renderMarker(location, i) {
-  const { name, position, status, balance } = location
+  const { title, position, status, balance } = location
   return (
     <Marker key={i} longitude={position[0]} latitude={position[1]}>
-      <DialogMarker status={status} name={name} balance={balance}/>
+      <DialogMarker status={status} title={title} balance={balance}/>
     </Marker>
   )
 }
@@ -47,7 +49,7 @@ export default class Map extends Component {
     return (
       <MapGL
         {...this.props.viewport}
-        mapStyle="mapbox://styles/mapbox/light-v9"
+        style={'mapbox://styles/mapbox/streets-v8'}
         onViewportChange={(e) => this.props.actions.onViewportChange(e)}
         mapboxApiAccessToken={token}>
       { dataPoints.map(this._renderMarker) }

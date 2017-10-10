@@ -8,25 +8,35 @@ h6{
   color: black;
 }
 
-.pr{
+.pr1{
   padding-right: 1em;
 }
 
-.pl{
+.pl1{
   padding-left: 1em;
 }
 
-.pv{
+.pv05{
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
-.brr{
-  border-radius: 0px 12px 12px 0px;
+.brr07{
+  border-radius: 0px .7rem .7rem 0px;
 }
 
-.brl{
-  border-radius: 12px 0px 0px 12px;
+.brl07{
+  border-radius: .7rem 0px 0px .7rem;
+}
+
+.ftimg{
+  height: 14px;
+  padding-left: 3px;
+}
+
+.flexAlignCenter{
+  display: flex;
+  align-items: center;
 }
 
 .pinContainer.active .name{
@@ -42,8 +52,8 @@ h6{
 .pinContainer:before {
   content: ' ';
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 8px;
   position: relative;
 }
