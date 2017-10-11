@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono");
+@charset "UTF-8";
+@import url("https://rsms.me/interface/interface.css");
 * {
   box-sizing: border-box; }
 
@@ -46,9 +47,17 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: 'Droid Sans Mono', monospace;
+  font-family: 'Interface', sans-serif;
   text-rendering: optimizeLegibility;
-  font-size: 12px; }
+  font-size: 14px; }
+
+h3 {
+  margin-bottom: 2em;
+  font-weight: 400; }
+
+p {
+  margin-bottom: 1em;
+  line-height: 16px; }
 
 .bg-w {
   background-color: white;
@@ -65,10 +74,10 @@ body {
   padding-bottom: .6em; }
 
 .brr1 {
-  border-radius: 0px 1em 1em 0px; }
+  border-radius: 0px 20px 20px 0px; }
 
 .brl1 {
-  border-radius: 1em 0px 0px 1em; }
+  border-radius: 20px 0px 0px 20px; }
 
 .ftimg {
   height: 14px;
@@ -93,38 +102,46 @@ body {
 .pinContainer {
   white-space: nowrap;
   position: relative; }
-  .pinContainer.proposal #downArrow {
-    border-top: 8px solid #006DFF; }
-  .pinContainer.proposal:before {
-    background: #006DFF;
-    border: 1px solid white; }
-  .pinContainer.proposal .name {
-    background: #006DFF;
-    color: white; }
-  .pinContainer.active #downArrow {
-    border-top: 8px solid #18cf71; }
-  .pinContainer.active:before {
-    background: #18cf71;
-    border: 1px solid white; }
-  .pinContainer.active .name {
-    background: #18cf71;
-    color: white; }
-  .pinContainer:before {
-    content: ' ';
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 8px;
-    position: relative; }
-  .pinContainer span {
-    font-size: 12px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-14px, -36px);
-    display: flex;
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
+
+.pinContainer.proposal #downArrow {
+  border-top: 8px solid #006DFF; }
+
+.pinContainer.proposal:before {
+  background: #006DFF;
+  border: 1px solid white; }
+
+.pinContainer.proposal .name {
+  background: #006DFF;
+  color: white; }
+
+.pinContainer.active #downArrow {
+  border-top: 8px solid #18cf71; }
+
+.pinContainer.active:before {
+  background: #18cf71;
+  border: 1px solid white; }
+
+.pinContainer.active .name {
+  background: #18cf71;
+  color: white; }
+
+.pinContainer:before {
+  content: ' ';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 8px;
+  position: relative; }
+
+.pinContainer span {
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-14px, -36px);
+  display: flex;
+  border-radius: 12px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); }
 
 #downArrow {
   position: absolute;
@@ -138,19 +155,64 @@ body {
 .pinContainer:hover {
   cursor: pointer; }
 
-.topbar {
-  width: 100vw;
-  height: 40px;
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  padding-left: 16px;
-  z-index: 999;
+#topBarContainer {
+  display: block;
+  width: 300px;
+  border: 1px solid red;
+  padding: 2rem;
+  height: 100vh;
   position: fixed;
-  left: 0;
-  top: 0; }
+  z-index: 800; }
 
-.address {
-  padding-right: 1rem; }
+#sideBarContainer {
+  display: block;
+  width: 365px;
+  padding: 1rem;
+  height: 100vh;
+  position: fixed;
+  z-index: 800;
+  color: white; }
+
+#searchbar {
+  border-radius: 40px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  outline: none; }
+
+#searchbar:before {
+  content: '🔎';
+  color: black;
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  left: 0;
+  font-size: 24px; }
+
+#cardContainer {
+  margin-top: 1rem;
+  padding: 1.1rem;
+  padding-top: 1.5rem;
+  width: 100%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column; }
+
+.message {
+  width: 80%; }
+
+.bigButton {
+  box-sizing: border-box;
+  flex: 1;
+  margin-top: .2em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 52px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+  font-size: inherit;
+  color: inherit; }

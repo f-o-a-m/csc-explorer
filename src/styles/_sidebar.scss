@@ -1,0 +1,59 @@
+#sideBarContainer{
+  display: block;
+  width: 365px;
+  padding: 1rem;
+  height: 100vh;
+  position: fixed;
+  z-index: 800;
+  color: white;
+}
+
+#searchbar{
+  border-radius: 40px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid silver;
+  outline: none;
+  &:before{
+    content:'🔎';
+    color: black;
+    width: 10px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    left:0;
+    font-size: 24px;
+  }
+}
+
+
+
+#cardContainer{
+  margin-top: 1rem;
+  padding: 1.1rem;
+  padding-top: 1.5rem;
+  width: 100%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message{
+  width: 80%;
+}
+
+.bigButton{
+  box-sizing: border-box;
+  flex: 1;
+  margin-top: .2em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 52px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.15);
+  outline: none;
+  font-size: inherit;
+  color: inherit;
+}

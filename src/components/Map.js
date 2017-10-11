@@ -38,7 +38,6 @@ const _renderMarker = (datum, i) => {
 }
 
 const Map = (props) => {
-  console.log('Component Map Rendered')
   return (
     <MapGL
       {...props.viewport}

@@ -52,21 +52,16 @@ function getMapsItemInfo(state = initialState, action) {
 }
 
 function viewportControls(state = initialState, action) {
-  console.log('triggered')
-
   switch (action.type){
     case 'RESIZE_VIEWPORT':
-
-      return (
-        {
+      return ({
         ...state,
         viewport: {
           ...state.viewport,
           width: action.width,
           height: action.height,
         }
-    }
-  )
+      })
     case 'ON_VIEWPORT_CHANGE':
       return Object.assign({}, state, {
         viewport : action.newViewport,

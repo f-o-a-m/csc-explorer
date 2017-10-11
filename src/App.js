@@ -7,7 +7,7 @@ import base from './api/db'
 
 import * as MapActions from './actions'
 import Map from './components/Map'
-import TopBar from './components/TopBar'
+import SideBar from './components/SideBar'
 
 const DATA_SOURCE_NAME = 'data_CSC'
 
@@ -24,6 +24,7 @@ class App extends Component{
  }
 
   componentDidMount = () => {
+    this.resizeViewport()
     window.addEventListener('resize', this.resizeViewport)
     base.listenTo(DATA_SOURCE_NAME, {
       context: this,
@@ -41,7 +42,7 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <TopBar
+        <SideBar
           actions={actions}
           cellsAreExtruded={mapStateToProps.cellsAreExtruded} />
         <Map

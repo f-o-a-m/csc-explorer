@@ -14,13 +14,25 @@ $brassT: #D89583;
 }
 
 // TYPE
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
+@import url('https://rsms.me/interface/interface.css');
 
 body {
-  font-family: 'Droid Sans Mono', monospace;
+  font-family: 'Interface', sans-serif;
   text-rendering: optimizeLegibility;
-  font-size: 12px;
+  font-size: 14px;
 }
+
+h3{
+  margin-bottom: 2em;
+  font-weight: 400;
+}
+
+p{
+  margin-bottom: 1em;
+  line-height: 16px;
+}
+
+
 
 //ATOMICS
 .bg-w{
@@ -42,11 +54,11 @@ body {
 }
 
 .brr1{
-  border-radius: 0px 1em 1em 0px;
+  border-radius: 0px 20px 20px 0px;
 }
 
 .brl1{
-  border-radius: 1em 0px 0px 1em;
+  border-radius: 20px 0px 0px 20px;
 }
 
 .ftimg{
