@@ -11,7 +11,6 @@ import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 
-
 const DATA_SOURCE_NAME = 'data_CSC'
 
 class App extends Component{
