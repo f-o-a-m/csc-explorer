@@ -6,7 +6,7 @@ import csv
 from arrays import *
 
 ## Controls
-THINNING_THRESHOLD = 0.005
+THINNING_THRESHOLD = 0.001
 PROPOSAL_RATIO = 0.3
 
 ## Output Dict Model

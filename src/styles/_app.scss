@@ -3,12 +3,6 @@ body{
   padding: 0;
 }
 
-.mapboxgl-popup-content{
-  background-color: $black;
-  color: $white;
-  font-size: 12px;
-}
-
-.mapboxgl-popup-tip{
-  border-top-color: $black !important;
+button:hover{
+  cursor: pointer;
 }

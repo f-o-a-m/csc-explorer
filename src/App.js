@@ -8,6 +8,9 @@ import base from './api/db'
 import * as MapActions from './actions'
 import Map from './components/Map'
 import SideBar from './components/SideBar'
+import TopBar from './components/TopBar'
+import MapControls from './components/MapControls'
+
 
 const DATA_SOURCE_NAME = 'data_CSC'
 
@@ -42,9 +45,9 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <SideBar
-          actions={actions}
-          cellsAreExtruded={mapStateToProps.cellsAreExtruded} />
+        <SideBar actions={actions} />
+        <TopBar actions={actions} />
+        <MapControls actions={actions}/>
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}

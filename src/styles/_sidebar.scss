@@ -9,34 +9,34 @@
 }
 
 #searchbar{
-  border-radius: 40px;
+  border-radius: 20px;
   width: 100%;
   padding: 10px;
-  padding-left: 20px;
+  padding-left: 40px;
   border: 1px solid silver;
   outline: none;
-  &:before{
-    content:'🔎';
-    color: black;
-    width: 10px;
-    height: 10px;
-    display: block;
-    position: absolute;
-    left:0;
-    font-size: 24px;
-  }
+  font-size: inherit;
 }
 
+#searchWrapper{
+  position: relative;
+}
 
+#glass{
+  position: absolute;
+  left:10px;
+  top:8px;
+  font-size: 20px;
+}
 
 #cardContainer{
-  margin-top: 1rem;
-  padding: 1.1rem;
-  padding-top: 1.5rem;
-  width: 100%;
-  border-radius: 25px;
+  position: relative;
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
+  padding: 1.4rem;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .message{
@@ -47,13 +47,21 @@
   box-sizing: border-box;
   flex: 1;
   margin-top: .2em;
-  margin-left: 1rem;
-  margin-right: 1rem;
   height: 52px;
   border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.15);
+  border: 1px solid #F2F2F2;
   outline: none;
   font-size: inherit;
   color: inherit;
+}
+
+.x{
+  position: absolute;
+  right: .6rem;
+  top: .1rem;
+  background-color: transparent;
+  outline: none;
+  border: 0px;
+  color: white;
+  font-size: 30px;
 }
