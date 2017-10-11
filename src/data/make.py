@@ -4,9 +4,12 @@ import math
 import random
 import csv
 from arrays import *
+import binascii
+import os
+
 
 ## Controls
-THINNING_THRESHOLD = 0.001
+THINNING_THRESHOLD = 0.01
 PROPOSAL_RATIO = 0.3
 
 ## Output Dict Model
@@ -34,13 +37,14 @@ with open('city_of_new_york.csv', 'rb') as csvfile:
     print 'STARTED'
     for row in nycAddresses:
         if row['POSTCODE'] in manhattanZips and random.uniform(0, 1) < THINNING_THRESHOLD:
+            hashkey     =   binascii.hexlify(os.urandom(8))
             lat         =   float(row['LAT'])
             lon         =   float(row['LON'])
             name        =   row['NUMBER'] + ' ' + row['STREET'].title()
             elev        =   random.uniform(0, 1)
             title       =   randomInArr(tokenTitles)
             status      =   cscStatus( random.uniform(0, 1) )
-            balance     =   float(str(random.uniform(0, 1000))[:4]) ##lol wtf
+            balance     =   float(str(random.uniform(0, 1000))[:4]) ##lol what da hell
             category    =   randomInArr(tokenCategories)
             popularity  =   random.uniform(0, 1)
 
@@ -54,6 +58,8 @@ with open('city_of_new_york.csv', 'rb') as csvfile:
             newDataPoint["title"]      =    title
             newDataPoint["popularity"] =    popularity
             newDataPoint["category"]   =    category
+            newDataPoint["hashkey"]    =    hashkey
+
 
 
 

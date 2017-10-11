@@ -24,9 +24,9 @@ const cards = [
   },
 ]
 
-const Card = ({info}) => {
+const Card = ({info, i}) => {
   return(
-    <div id={'cardContainer'} className={'shadowL'} style={{backgroundColor:info.color}}>
+    <div key={i} id={'cardContainer'} className={'shadowL'} style={{backgroundColor:info.color}}>
       <button className={'x'}>{'×'}</button>
       <div className={'message'}>
         {info.title !== '' ? <h3>{info.title}</h3> : null}
@@ -44,12 +44,12 @@ const SideBar = (props) => {
         <input id={'searchbar'} className={'shadowL'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
       </div>
-      {
-        cards.map((info) => {
-          return (
-            <Card info={info} />
-          )
-        })
+      // {
+      //   cards.map((info, i) => {
+      //     return (
+      //       <Card info={info} key={i}/>
+      //     )
+      //   })
       }
     </aside>
   )

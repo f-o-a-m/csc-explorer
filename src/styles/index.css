@@ -1,4 +1,4 @@
-@import url("https://rsms.me/interface/interface.css");
+@import url("https://rsms.me/inter/inter-ui.css");
 * {
   box-sizing: border-box; }
 
@@ -51,7 +51,7 @@ button {
   font-size: inherit; }
 
 body {
-  font-family: 'Interface', sans-serif;
+  font-family: 'Inter UI', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: 14px; }
@@ -86,10 +86,13 @@ p {
   padding-bottom: .6em; }
 
 .brr1 {
-  border-radius: 0px 20px 20px 0px; }
+  border-radius: 0px 99px 99px 0px; }
 
 .brl1 {
-  border-radius: 20px 0px 0px 20px; }
+  border-radius: 99px 0px 0px 99px; }
+
+.br1 {
+  border-radius: 99px; }
 
 .ftimg {
   height: 14px;
@@ -120,6 +123,10 @@ p {
   background-color: #2F80ED;
   color: white; }
 
+.green {
+  background-color: #27AE60;
+  color: white; }
+
 .darkGrey {
   background-color: #242424;
   color: white; }
@@ -136,22 +143,20 @@ button:hover {
   position: relative; }
 
 .pinContainer.proposal #downArrow {
-  border-top: 8px solid #2F80ED; }
+  border-top: 8px solid #0E56B6; }
 
 .pinContainer.proposal:before {
-  background: #2F80ED;
-  border: 1px solid white; }
+  background: #2F80ED; }
 
 .pinContainer.proposal .name {
   background: #2F80ED;
   color: white; }
 
 .pinContainer.active #downArrow {
-  border-top: 8px solid #27AE60; }
+  border-top: 8px solid #128543; }
 
 .pinContainer.active:before {
-  background: #27AE60;
-  border: 1px solid white; }
+  background: #27AE60; }
 
 .pinContainer.active .name {
   background: #27AE60;
@@ -160,8 +165,8 @@ button:hover {
 .pinContainer:before {
   content: ' ';
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 4px;
+  height: 4px;
   border-radius: 8px;
   position: relative; }
 
@@ -174,6 +179,15 @@ button:hover {
   display: flex;
   border-radius: 12px; }
 
+.showBubble {
+  visibility: visible; }
+
+.hideBubble {
+  visibility: hidden; }
+
+#bubble {
+  z-index: 11; }
+
 #downArrow {
   position: absolute;
   bottom: -8px;
@@ -181,7 +195,8 @@ button:hover {
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
-  border-right: 6px solid transparent; }
+  border-right: 6px solid transparent;
+  z-index: 10; }
 
 .pinContainer:hover {
   cursor: pointer; }

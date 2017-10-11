@@ -10,8 +10,9 @@ import Map from './components/Map'
 import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
+import iconMapping from './data/location-icon-mapping.json'
 
-const DATA_SOURCE_NAME = 'data_CSC'
+const DATA_SOURCE_NAME = 'data'
 
 class App extends Component{
   constructor(props) {

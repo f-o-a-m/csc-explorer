@@ -4,11 +4,11 @@
   position: relative;
   &.proposal {
     #downArrow {
-      border-top: 8px solid $pendingBlue;
+      border-top: 8px solid $pendingBlue_dark;
     }
     &:before {
       background: $pendingBlue;
-      border: 1px solid $white;
+      // border: 1px solid $white;
     }
     .name {
       background: $pendingBlue;
@@ -17,11 +17,11 @@
   }
   &.active {
     #downArrow {
-      border-top: 8px solid $activeGreen;
+      border-top: 8px solid $activeGreen_dark;
     }
     &:before {
       background: $activeGreen;
-      border: 1px solid $white;
+      // border: 1px solid $white;
     }
     .name {
       background: $activeGreen;
@@ -31,8 +31,8 @@
   &:before {
     content: ' ';
     display: inline-block;
-    width: 7px;
-    height: 7px;
+    width: 4px;
+    height: 4px;
     border-radius: 8px;
     position: relative;
   }
@@ -47,6 +47,18 @@
   }
 }
 
+.showBubble{
+  visibility: visible;
+}
+
+.hideBubble{
+  visibility: hidden;
+}
+
+#bubble{
+  z-index: 11;
+}
+
 
 #downArrow{
   position: absolute;
@@ -56,6 +68,7 @@
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
+  z-index: 10;
 }
 
 

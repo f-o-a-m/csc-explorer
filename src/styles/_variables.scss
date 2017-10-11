@@ -2,23 +2,26 @@
 $black: black;
 $white: white;
 $activeGreen: #27AE60;
+$activeGreen_dark:#128543;
 $pendingBlue: #2F80ED;
+$pendingBlue_dark: #0E56B6;
+
 $brassL: #895C51;
 $brassR: #7D4D40;
 $brassT: #D89583;
 $darkGrey: #242424;
-// MIXINS
 
+// MIXINS
 @mixin for-phone-only {
   @media (max-width: 500px) { @content; }
 }
 
 
 // TYPE
-@import url('https://rsms.me/interface/interface.css');
+@import url('https://rsms.me/inter/inter-ui.css');
 
 body {
-  font-family: 'Interface', sans-serif;
+  font-family: 'Inter UI', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 
@@ -66,11 +69,15 @@ p{
 }
 
 .brr1{
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 99px 99px 0px;
 }
 
 .brl1{
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 99px 0px 0px 99px;
+}
+
+.br1{
+  border-radius: 99px;
 }
 
 .ftimg{
@@ -107,7 +114,11 @@ p{
 .blue{
   background-color: $pendingBlue;
   color: white;
+}
 
+.green{
+  background-color: $activeGreen;
+  color: white;
 }
 
 .darkGrey{
