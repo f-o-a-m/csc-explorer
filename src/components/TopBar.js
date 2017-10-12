@@ -7,7 +7,6 @@ const TopBar = (props) => {
       <button className={'pill darkGrey ml1 shadowL'}>
         {'5FT'}
         <img className={'ftimg ml1'} src={'/foam_token.png'} />
-
       </button>
     </header>
   )

@@ -1,50 +1,61 @@
-
-.pinContainer {
-  white-space: nowrap;
+#bubbleContainer{
   position: relative;
-  &.proposal {
-    #downArrow {
-      border-top: 8px solid $pendingBlue_dark;
-    }
-    &:before {
-      background: $pendingBlue;
-      // border: 1px solid $white;
-    }
-    .name {
-      background: $pendingBlue;
-      color: $white;
-    }
-  }
-  &.active {
-    #downArrow {
-      border-top: 8px solid $activeGreen_dark;
-    }
-    &:before {
-      background: $activeGreen;
-      // border: 1px solid $white;
-    }
-    .name {
-      background: $activeGreen;
-      color: $white;
-    }
-  }
-  &:before {
-    content: ' ';
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 8px;
-    position: relative;
-  }
-  span {
-    font-size: 12px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(-14px, -36px);
-    display: flex;
-    border-radius: 12px;
-  }
+  width: 200px;
+  height: 32px;
+  border-radius: 99px;
+  transform: translate(-32px, calc(-32px - 8px)); // Y: bubbleHeight - chevronHeight, X:
+}
+
+#bubbleBody{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+  color:inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+  border-radius: inherit;
+  z-index: 10;
+}
+
+#bubbleDrawer{
+  position: absolute;
+  color:inherit;
+  display: flex;
+  align-items: center;
+  z-index: 9;
+  height: 100%;
+  width: auto;
+  left: 200px;
+  padding-right: .8rem;
+  padding-left: 4rem;
+  transform: translateX(-3.5rem);
+  border-radius: 0px 99px 99px 0px;
+}
+
+.green_bg #bubbleDrawer{
+  background-color: darken($activeGreen, 10%);
+}
+
+.blue_bg #bubbleDrawer{
+  background-color: darken($pendingBlue, 10%);
+}
+
+#chevron{
+  position: absolute;
+  z-index: 8;
+  top: 32px;
+  left: 16px;
+}
+
+.green_bg #chevron{
+  fill: darken($activeGreen, 10%);
+}
+
+.blue_bg #chevron{
+  fill: darken($pendingBlue, 10%);
 }
 
 .showBubble{
@@ -53,22 +64,6 @@
 
 .hideBubble{
   visibility: hidden;
-}
-
-#bubble{
-  z-index: 11;
-}
-
-
-#downArrow{
-  position: absolute;
-  bottom:-8px;
-  left: 12px;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  z-index: 10;
 }
 
 
