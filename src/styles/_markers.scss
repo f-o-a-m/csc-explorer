@@ -3,7 +3,7 @@
   width: 200px;
   height: 32px;
   border-radius: 99px;
-  transform: translate(-32px, calc(-32px - 8px)); // Y: bubbleHeight - chevronHeight, X:
+  transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
 }
 
 #bubbleBody{
@@ -35,6 +35,38 @@
   border-radius: 0px 99px 99px 0px;
 }
 
+.bubbleText{
+  margin:0;
+  padding:0;
+  font-weight: 400;
+}
+
+.bubbleTitle{
+  max-width: 100px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.bubbleTitle::before{
+  content:'';
+  width:100%;
+  height:100%;
+  position:absolute;
+  left:0;
+  top:0;
+  background:linear-gradient(transparent 150px, white);
+
+}
+
+.bubbleBalance{
+
+}
+
+.bubbleTokens{
+
+}
+
 .green_bg #bubbleDrawer{
   background-color: darken($activeGreen, 10%);
 }
@@ -56,14 +88,6 @@
 
 .blue_bg #chevron{
   fill: darken($pendingBlue, 10%);
-}
-
-.showBubble{
-  visibility: visible;
-}
-
-.hideBubble{
-  visibility: hidden;
 }
 
 

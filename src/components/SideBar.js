@@ -26,7 +26,7 @@ const cards = [
 
 const Card = ({info, i}) => {
   return(
-    <div key={i} id={'cardContainer'} className={'shadowL'} style={{backgroundColor:info.color}}>
+    <div key={i} className={'cardContainer shadowL'} style={{backgroundColor:info.color}}>
       <button className={'x'}>{'×'}</button>
       <div className={'message'}>
         {info.title !== '' ? <h3>{info.title}</h3> : null}
@@ -41,10 +41,10 @@ const SideBar = (props) => {
   return (
     <aside id={'sideBarContainer'}>
       <div id={'searchWrapper'}>
-        <input id={'searchbar'} className={'shadowL'} placeholder={'Search the FOAM network'}/>
+        <input id={'searchbar'} className={'bold shadowL'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
       </div>
-      // {
+      {// {
       //   cards.map((info, i) => {
       //     return (
       //       <Card info={info} key={i}/>

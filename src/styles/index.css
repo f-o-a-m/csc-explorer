@@ -90,12 +90,6 @@ p {
   padding-top: .6em;
   padding-bottom: .6em; }
 
-.brr1 {
-  border-radius: 0px 99px 99px 0px; }
-
-.brl1 {
-  border-radius: 99px 0px 0px 99px; }
-
 .br1 {
   border-radius: 99px; }
 
@@ -113,11 +107,54 @@ p {
 .shadowL {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25); }
 
+.visible {
+  visibility: visible; }
+
+.hidden {
+  visibility: hidden; }
+
+.pill {
+  border-radius: 99px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  padding: 10px 18px 10px 18px; }
+
+.pillR {
+  border-radius: 0px 99px 99px 0px;
+  padding: 8px;
+  padding-right: 15px; }
+
+.pillL {
+  border-radius: 99px 0px 0px 99px;
+  padding: 8px;
+  padding-left: 15px; }
+
+.pillM {
+  padding: 8px; }
+
+.bigPill {
+  box-sizing: border-box;
+  flex: 1;
+  margin-top: .2em;
+  height: 52px;
+  border-radius: 50px;
+  border: 1px solid #F2F2F2;
+  outline: none;
+  font-size: inherit;
+  color: inherit; }
+
+.symbolText {
+  font-size: 24px;
+  text-align: center;
+  vertical-align: middle; }
+
 .blue_bg {
   background-color: #2F80ED;
   border-color: #2F80ED;
   fill: #2F80ED;
   color: white; }
+
+.blue_text {
+  color: #2F80ED !important; }
 
 .green_bg {
   background-color: #27AE60;
@@ -125,9 +162,12 @@ p {
   fill: #27AE60;
   color: white; }
 
-.darkGrey {
+.darkGrey_bg {
   background-color: #242424;
   color: white; }
+
+.bold {
+  font-weight: 500; }
 
 body {
   margin: 0;
@@ -141,7 +181,7 @@ button:hover {
   width: 200px;
   height: 32px;
   border-radius: 99px;
-  transform: translate(-32px, calc(-32px - 8px)); }
+  transform: translate(-22px, calc(-32px - 8px - 8px)); }
 
 #bubbleBody {
   position: absolute;
@@ -170,6 +210,26 @@ button:hover {
   transform: translateX(-3.5rem);
   border-radius: 0px 99px 99px 0px; }
 
+.bubbleText {
+  margin: 0;
+  padding: 0;
+  font-weight: 400; }
+
+.bubbleTitle {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis; }
+
+.bubbleTitle::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 150px, white); }
+
 .green_bg #bubbleDrawer {
   background-color: #1e8449; }
 
@@ -187,12 +247,6 @@ button:hover {
 
 .blue_bg #chevron {
   fill: #1366d6; }
-
-.showBubble {
-  visibility: visible; }
-
-.hideBubble {
-  visibility: hidden; }
 
 .pinContainer:hover {
   cursor: pointer; }
@@ -230,10 +284,10 @@ button:hover {
 #glass {
   position: absolute;
   left: 10px;
-  top: 8px;
+  top: 10px;
   font-size: 20px; }
 
-#cardContainer {
+.cardContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -244,17 +298,6 @@ button:hover {
 
 .message {
   width: 80%; }
-
-.bigButton {
-  box-sizing: border-box;
-  flex: 1;
-  margin-top: .2em;
-  height: 52px;
-  border-radius: 50px;
-  border: 1px solid #F2F2F2;
-  outline: none;
-  font-size: inherit;
-  color: inherit; }
 
 .x {
   position: absolute;
@@ -268,5 +311,7 @@ button:hover {
 
 #mapControlsContainer {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem; }
+  bottom: 2rem;
+  right: 1rem;
+  z-index: 800;
+  border-radius: 99px; }

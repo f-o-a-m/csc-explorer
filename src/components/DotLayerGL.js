@@ -5,28 +5,45 @@ import classnames from 'classnames'
 
 const DotLayerGL = ({mapData, viewport}) => {
 
-  /**
-   * Data format:
-   * [
-   *   {position: [-122.4, 37.7], radius: 5, color: [255, 0, 0]},
-   *   ...
-   * ]
-   */
-  let zoom = viewport.zoom * 0.4
 
-  if (viewport.zoom > 14) {
-    zoom = zoom * 0.2
+  const calcDotScale = (z, offset, multiplier, minViewport) => {
+    const scale = (minViewport - z + offset) * multiplier
+    return Math.floor(scale)
+  }
+
+  let r
+
+  const blue = [47, 128, 237]
+  const green = [39, 174, 96]
+
+  // forgive me
+  const z = viewport.zoom
+  if ( z > 15) {
+    r = 2
+  } else if (z > 14) {
+    r = 4
+  } else if (z > 13) {
+    r = 8
+  } else if (z > 11) {
+    r = 16
+  } else if (z > 9) {
+    r = 32
+  } else {
+    r = 64
   }
 
   const layer = new ScatterplotLayer({
     id: 'scatterplot-layer',
     data: mapData,
-    radiusScale: 10,
+    radiusScale: 2,
     outline: false,
-    getRadius: e => zoom,
+    getColor: d => d.status === 'STATUS_PROPOSAL' ? blue : green,
+    getRadius: e => r,
+    minRadius: 10,
     updateTriggers: {
-       getRadius: zoom
-     }
+       getRadius: r
+     },
+     fp64: true,
   });
 
   return (<DeckGL {...viewport} layers={[layer]} />);

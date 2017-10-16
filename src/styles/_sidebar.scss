@@ -22,14 +22,14 @@
   position: relative;
 }
 
-#glass{
+#glass {
   position: absolute;
   left:10px;
-  top:8px;
+  top:10px;
   font-size: 20px;
 }
 
-#cardContainer{
+.cardContainer{
   position: relative;
   display: flex;
   flex-direction: column;
@@ -41,18 +41,6 @@
 
 .message{
   width: 80%;
-}
-
-.bigButton{
-  box-sizing: border-box;
-  flex: 1;
-  margin-top: .2em;
-  height: 52px;
-  border-radius: 50px;
-  border: 1px solid #F2F2F2;
-  outline: none;
-  font-size: inherit;
-  color: inherit;
 }
 
 .x{

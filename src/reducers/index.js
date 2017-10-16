@@ -12,7 +12,7 @@ const initialState = {
     latitude: 40.726966,
     zoom: 12,
     minZoom: 1,
-    maxZoom: 30,
+    maxZoom: 17,
     pitch: 40.5,
     bearing: -27.396674584323023
   },

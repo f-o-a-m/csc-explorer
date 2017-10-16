@@ -66,10 +66,10 @@ with open('city_of_new_york.csv', 'rb') as csvfile:
             token["popularity"]         = random.uniform(0, 1)
             ## yep
             token["category"]           = randomInArr(tokenCategories)
-            ## color
-            token ["color"]             = PROPOSAL_BLUE if status is 'STATUS_PROPOSAL' else ACTIVE_GREEN
+            ## color for dumb deck.gl
+            # token ["color"]             = PROPOSAL_BLUE if status is 'STATUS_PROPOSAL' else ACTIVE_GREEN
             ## radius
-            token["radius"]             = 1
+            # token["radius"]             = 1
 
             outputData.append(token.copy())
 
