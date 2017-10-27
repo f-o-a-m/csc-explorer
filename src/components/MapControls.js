@@ -5,7 +5,7 @@ const MapControls = (props) => {
     <footer id={'mapControlsContainer'}>
       <button className={'button-zoomIn'}>{'+'}</button>
       <button className={'button-zoomOut'}>{'-'}</button>
-      <button className={'button-azimuth'}>{'⦿'}</button>
+      <button className={'button-zenith'}>{'⦿'}</button>
     </footer>
   )
 }

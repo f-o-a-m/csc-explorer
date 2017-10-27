@@ -1,13 +1,17 @@
-#bubbleContainer{
+$bubbleWidth: 13rem; // since this only concerns the bubble this can be placed here
+
+.bubble-container{
   @include pill;
+  @include shadow-s;
   position: relative;
-  width: 13rem;
+  width: $bubbleWidth;
   height: $d-2;
   transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
 }
 
-#bubbleBody{
+.bubble-body{
   @include flex-align-center;
+  @include shadow-s;
   justify-content: space-between;
   position: absolute;
   height: 100%;
@@ -19,77 +23,62 @@
   z-index: 10;
 }
 
-#bubbleDrawer{
+.bubble-drawer{
   @include flex-align-center;
   @include pill-r;
+  @include shadow-s;
   position: absolute;
-  color:inherit;
+  color: inherit;
   z-index: 9;
   height: 100%;
   width: auto;
-  left: 13rem;
+  left: $bubbleWidth;
   padding-right: $d-1;
   padding-left: 4rem; //break scale for detail
   transform: translateX(-3.5rem);
 }
 
-.bubbleText{
-  margin:0;
-  padding:0;
+.green_bg .bubble-drawer{
+  background-color: $activeGreen_dark;
+}
+
+.blue_bg .bubble-drawer{
+  background-color: $pendingBlue_dark;
+}
+
+.bubble-container p{
+  @include no-margin-padding;
   font-weight: 400;
 }
 
-.bubbleTitle{
+.bubble-title{
   max-width: $d-5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-// Used for bubble gradient overflow mask
-// .bubbleTitle::before{
+// .bubble-title:after{
 //   content:'';
-//   width:100%;
-//   height:100%;
+//   width:$d-2;
+//   height:$d-2;
 //   position:absolute;
 //   left:0;
 //   top:0;
 //   background:linear-gradient(transparent 150px, white);
-//
 // }
 
-.bubbleBalance{
-
-}
-
-.bubbleTokens{
-
-}
-
-.green_bg #bubbleDrawer{
-  background-color: darken($activeGreen, 10%);
-}
-
-.blue_bg #bubbleDrawer{
-  background-color: darken($pendingBlue, 10%);
-}
-
-#chevron{
+.bubble-chevron{
   position: absolute;
   z-index: 8;
   top: 2rem;
   left: 1rem;
 }
 
-.green_bg #chevron{
-  fill: darken($activeGreen, 10%);
+.green_bg .bubble-chevron{
+  fill: $activeGreen_dark;
 }
 
-.blue_bg #chevron{
-  fill: darken($pendingBlue, 10%);
-}
-
-
-.pinContainer:hover{
-  cursor: pointer;
+.blue_bg .bubble-chevron{
+  fill: $pendingBlue_dark;
 }

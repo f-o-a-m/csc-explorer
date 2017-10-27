@@ -11,12 +11,14 @@
 #searchbar{
   @include pill;
   @include padding-interface;
+  padding-left: 2.5rem; // for magnifying glass
+  @include inner-shadow;
+  @include shadow-l;
   width: 100%;
-  padding-left: 40px; // for magnifying glass
-  border: 1px solid silver;
+  z-index: 800;
+  border: 1px solid $silver;
   outline: none;
   font-size: inherit;
-  z-index: 800;
 }
 
 #searchWrapper{
@@ -24,27 +26,28 @@
 }
 
 #glass {
+  @include flex-all-center;
+  height: 100%;
   position: absolute;
-  left:10px;
-  top:10px;
-  font-size: 20px;
+  left: 0.6rem;
+  top:0;
+  font-size: $t-4;
 }
 
-.cardContainer{
+.cardContainer {
+  @include flex-column;
+  @include radius-friendly;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  padding: 1.4rem;
+  margin-top: $d-1;
+  padding: $d-1;
   width: 100%;
-  border-radius: 20px;
 }
 
-.message{
+.message {
   width: 80%;
 }
 
-.x{
+.x {
   position: absolute;
   right: .6rem;
   top: .1rem;

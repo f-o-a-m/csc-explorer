@@ -41,10 +41,11 @@ const SideBar = (props) => {
   return (
     <aside id={'sideBarContainer'}>
       <div id={'searchWrapper'}>
-        <input id={'searchbar'} className={'bold shadowL'} placeholder={'Search the FOAM network'}/>
+        <input id={'searchbar'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
       </div>
-      {// {
+      {
+      // {
       //   cards.map((info, i) => {
       //     return (
       //       <Card info={info} key={i}/>

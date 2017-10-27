@@ -216,30 +216,36 @@ button:hover {
 #searchbar {
   border-radius: 999px;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  padding-left: 2.5rem;
+  box-shadow: inset 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
   width: 100%;
-  padding-left: 40px;
-  border: 1px solid silver;
+  z-index: 800;
+  border: 1px solid #BDBDBD;
   outline: none;
-  font-size: inherit;
-  z-index: 800; }
+  font-size: inherit; }
 
 #searchWrapper {
   position: relative; }
 
 #glass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   position: absolute;
-  left: 10px;
-  top: 10px;
-  font-size: 20px; }
+  left: 0.6rem;
+  top: 0;
+  font-size: 1.5rem; }
 
 .cardContainer {
-  position: relative;
   display: flex;
   flex-direction: column;
+  border-radius: 2rem;
+  position: relative;
   margin-top: 1rem;
-  padding: 1.4rem;
-  width: 100%;
-  border-radius: 20px; }
+  padding: 1rem;
+  width: 100%; }
 
 .message {
   width: 80%; }
@@ -266,7 +272,7 @@ button:hover {
   z-index: 800;
   display: flex; }
 
-.button-azimuth, .button-zoomIn, .button-zoomOut {
+.button-zenith, .button-zoomIn, .button-zoomOut {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,16 +294,18 @@ button:hover {
   color: #2F80ED;
   padding-right: 0.8rem; }
 
-#bubbleContainer {
+.bubble-container {
   border-radius: 999px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
   width: 13rem;
   height: 2rem;
   transform: translate(-22px, calc(-32px - 8px - 8px)); }
 
-#bubbleBody {
+.bubble-body {
   display: flex;
   align-items: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
   position: absolute;
   height: 100%;
@@ -308,10 +316,11 @@ button:hover {
   border-radius: inherit;
   z-index: 10; }
 
-#bubbleDrawer {
+.bubble-drawer {
   display: flex;
   align-items: center;
   border-radius: 0px 999px 999px 0px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   position: absolute;
   color: inherit;
   z-index: 9;
@@ -322,34 +331,31 @@ button:hover {
   padding-left: 4rem;
   transform: translateX(-3.5rem); }
 
-.bubbleText {
+.green_bg .bubble-drawer {
+  background-color: #1e8449; }
+
+.blue_bg .bubble-drawer {
+  background-color: #1366d6; }
+
+.bubble-container p {
   margin: 0;
   padding: 0;
   font-weight: 400; }
 
-.bubbleTitle {
+.bubble-title {
   max-width: 8rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
 
-.green_bg #bubbleDrawer {
-  background-color: #1e8449; }
-
-.blue_bg #bubbleDrawer {
-  background-color: #1366d6; }
-
-#chevron {
+.bubble-chevron {
   position: absolute;
   z-index: 8;
   top: 2rem;
   left: 1rem; }
 
-.green_bg #chevron {
+.green_bg .bubble-chevron {
   fill: #1e8449; }
 
-.blue_bg #chevron {
+.blue_bg .bubble-chevron {
   fill: #1366d6; }
-
-.pinContainer:hover {
-  cursor: pointer; }
