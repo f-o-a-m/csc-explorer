@@ -1,8 +1,17 @@
+// reset
 @import '_reset';
+
+// Sass helpers
 @import '_variables';
+@import '_mixins';
+@import '_type';
+@import '_atomics'; // this will be removed in favor of sass mixins
+
+//routes
 @import '_app';
 
-@import '_markers';
-@import '_topbar';
-@import '_sidebar';
-@import '_mapControls';
+// components
+@import './components/_topbar';
+@import './components/_sidebar';
+@import './components/_mapControls';
+@import './components/_markers';

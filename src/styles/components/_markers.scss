@@ -1,38 +1,36 @@
 #bubbleContainer{
+  @include pill;
   position: relative;
-  width: 200px;
-  height: 32px;
-  border-radius: 99px;
+  width: 13rem;
+  height: $d-2;
   transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
 }
 
 #bubbleBody{
+  @include flex-align-center;
+  justify-content: space-between;
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: inherit;
-  color:inherit;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem 0 1rem;
+  color: inherit;
+  padding: 0 $d-1 0 $d-1;
   border-radius: inherit;
   z-index: 10;
 }
 
 #bubbleDrawer{
+  @include flex-align-center;
+  @include pill-r;
   position: absolute;
   color:inherit;
-  display: flex;
-  align-items: center;
   z-index: 9;
   height: 100%;
   width: auto;
-  left: 200px;
-  padding-right: .8rem;
-  padding-left: 4rem;
+  left: 13rem;
+  padding-right: $d-1;
+  padding-left: 4rem; //break scale for detail
   transform: translateX(-3.5rem);
-  border-radius: 0px 99px 99px 0px;
 }
 
 .bubbleText{
@@ -42,22 +40,23 @@
 }
 
 .bubbleTitle{
-  max-width: 100px;
+  max-width: $d-5;
   white-space: nowrap;
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.bubbleTitle::before{
-  content:'';
-  width:100%;
-  height:100%;
-  position:absolute;
-  left:0;
-  top:0;
-  background:linear-gradient(transparent 150px, white);
-
-}
+// Used for bubble gradient overflow mask
+// .bubbleTitle::before{
+//   content:'';
+//   width:100%;
+//   height:100%;
+//   position:absolute;
+//   left:0;
+//   top:0;
+//   background:linear-gradient(transparent 150px, white);
+//
+// }
 
 .bubbleBalance{
 
@@ -78,8 +77,8 @@
 #chevron{
   position: absolute;
   z-index: 8;
-  top: 32px;
-  left: 16px;
+  top: 2rem;
+  left: 1rem;
 }
 
 .green_bg #chevron{
@@ -92,5 +91,5 @@
 
 
 .pinContainer:hover{
-  cursor:pointer;
+  cursor: pointer;
 }

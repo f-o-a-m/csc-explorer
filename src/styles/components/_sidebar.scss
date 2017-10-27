@@ -1,21 +1,22 @@
 #sideBarContainer{
   display: block;
-  width: 365px;
-  padding: 1rem;
+  width: $d-7;
+  padding: $d-1;
   height: 100vh;
   position: fixed;
-  z-index: 800;
   color: white;
+  z-index: 800;
 }
 
 #searchbar{
-  border-radius: 20px;
+  @include pill;
+  @include padding-interface;
   width: 100%;
-  padding: 10px;
-  padding-left: 40px;
+  padding-left: 40px; // for magnifying glass
   border: 1px solid silver;
   outline: none;
   font-size: inherit;
+  z-index: 800;
 }
 
 #searchWrapper{

@@ -50,25 +50,27 @@ button {
   border: none;
   font-size: inherit; }
 
+:root {
+  font-size: 16px; }
+
 body {
   font-family: 'Inter UI', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-size: 14px; }
+  font-size: 1rem; }
+
+h1 {
+  font-size: 2.25rem; }
+
+h2 {
+  font-size: 1.5rem; }
 
 h3 {
-  margin-bottom: 2em;
-  font-weight: 400; }
-
-h6 {
-  padding: 0;
-  margin: 0;
-  font-weight: 400; }
+  font-size: 1.25rem; }
 
 p {
-  margin-bottom: 1em;
-  line-height: 18px;
-  letter-spacing: 0.23px; }
+  margin-bottom: 1rem;
+  font-size: 1rem; }
 
 .bg-w {
   background-color: white;
@@ -93,10 +95,6 @@ p {
 .br1 {
   border-radius: 99px; }
 
-.ftimg {
-  height: 14px;
-  padding-left: 3px; }
-
 .flexAlignCenter {
   display: flex;
   align-items: center; }
@@ -114,9 +112,9 @@ p {
   visibility: hidden; }
 
 .pill {
-  border-radius: 99px;
+  border-radius: 999px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-  padding: 10px 18px 10px 18px; }
+  padding: 0.1rem 1rem 0.1rem 1rem; }
 
 .pillR {
   border-radius: 0px 99px 99px 0px;
@@ -176,81 +174,6 @@ body {
 button:hover {
   cursor: pointer; }
 
-#bubbleContainer {
-  position: relative;
-  width: 200px;
-  height: 32px;
-  border-radius: 99px;
-  transform: translate(-22px, calc(-32px - 8px - 8px)); }
-
-#bubbleBody {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: inherit;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem 0 1rem;
-  border-radius: inherit;
-  z-index: 10; }
-
-#bubbleDrawer {
-  position: absolute;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  z-index: 9;
-  height: 100%;
-  width: auto;
-  left: 200px;
-  padding-right: .8rem;
-  padding-left: 4rem;
-  transform: translateX(-3.5rem);
-  border-radius: 0px 99px 99px 0px; }
-
-.bubbleText {
-  margin: 0;
-  padding: 0;
-  font-weight: 400; }
-
-.bubbleTitle {
-  max-width: 100px;
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis; }
-
-.bubbleTitle::before {
-  content: '';
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: linear-gradient(transparent 150px, white); }
-
-.green_bg #bubbleDrawer {
-  background-color: #1e8449; }
-
-.blue_bg #bubbleDrawer {
-  background-color: #1366d6; }
-
-#chevron {
-  position: absolute;
-  z-index: 8;
-  top: 32px;
-  left: 16px; }
-
-.green_bg #chevron {
-  fill: #1e8449; }
-
-.blue_bg #chevron {
-  fill: #1366d6; }
-
-.pinContainer:hover {
-  cursor: pointer; }
-
 #topBarContainer {
   display: block;
   color: white;
@@ -260,23 +183,45 @@ button:hover {
   top: 0;
   right: 0; }
 
+.button-newCSC {
+  border-radius: 999px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: #2F80ED;
+  border-color: #2F80ED;
+  fill: #2F80ED;
+  color: white; }
+
+.button-foam {
+  border-radius: 999px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: #242424;
+  border-color: #242424;
+  fill: #242424;
+  color: white;
+  margin-left: 1em; }
+
+.img-ft {
+  height: 0.875rem;
+  padding-left: 1rem; }
+
 #sideBarContainer {
   display: block;
-  width: 365px;
+  width: 21rem;
   padding: 1rem;
   height: 100vh;
   position: fixed;
-  z-index: 800;
-  color: white; }
+  color: white;
+  z-index: 800; }
 
 #searchbar {
-  border-radius: 20px;
+  border-radius: 999px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   width: 100%;
-  padding: 10px;
   padding-left: 40px;
   border: 1px solid silver;
   outline: none;
-  font-size: inherit; }
+  font-size: inherit;
+  z-index: 800; }
 
 #searchWrapper {
   position: relative; }
@@ -310,8 +255,101 @@ button:hover {
   font-size: 30px; }
 
 #mapControlsContainer {
+  border-radius: 999px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #242424;
+  border-color: #242424;
+  fill: #242424;
   position: fixed;
   bottom: 2rem;
   right: 1rem;
   z-index: 800;
-  border-radius: 99px; }
+  display: flex; }
+
+.button-azimuth, .button-zoomIn, .button-zoomOut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: transparent;
+  height: 2.25rem;
+  width: 2.25rem; }
+
+.button-zoomIn {
+  border-radius: 999px 0px 0px 999px;
+  color: white;
+  padding-left: 0.8rem; }
+
+.button-zoomOut {
+  color: white; }
+
+.button-azimuth {
+  border-radius: 0px 999px 999px 0px;
+  color: #2F80ED;
+  padding-right: 0.8rem; }
+
+#bubbleContainer {
+  border-radius: 999px;
+  position: relative;
+  width: 13rem;
+  height: 2rem;
+  transform: translate(-22px, calc(-32px - 8px - 8px)); }
+
+#bubbleBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+  color: inherit;
+  padding: 0 1rem 0 1rem;
+  border-radius: inherit;
+  z-index: 10; }
+
+#bubbleDrawer {
+  display: flex;
+  align-items: center;
+  border-radius: 0px 999px 999px 0px;
+  position: absolute;
+  color: inherit;
+  z-index: 9;
+  height: 100%;
+  width: auto;
+  left: 13rem;
+  padding-right: 1rem;
+  padding-left: 4rem;
+  transform: translateX(-3.5rem); }
+
+.bubbleText {
+  margin: 0;
+  padding: 0;
+  font-weight: 400; }
+
+.bubbleTitle {
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.green_bg #bubbleDrawer {
+  background-color: #1e8449; }
+
+.blue_bg #bubbleDrawer {
+  background-color: #1366d6; }
+
+#chevron {
+  position: absolute;
+  z-index: 8;
+  top: 2rem;
+  left: 1rem; }
+
+.green_bg #chevron {
+  fill: #1e8449; }
+
+.blue_bg #chevron {
+  fill: #1366d6; }
+
+.pinContainer:hover {
+  cursor: pointer; }

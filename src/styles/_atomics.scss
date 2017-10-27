@@ -1,0 +1,120 @@
+//ATOMICS
+.bg-w{
+  background-color: $white;
+  color: $black;
+}
+
+.pr1{
+  padding-right: 1em;
+}
+
+.pl1{
+  padding-left: 1em;
+}
+
+.mr1{
+  margin-right: 1em;
+}
+
+.ml1{
+  margin-left: 1em;
+}
+
+.pv06{
+  padding-top: .6em;
+  padding-bottom: .6em;
+}
+
+
+.br1{
+  border-radius: 99px;
+}
+
+.flexAlignCenter{
+  display: flex;
+  align-items: center;
+}
+
+.shadowS{
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.shadowL{
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.pill{
+  @include pill;
+  @include shadow-l;
+  @include padding-s;
+}
+
+.pillR {
+  border-radius: 0px 99px 99px 0px;
+  padding:8px;
+  padding-right: 15px;
+
+}
+
+.pillL {
+  border-radius: 99px 0px 0px 99px;
+  padding:8px;
+  padding-left: 15px;
+}
+
+.pillM {
+  padding:8px;
+}
+
+.bigPill{
+  box-sizing: border-box;
+  flex: 1;
+  margin-top: .2em;
+  height: 52px;
+  border-radius: 50px;
+  border: 1px solid #F2F2F2;
+  outline: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+.symbolText{
+  font-size: 24px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.blue_bg{
+  background-color: $pendingBlue;
+  border-color: $pendingBlue;
+  fill: $pendingBlue;
+  color: white;
+}
+
+.blue_text{
+  color: $pendingBlue !important;
+}
+
+.green_bg{
+  background-color: $activeGreen;
+  border-color: $activeGreen;
+  fill: $activeGreen;
+  color: white;
+}
+
+.darkGrey_bg{
+  background-color: $darkGrey;
+  color: white;
+}
+
+.bold{
+  font-weight: 500;
+}
