@@ -44,7 +44,7 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <SideBar actions={actions} />
+        <SideBar actions={actions} info={this.props.info}/>
         <TopBar actions={actions} />
         <MapControls actions={actions}/>
         <Map
@@ -66,13 +66,9 @@ const mapStateToProps = state => ({
   mapData: state.setMapData.mapData
 })
 
-
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(MapActions, dispatch)
 })
-
-
-
 
 export default connect(
   mapStateToProps,

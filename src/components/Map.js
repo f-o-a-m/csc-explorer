@@ -5,7 +5,7 @@ import DotLayerGL from './DotLayerGL'
 
 const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
-const Bubble = ({status, title, balance, popularity, subTokens}) => {
+const Bubble = ({data, getMapsItemInfo, status, title, balance, popularity, subTokens}) => {
 
   const hasSubTokens = subTokens > 0 ? true : false
 
@@ -19,7 +19,7 @@ const Bubble = ({status, title, balance, popularity, subTokens}) => {
   })
 
   return (
-    <div id={'bubbleContainer'} className={`${statusStyle}`}>
+    <div id={'bubbleContainer'} className={`${statusStyle}`} onClick={(e) => getMapsItemInfo(data)}>
       <span id={'bubbleBody'} className={'shadowL'}>
         <p className={'bubbleText bubbleTitle'}>{title}</p>
         <p className={'bubbleText bubbleBalance'}>{balance}</p>
@@ -37,14 +37,11 @@ const Bubble = ({status, title, balance, popularity, subTokens}) => {
           <path id="path0_fill" d="M 5.53761 1.33392C 5.93023 0.713994 6.83462 0.713994 7.22724 1.33392L 12.7648 10.0775L 0 10.0775L 5.53761 1.33392Z"/>
         </defs>
       </svg>
-
-
-
     </div>
   )
 }
 
-const renderMapMarkers = (mapData) => {
+const renderMapMarkers = (mapData, props) => {
   if (mapData.length > 0) {
     return mapData.map((datum, i) => {
       const { title, position, status, balance, popularity, subTokens, geohash} = datum
@@ -55,11 +52,14 @@ const renderMapMarkers = (mapData) => {
             longitude={position[0]}
             latitude={position[1]}>
             <Bubble
+              getMapsItemInfo={props.actions.getMapsItemInfo}
               status={status}
               title={title}
               balance={balance}
               popularity={popularity}
-              subTokens={subTokens}/>
+              subTokens={subTokens}
+              data={datum}
+            />
           </Marker>
         )
       }
@@ -74,7 +74,7 @@ const Map = (props) => {
       mapStyle={'mapbox://styles/mapbox/dark-v9'}
       onViewportChange={(e) => props.actions.onViewportChange(e)}
       mapboxApiAccessToken={TOKEN}>
-      { renderMapMarkers(props.mapData) }
+      { renderMapMarkers(props.mapData, props) }
       { props.mapData.length !== 0 ? <DotLayerGL viewport={props.viewport} mapData={props.mapData} /> : null }
     </MapGL>
   )

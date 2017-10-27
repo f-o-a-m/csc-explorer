@@ -1,4 +1,4 @@
-#sideBarContainer{
+#sideBarContainer {
   display: block;
   width: 365px;
   padding: 1rem;
@@ -6,50 +6,29 @@
   position: fixed;
   z-index: 800;
   color: white;
+  overflow: scroll;
 }
 
-#searchbar{
+#searchbar {
   border-radius: 20px;
   width: 100%;
   padding: 10px;
   padding-left: 40px;
   border: 1px solid silver;
   outline: none;
-  font-size: inherit;
-}
+  font-size: inherit; }
 
-#searchWrapper{
-  position: relative;
+#searchWrapper {
+  position: sticky;
+  top: 1rem;
+  z-index: 99;
 }
 
 #glass {
   position: absolute;
-  left:10px;
-  top:10px;
-  font-size: 20px;
-}
+  left: 10px;
+  top: 10px;
+  font-size: 20px; }
 
-.cardContainer{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  padding: 1.4rem;
-  width: 100%;
-  border-radius: 20px;
-}
-
-.message{
-  width: 80%;
-}
-
-.x{
-  position: absolute;
-  right: .6rem;
-  top: .1rem;
-  background-color: transparent;
-  outline: none;
-  border: 0px;
-  color: white;
-  font-size: 30px;
+#cardWrapper {
 }

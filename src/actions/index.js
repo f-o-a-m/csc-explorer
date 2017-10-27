@@ -2,4 +2,5 @@ export const toggleCellExtrusion = bool => ({ type: 'TOGGLE_CELL_EXTRUSION', boo
 export const resizeViewport = (width, height) => ({ type: 'RESIZE_VIEWPORT', width, height})
 export const onViewportChange = (newViewport) => ({type: 'ON_VIEWPORT_CHANGE', newViewport})
 export const getMapsItemInfo = (info) => ({type: 'GET_MAP_ITEM_INFO', info})
+export const removeMapsItemInfo = (index) => ({type: 'REMOVE_MAP_ITEM_INFO', index})
 export const setMapData = (mapData) => ({type: 'SET_MAP_DATA', mapData})

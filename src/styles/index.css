@@ -18,7 +18,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font-family: inherit;
   vertical-align: baseline; }
 
@@ -169,19 +168,27 @@ p {
 .bold {
   font-weight: 500; }
 
+.dim {
+  opacity: .6; }
+
 body {
   margin: 0;
   padding: 0; }
 
 button:hover {
-  cursor: pointer; }
+  cursor: pointer;
+  filter: brightness(1.2); }
 
 #bubbleContainer {
   position: relative;
   width: 200px;
   height: 32px;
   border-radius: 99px;
+  cursor: pointer;
   transform: translate(-22px, calc(-32px - 8px - 8px)); }
+
+#bubbleContainer:hover {
+  filter: brightness(1.1); }
 
 #bubbleBody {
   position: absolute;
@@ -267,7 +274,8 @@ button:hover {
   height: 100vh;
   position: fixed;
   z-index: 800;
-  color: white; }
+  color: white;
+  overflow: scroll; }
 
 #searchbar {
   border-radius: 20px;
@@ -279,13 +287,22 @@ button:hover {
   font-size: inherit; }
 
 #searchWrapper {
-  position: relative; }
+  position: sticky;
+  top: 1rem;
+  z-index: 99; }
 
 #glass {
   position: absolute;
   left: 10px;
   top: 10px;
   font-size: 20px; }
+
+#mapControlsContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  z-index: 800;
+  border-radius: 99px; }
 
 .cardContainer {
   position: relative;
@@ -308,10 +325,3 @@ button:hover {
   border: 0px;
   color: white;
   font-size: 30px; }
-
-#mapControlsContainer {
-  position: fixed;
-  bottom: 2rem;
-  right: 1rem;
-  z-index: 800;
-  border-radius: 99px; }

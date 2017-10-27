@@ -1,8 +1,38 @@
 import { combineReducers } from 'redux'
 
+const cards = [
+  {
+    title: 'Welcome to FOAM',
+    message: 'We are a protocol built to store and verify spatial addresses. Feel free to browse the map or take a look at the options below!',
+    buttonText: 'Claim Your 5 FOAM tokens',
+    color: '#242424', //eventually we'll just have a messageType key that handles this with css class
+    buttonColor: '#333333',
+    status: "STATUS_INFO",
+    type: "INFO",
+  },
+  {
+    title: '',
+    message: 'See how FOAM can help community sourced agriculture build sustainable community.',
+    buttonText: 'See the Case Study',
+    // color: '#27AE60',
+    // buttonColor: '#51CB84',
+    status: "STATUS_ACTIVE",
+    type: "INFO",
+  },
+  {
+    title: '',
+    message: 'Request address verification from the network.',
+    buttonText: 'Create a Cryptospastial Coordinate',
+    // color: '#2F80ED',
+    // buttonColor: '#63A4FC',
+    status: "STATUS_PROPOSAL",
+    type: "INFO",
+  },
+]
+
 const initialState = {
   mapData: [],
-  info: {},
+  info: cards,
   cellsAreExtruded: false,
   viewport: {
     altitude: 1.5,
@@ -40,11 +70,21 @@ function mapControls(state = initialState, action) {
   }
 }
 
+// What's the data type when getting new info from the API?
 function getMapsItemInfo(state = initialState, action) {
   switch (action.type){
     case 'GET_MAP_ITEM_INFO':
+    action.info.type = "MARKER"
     return Object.assign({}, state, {
-      info : action.info,
+      // info :[action.info, ...state.info], //adds to the list
+      info : [action.info], //replaces the list
+    })
+    case 'REMOVE_MAP_ITEM_INFO':
+    return Object.assign({}, state, {
+      info : [
+          ...state.info.slice(0, action.index),
+          ...state.info.slice(action.index + 1)
+      ]
     })
     default:
       return state

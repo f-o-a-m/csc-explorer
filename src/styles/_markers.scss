@@ -3,7 +3,12 @@
   width: 200px;
   height: 32px;
   border-radius: 99px;
+  cursor: pointer;
   transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
+}
+
+#bubbleContainer:hover{
+  filter: brightness(1.1);
 }
 
 #bubbleBody{
