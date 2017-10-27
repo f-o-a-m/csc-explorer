@@ -1,9 +1,15 @@
 import React from 'react'
 import Card from './Card'
 
+const newCSC =
+  {
+    title: 'Create CSC',
+    status: "STATUS_INFO",
+    type: "SUBMIT",
+  }
+
 const SideBar = (props) => {
   let data = props.info
-
   return (
     <aside id={'sideBarContainer'}>
       <div id={'searchWrapper'}>
@@ -11,6 +17,7 @@ const SideBar = (props) => {
         <div id={'glass'}>{'🔎'}</div>
       </div>
       <div id={'cardWrapper'}>
+      {props.newCSC ? <Card viewport={props.viewport} info={newCSC} actions={props.actions}/> : null}
       {
         data.map((info, i) => {
           return (

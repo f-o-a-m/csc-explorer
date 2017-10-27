@@ -5,8 +5,8 @@ const cards = [
     title: 'Welcome to FOAM',
     message: 'We are a protocol built to store and verify spatial addresses. Feel free to browse the map or take a look at the options below!',
     buttonText: 'Claim Your 5 FOAM tokens',
-    color: '#242424', //eventually we'll just have a messageType key that handles this with css class
-    buttonColor: '#333333',
+    // color: '#242424', //eventually we'll just have a messageType key that handles this with css class
+    // buttonColor: '#333333',
     status: "STATUS_INFO",
     type: "INFO",
   },
@@ -34,6 +34,7 @@ const initialState = {
   mapData: [],
   info: cards,
   cellsAreExtruded: false,
+  newCSC: true,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -91,6 +92,19 @@ function getMapsItemInfo(state = initialState, action) {
   }
 }
 
+// What's the data type when getting new info from the API?
+function makeNewCSC(state = initialState, action) {
+  switch (action.type){
+    case 'NEW_MAP_ITEM':
+    return Object.assign({}, state, {
+      // info :[action.info, ...state.info], //adds to the list
+      newCSC : !state.newCSC, //replaces the list
+    })
+    default:
+      return state
+  }
+}
+
 function viewportControls(state = initialState, action) {
   switch (action.type){
     case 'RESIZE_VIEWPORT':
@@ -117,6 +131,7 @@ const rootReducer = combineReducers({
   viewportControls,
   getMapsItemInfo,
   setMapData,
+  makeNewCSC,
 })
 
 export default rootReducer

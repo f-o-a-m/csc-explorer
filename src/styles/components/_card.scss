@@ -15,9 +15,19 @@
   // margin-bottom: 1rem;
 }
 
-.message{
+.title{
   @include padding-s;
   margin-top: 1rem;
+}
+
+.message{
+  @include padding-s;
+  margin-top: .5rem;
+}
+
+.description{
+  @include padding-s;
+  margin-top: .5rem;
 }
 
 .address{
@@ -57,7 +67,7 @@
 }
 
 .button-card:hover{
-  background-color: rgba($transparent_light, .3);
+  background-color: rgba($transparent_light, .2);
 }
 
 .dim{
@@ -66,7 +76,7 @@
 
 .card-spacer-top{
   margin-top: 1rem;
-  margin-bottom: .3rem;
+  margin-bottom: .5rem;
 }
 
 .card-spacer{
@@ -81,4 +91,18 @@
   background-color: white;
   border-radius: 0px 0px 20px 20px;
   padding-top: 1rem;
+}
+
+
+.card-input{
+  @include pill;
+  @include padding-interface;
+  @include inner-shadow;
+  @include shadow-l;
+  width: 100%;
+  border: 1px solid $silver;
+  outline: none;
+  margin-top: .4rem;
+  margin-bottom: 1rem;
+  font-size: inherit;
 }

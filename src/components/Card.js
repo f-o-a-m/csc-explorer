@@ -17,9 +17,13 @@ const Card = (props) => {
     case 'INFO':
       return(
         <div className={`cardContainer ${statusStyle} ${cardType}`}>
-          <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
+          {props.info.title ?
+          <div className={'title'}>
+              <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
+              {props.info.title !== '' ? <h3>{props.info.title}</h3> : null}
+          </div>
+          : <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button> }
           <div className={'message'}>
-            {props.info.title !== '' ? <h3>{props.info.title}</h3> : null}
             <p>{props.info.message}</p>
           </div>
           <button className={'button-card'}  style={{backgroundColor:props.info.buttonColor}}>{props.info.buttonText}</button>
@@ -28,9 +32,11 @@ const Card = (props) => {
     case 'MARKER':
       return(
         <div className={`cardContainer ${statusStyle} ${cardType}`}>
-          <div className={'message'}>
+          <div className={'title'}>
             <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
             {props.info.title !== '' ? <h3>{props.info.title}</h3> : null}
+          </div>
+          <div className={'message'}>
             <p className={'dim card-spacer-top'}>{'Address:'}</p>
             <p className={'address'}>{props.info.ethereumAddress}</p>
             <p className={'dim card-spacer'}>{'Location:'}</p>
@@ -39,13 +45,34 @@ const Card = (props) => {
             <p>{props.info.category}</p>
           </div>
           <button className={'button-card'} style={{backgroundColor:props.info.buttonColor}}>{'Deposit FOAM'}</button>
-          <div className={'cardBalance'}>
-            <h3 className={'balance'}>{props.info.balance}</h3>
-            <p className={'dim'}>{'Total Tokens'}</p>
-          </div>
+          {props.info.balance ?
+            <div className={'cardBalance'}>
+              <h3 className={'balance'}>{props.info.balance}</h3>
+              <p className={'dim'}>{'Total Tokens'}</p>
+            </div>
+            : null }
         </div>
       )
       // break;
+    case 'SUBMIT':
+      return(
+        <form className={`cardContainer ${statusStyle} ${cardType}`}>
+          <div className={'title'}>
+            <button className={'x'} onClick={(e) => props.actions.newMapsItem()}>{'×'}</button>
+            {props.info.title !== '' ? <h4>{props.info.title}</h4> : null}
+          </div>
+          <div className={'description'}>
+            <p className={'dim card-spacer'}>{'Associate a crypto spatial coordinate with a physical location.'}</p>
+          </div>
+          <div className={'message'}>
+            <p className={'dim card-spacer'}>{'Location:'}</p>
+            <input type="text" className={'card-input'} value={props.viewport.longitude + ',' + props.viewport.latitude}/>
+            <p className={'dim card-spacer'}>{'Category:'}</p>
+            <input type="text" className={'card-input'} placeholder={'enter a category'}/>
+          </div>
+          <button className={'button-card'}  style={{backgroundColor:props.info.buttonColor}} onSubmit={(e) => props.actions.newMapsItem()}>{'Submit'}</button>
+        </form>
+      )
     default:
       return(
         <div className={`cardContainer ${statusStyle}`}>
