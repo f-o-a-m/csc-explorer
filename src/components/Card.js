@@ -16,44 +16,44 @@ const Card = (props) => {
   switch (props.info.type) {
     case 'INFO':
       return(
-        <div className={`cardContainer shadowL ${statusStyle} ${cardType}`}>
+        <div className={`cardContainer ${statusStyle} ${cardType}`}>
           <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
           <div className={'message'}>
             {props.info.title !== '' ? <h3>{props.info.title}</h3> : null}
             <p>{props.info.message}</p>
           </div>
-          <button className={'bigButton shadowL'}  style={{backgroundColor:props.info.buttonColor}}>{props.info.buttonText}</button>
+          <button className={'button-card'}  style={{backgroundColor:props.info.buttonColor}}>{props.info.buttonText}</button>
         </div>
       )
     case 'MARKER':
       return(
-        <div className={`cardContainer shadowL ${statusStyle} ${cardType}`}>
-          <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
+        <div className={`cardContainer ${statusStyle} ${cardType}`}>
           <div className={'message'}>
+            <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
             {props.info.title !== '' ? <h3>{props.info.title}</h3> : null}
-            <p className={'dim'}>{'Address:'}</p>
-            <p>{props.info.ethereumAddress}</p>
-            <p className={'dim'}>{'Location:'}</p>
+            <p className={'dim card-spacer-top'}>{'Address:'}</p>
+            <p className={'address'}>{props.info.ethereumAddress}</p>
+            <p className={'dim card-spacer'}>{'Location:'}</p>
             <p>{props.info.address}</p>
-            <p className={'dim'}>{'Category:'}</p>
+            <p className={'dim card-spacer'}>{'Category:'}</p>
             <p>{props.info.category}</p>
           </div>
+          <button className={'button-card'} style={{backgroundColor:props.info.buttonColor}}>{'Deposit FOAM'}</button>
           <div className={'cardBalance'}>
-            <p>{props.info.balance}</p>
-            <p>{'Total Tokens'}</p>
+            <h3 className={'balance'}>{props.info.balance}</h3>
+            <p className={'dim'}>{'Total Tokens'}</p>
           </div>
-          <button className={'bigButton shadowL'}  style={{backgroundColor:props.info.buttonColor}}>{'Deposit FOAM'}</button>
         </div>
       )
       // break;
     default:
       return(
-        <div className={`cardContainer shadowL ${statusStyle}`}>
+        <div className={`cardContainer ${statusStyle}`}>
           <button className={'x'} onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>{'×'}</button>
           <div className={'message'}>
             <p>{'No Data'}</p>
           </div>
-          <button className={'bigButton shadowL'}  style={{backgroundColor:props.info.buttonColor}}>{props.info.buttonText}</button>
+          <button className={'button-card'}  style={{backgroundColor:props.info.buttonColor}}>{props.info.buttonText}</button>
         </div>
       )
   }

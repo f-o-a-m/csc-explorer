@@ -35,26 +35,26 @@
   font-size: $t-4;
 }
 
-.cardContainer {
-  @include flex-column;
-  @include radius-friendly;
-  position: relative;
-  margin-top: $d-1;
-  padding: $d-1;
-  width: 100%;
-}
-
-.message {
-  width: 80%;
-}
-
-.x {
-  position: absolute;
-  right: .6rem;
-  top: .1rem;
-  background-color: transparent;
-  outline: none;
-  border: 0px;
-  color: white;
-  font-size: 30px;
-}
+// .cardContainer {
+//   @include flex-column;
+//   @include radius-friendly;
+//   position: relative;
+//   margin-top: $d-1;
+//   padding: $d-1;
+//   width: 100%;
+// }
+//
+// .message {
+//   width: 80%;
+// }
+//
+// .x {
+//   position: absolute;
+//   right: .6rem;
+//   top: .1rem;
+//   background-color: transparent;
+//   outline: none;
+//   border: 0px;
+//   color: white;
+//   font-size: 30px;
+// }

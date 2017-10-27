@@ -7,6 +7,9 @@ $d-5: 8rem;
 $d-6: 13rem;
 $d-7: 21rem;
 
+$fw-b: bold;
+$fw-m: medium;
+
 // for small components
 $sub-1: 0.100rem;
 $sub-2: 0.200rem;
@@ -23,6 +26,7 @@ $pendingBlue:         #2F80ED;
 $pendingBlue_dark:    darken($pendingBlue, 10%);
 $pink:                #F48068;
 $pink_Dark:           darken($pink, 10%);
+$transparent_light:   rgba($white, .2);
 $darkGrey:            #242424;
 $brassL:              #895C51;
 $brassR:              #7D4D40;
