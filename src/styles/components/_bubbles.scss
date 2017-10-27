@@ -1,0 +1,84 @@
+$bubbleWidth: 13rem; // since this only concerns the bubble this can be placed here
+
+.bubble-container{
+  @include pill;
+  @include shadow-s;
+  position: relative;
+  width: $bubbleWidth;
+  height: $d-2;
+  transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
+}
+
+.bubble-body{
+  @include flex-align-center;
+  @include shadow-s;
+  justify-content: space-between;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: inherit;
+  color: inherit;
+  padding: 0 $d-1 0 $d-1;
+  border-radius: inherit;
+  z-index: 10;
+}
+
+.bubble-drawer{
+  @include flex-align-center;
+  @include pill-r;
+  @include shadow-s;
+  position: absolute;
+  color: inherit;
+  z-index: 9;
+  height: 100%;
+  width: auto;
+  left: $bubbleWidth;
+  padding-right: $d-1;
+  padding-left: 4rem; //break scale for detail
+  transform: translateX(-3.5rem);
+}
+
+.green_bg .bubble-drawer{
+  background-color: $activeGreen_dark;
+}
+
+.blue_bg .bubble-drawer{
+  background-color: $pendingBlue_dark;
+}
+
+.bubble-container p{
+  @include no-margin-padding;
+  font-weight: 400;
+}
+
+.bubble-title{
+  max-width: $d-5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// .bubble-title:after{
+//   content:'';
+//   width:$d-2;
+//   height:$d-2;
+//   position:absolute;
+//   left:0;
+//   top:0;
+//   background:linear-gradient(transparent 150px, white);
+// }
+
+.bubble-chevron{
+  position: absolute;
+  z-index: 8;
+  top: 2rem;
+  left: 1rem;
+}
+
+.green_bg .bubble-chevron{
+  fill: $activeGreen_dark;
+}
+
+.blue_bg .bubble-chevron{
+  fill: $pendingBlue_dark;
+}

@@ -19,15 +19,15 @@ const Bubble = ({data, getMapsItemInfo, status, title, balance, popularity, subT
   })
 
   return (
-    <div id={'bubbleContainer'} className={`${statusStyle}`} onClick={(e) => getMapsItemInfo(data)}>
-      <span id={'bubbleBody'} className={'shadowL'}>
-        <p className={'bubbleText bubbleTitle'}>{title}</p>
-        <p className={'bubbleText bubbleBalance'}>{balance}</p>
+    <div className={`${statusStyle} bubble-container`} onClick={(e) => getMapsItemInfo(data)}>
+      <span className={'bubble-body'}>
+        <p className={'bubble-title'}>{title}</p>
+        <p className={'bubble-balance'}>{balance}</p>
       </span>
-      <span id={'bubbleDrawer'} className={showSubTokens}>
-        <p className={'bubbleText bubbleTokens'}>{subTokens}</p>
+      <span className={`${showSubTokens} bubble-drawer`}>
+        <p className={'bubble-tokens'}>{subTokens}</p>
       </span>
-      <svg id={'chevron'} width="13" height="10" viewBox="0 0 13 10" version="1.1">
+      <svg className={'bubble-chevron'} width="13" height="10" viewBox="0 0 13 10" version="1.1">
         <g id="Canvas" transform="translate(-25353 1234)">
           <g id="Polygon 4">
             <use xlinkHref="#path0_fill" transform="matrix(-1 1.22465e-16 -1.22465e-16 -1 25365.8 -1223.92)"/>

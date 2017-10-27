@@ -1,0 +1,34 @@
+#mapControlsContainer{
+  @include pill;
+  @include shadow-s;
+  @include all-gray-bg;
+  position: fixed;
+  bottom: $d-2;
+  right: $d-1;
+  z-index: 800;
+  display: flex;
+}
+
+.button-zenith, .button-zoomIn, .button-zoomOut{
+  @include flex-all-center;
+  font-size: $t-4;
+  background-color: transparent;
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.button-zoomIn {
+  @include pill-l;
+  color: white;
+  padding-left: $sub-5;
+}
+
+.button-zoomOut {
+  color: white;
+}
+
+.button-zenith {
+  @include pill-r;
+  color: $pendingBlue;
+  padding-right: $sub-5;
+}
