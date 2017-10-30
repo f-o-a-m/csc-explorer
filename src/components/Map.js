@@ -14,28 +14,27 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mounted: false,
       highlights: [],
     }
   }
 
-  componentDidMount() {
-    this.setState({mounted: true})
-  }
-
+  // this could probably be improved
   filterMapMarkers = (coords, viewport, metric) => {
+    // get zoom level and calculate a geohash grid resolution to bin coordinates
     const z = viewport.zoom
     let resolution = Math.floor((z - 1) * 0.5)
     let highlights = []
+    // a global threshold for showing popular items
     const metricThresh = 0.95
+    // trim each coord geohash to resolution
     let hashTrimmedCoords = coords.map(coord => {
       let c = coord
       c.geohash_trim = coord.geohash.substring(0, resolution)
       return c
     })
-
+    // bin coords by their geohash owners
     let binnedHashes = lodash.groupBy(hashTrimmedCoords, 'geohash_trim')
-
+    // get the most ones with the highest metric value, and the ones that pass metricThresh
     Object.keys(binnedHashes).map(hash => {
       let coords = binnedHashes[hash]
       let max = coords.reduce((prev, current) => {
@@ -46,8 +45,8 @@ class Map extends Component {
     this.setState({highlights})
   }
 
-  renderHighlights = (highlights) => {
-    return highlights.map(datum => {
+  renderMarkerList = (coords) => {
+    return coords.map(datum => {
       return (
         <Marker
           longitude={datum.position[0]}
@@ -79,7 +78,7 @@ class Map extends Component {
         onViewportChange={(e) => this.onViewportChange(e)}
         ref={mapRef => this.mapRef = mapRef}
         mapboxApiAccessToken={TOKEN}>
-        { this.state.highlights !== 0 ? this.renderHighlights(this.state.highlights) : null }
+        { this.state.highlights !== 0 ? this.renderMarkerList(this.state.highlights) : null }
         { props.mapData.length !== 0 ? <DotLayerGL viewport={props.viewport} mapData={props.mapData} /> : null }
       </MapGL>
     )
