@@ -7,6 +7,11 @@ $bubbleWidth: 13rem; // since this only concerns the bubble this can be placed h
   width: $bubbleWidth;
   height: $d-2;
   transform: translate(-22px, calc(-32px - 8px - 8px)); // Y: bubbleHeight - chevronHeight - offset, X:
+  cursor: pointer;
+}
+
+.bubble-container:hover{
+  filter: brightness(1.2);
 }
 
 .bubble-body{

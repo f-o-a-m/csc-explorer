@@ -10,6 +10,7 @@ const BUBBLE_BOUNDING = [208, 32] //set bubble bounding box in px [width, height
 
 const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
+<<<<<<< HEAD
 class Map extends Component {
   constructor(props) {
     super(props)
@@ -17,6 +18,9 @@ class Map extends Component {
       mounted: false,
     }
   }
+=======
+const Bubble = ({data, getMapsItemInfo, status, title, balance, popularity, subTokens}) => {
+>>>>>>> 886bab0a2bbc834df7a2b04ce0161eb80bf689e4
 
   componentDidMount() {
     this.setState({mounted: true})
