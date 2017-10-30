@@ -44,7 +44,11 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <SideBar viewport={mapStateToProps.viewport} newCSC={this.props.newCSC} actions={actions} info={this.props.info}/>
+        <SideBar
+          viewport={mapStateToProps.viewport}
+          newCSC={this.props.newCSC}
+          actions={actions}
+          info={this.props.info}/>
         <TopBar actions={actions} />
         <MapControls actions={actions}/>
         <Map
@@ -60,8 +64,7 @@ class App extends Component{
 }
 
 const mapStateToProps = state => ({
-  cellsAreExtruded: state.mapControls.cellsAreExtruded, //bool for DeckGL extrusion
-  viewport: state.viewportControls.viewport, //it
+  viewport: state.viewportControls.viewport, 
   info: state.getMapsItemInfo.info, //picker
   mapData: state.setMapData.mapData,
   newCSC: state.makeNewCSC.newCSC,

@@ -63,6 +63,7 @@ $bubbleWidth: 13rem; // since this only concerns the bubble this can be placed h
   text-overflow: ellipsis;
 }
 
+// fade out for text overflow
 // .bubble-title:after{
 //   content:'';
 //   width:$d-2;

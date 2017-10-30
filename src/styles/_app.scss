@@ -1,9 +1,17 @@
-body{
-  margin: 0;
-  padding: 0;
+// app-wide defaults
+
+button{
+	outline: none;
+	border:none;
+	font-size: inherit;
+	user-select: none;
 }
 
 button:hover{
   cursor: pointer;
-  filter: brightness(1.2);
+  // filter: brightness(1.2);
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
