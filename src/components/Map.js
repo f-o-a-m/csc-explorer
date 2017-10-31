@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import MapGL, {Marker} from 'react-map-gl'
 import lodash from 'lodash'
+import {PerspectiveMercatorViewport} from 'viewport-mercator-project'
+import geolib from 'geolib'
 // import classnames from 'classnames'
 
 import DotLayerGL from './DotLayerGL'
@@ -16,14 +18,15 @@ class Map extends Component {
     }
   }
 
-  filterMapMarkers = (coords, viewport, metric) => {
+  // eventually it will be desirable to have a nominal # of bubbles on-screen
+  getHighlights = (coords, viewport, metric) => {
     // get zoom level and calculate a geohash grid resolution to bin coordinates
     const z = viewport.zoom
     let res = Math.floor((z - 1) * 0.5) // geohash binning resolution
     let highlights = []
 
     // a global threshold for displaying highlighted items
-    const metricThresh = 0.96
+    const metricThresh = 0.80
 
     // get a geohash at a resolution appropriate for zoom level
     const hasBins = coords.map(datum => {
@@ -34,9 +37,8 @@ class Map extends Component {
     const binned = lodash.groupBy(hasBins, 'bin')
 
     // get the highest value in bin with respect to metric
-    Object.keys(binned).forEach(hashKey => {
-      const bin = binned[hashKey]
-      const max = lodash.maxBy(bin, metric)
+    Object.keys(binned).forEach(key => {
+      const max = lodash.maxBy(binned[key], metric)
       max[metric] > metricThresh ? highlights.push(max) : null
     })
 
@@ -62,7 +64,32 @@ class Map extends Component {
 
   onViewportChange = (e) => {
     this.props.actions.onViewportChange(e)
-    this.filterMapMarkers(this.props.mapData, this.props.viewport, 'popularity')
+    // get items that are in viewport
+    const bb = this.getProjectedViewportBounds(e, window)
+    this.props.mapData.filter(datum => {
+      let point = {latitude: datum.position[1], longitude: datum.position[0]}
+      return geolib.isPointInside(point, bb)
+    })
+
+    // const bounds = this.mapRef.LngLatBounds()
+    // console.log(bounds)
+    this.getHighlights(this.props.mapData, this.props.viewport, 'popularity')
+  }
+
+  getProjectedViewportBounds = (viewport, userWindow) => {
+    let bb = []
+    const win = {height: userWindow.innerHeight, width: userWindow.innerWidth}
+    const mercatorVP = new PerspectiveMercatorViewport(Object.assign({...viewport}, win))
+    // get [lat, lng] at projected vp bounding box
+    const topLeft = mercatorVP.unproject([1,1])
+    const topRight = mercatorVP.unproject([1, win.width - 1])
+    const bottomRight = mercatorVP.unproject([win.height - 1, win.width - 1])
+    const bottomLeft = mercatorVP.unproject([win.height - 1, 1])
+    bb.push({latitude: topLeft[1], longitude: topLeft[0]})
+    bb.push({latitude: topRight[1], longitude: topRight[0]})
+    bb.push({latitude: bottomRight[1], longitude: bottomRight[0]})
+    bb.push({latitude: bottomLeft[1], longitude: bottomLeft[0]})
+    return bb
   }
 
 
