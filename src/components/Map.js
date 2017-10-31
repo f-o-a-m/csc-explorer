@@ -83,11 +83,7 @@ class Map extends Component {
           longitude={datum.position[0]}
           latitude={datum.position[1]}
           ethereumAddress={datum.ethereumAddress}>
-          <Bubble
-            status={datum.status}
-            title={datum.title}
-            balance={datum.balance}
-            subTokens={datum.subTokens}/>
+          <Bubble data={datum} getMapsItemInfo={(e) => this.props.actions.getMapsItemInfo(datum)}/>
         </Marker>
       )
     })
