@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
-import MapGL, {Marker, NavigationControl} from 'react-map-gl'
+import MapGL, {Marker} from 'react-map-gl'
 import lodash from 'lodash'
-import classnames from 'classnames'
+// import classnames from 'classnames'
 
 import DotLayerGL from './DotLayerGL'
 import Bubble from './Bubble'
-
-const BUBBLE_BOUNDING = [208, 32] //set bubble bounding box in px [width, height]
 
 const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
 
@@ -24,21 +22,26 @@ class Map extends Component {
     const z = viewport.zoom
     let resolution = Math.floor((z - 1) * 0.5)
     let highlights = []
+
     // a global threshold for showing popular items
     const metricThresh = 0.95
+
     // trim each coord geohash to resolution
     let hashTrimmedCoords = coords.map(coord => {
       let c = coord
       c.geohash_trim = coord.geohash.substring(0, resolution)
       return c
     })
+
     // bin coords by their geohash owners
     let binnedHashes = lodash.groupBy(hashTrimmedCoords, 'geohash_trim')
-    // get the most ones with the highest metric value, and the ones that pass metricThresh
+
+    // get the coords with the highest metric value, and the ones that pass metricThresh
     Object.keys(binnedHashes).map(hash => {
       let coords = binnedHashes[hash]
       let max = coords.reduce((prev, current) => {
-        return (prev[metric] > current[metric]) ? prev : current
+        let result = (prev[metric] > current[metric]) ? prev : current
+        return result
       })
       max[metric] > metricThresh ? highlights.push(max) : null
     })

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import base from './api/db'
@@ -64,7 +62,7 @@ class App extends Component{
 }
 
 const mapStateToProps = state => ({
-  viewport: state.viewportControls.viewport, 
+  viewport: state.viewportControls.viewport,
   info: state.getMapsItemInfo.info, //picker
   mapData: state.setMapData.mapData,
   newCSC: state.makeNewCSC.newCSC,

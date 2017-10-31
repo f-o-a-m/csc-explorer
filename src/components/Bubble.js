@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
-const Bubble = ({status, title, balance, popularity, subTokens}) => {
+const Bubble = ({status, title, balance, subTokens}) => {
 
   const hasSubTokens = subTokens > 0 ? true : false
 

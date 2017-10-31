@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import DeckGL, {ScatterplotLayer} from 'deck.gl';
-import classnames from 'classnames'
+// import classnames from 'classnames'
 
 
 const DotLayerGL = ({mapData, viewport}) => {

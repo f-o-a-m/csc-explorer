@@ -6,7 +6,7 @@ const TopBar = (props) => {
       <button className={'button-newCSC'} onClick={(e) => props.actions.newMapsItem()}>{'New CSC +'}</button>
       <button className={'button-foam'}>
         {'5FT'}
-        <img className={'img-ft'} src={'/foam_token.png'} />
+        <img alt={''} className={'img-ft'} src={'/foam_token.png'} />
       </button>
     </header>
   )
