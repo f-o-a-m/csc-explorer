@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "all": "^0.0.0",
     "classnames": "^2.2.5",
     "d3-request": "^1.0.6",
     "deck.gl": "^4.1.2",
+    "geolib": "^2.0.24",
+    "lodash": "^4.17.4",
     "luma.gl": "^4.0.3",
+    "ngeohash": "^0.6.0",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.1.1",
     "rbush": "^2.0.1",
@@ -16,7 +20,8 @@
     "react-map-gl": "^3.0.4",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.13",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "viewport-mercator-project": "^4.1.1"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",

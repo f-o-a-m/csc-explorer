@@ -1,9 +1,34 @@
 import { combineReducers } from 'redux'
 
+const cards = [
+  {
+    title: 'Welcome to FOAM',
+    message: 'We are a protocol built to store and verify spatial addresses. Feel free to browse the map or take a look at the options below!',
+    buttonText: 'Claim Your 5 FOAM tokens',
+    status: "STATUS_INFO",
+    type: "INFO",
+  },
+  {
+    title: '',
+    message: 'See how FOAM can help community sourced agriculture build sustainable community.',
+    buttonText: 'See the Case Study',
+    status: "STATUS_ACTIVE",
+    type: "INFO",
+  },
+  {
+    title: '',
+    message: 'Request address verification from the network.',
+    buttonText: 'Create a Cryptospastial Coordinate',
+    status: "STATUS_PROPOSAL",
+    type: "INFO",
+  },
+]
+
 const initialState = {
   mapData: [],
-  info: {},
+  info: cards,
   cellsAreExtruded: false,
+  newCSC: true,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -40,11 +65,34 @@ function mapControls(state = initialState, action) {
   }
 }
 
+// What's the data type when getting new info from the API?
 function getMapsItemInfo(state = initialState, action) {
   switch (action.type){
     case 'GET_MAP_ITEM_INFO':
+    action.info.type = "MARKER"
     return Object.assign({}, state, {
-      info : action.info,
+      // info :[action.info, ...state.info], //adds to the list
+      info : [action.info], //replaces the list
+    })
+    case 'REMOVE_MAP_ITEM_INFO':
+    return Object.assign({}, state, {
+      info : [
+          ...state.info.slice(0, action.index),
+          ...state.info.slice(action.index + 1)
+      ]
+    })
+    default:
+      return state
+  }
+}
+
+// What's the data type when getting new info from the API?
+function makeNewCSC(state = initialState, action) {
+  switch (action.type){
+    case 'NEW_MAP_ITEM':
+    return Object.assign({}, state, {
+      // info :[action.info, ...state.info], //adds to the list
+      newCSC : !state.newCSC, //replaces the list
     })
     default:
       return state
@@ -77,6 +125,7 @@ const rootReducer = combineReducers({
   viewportControls,
   getMapsItemInfo,
   setMapData,
+  makeNewCSC,
 })
 
 export default rootReducer

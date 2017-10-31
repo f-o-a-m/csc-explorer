@@ -25,3 +25,7 @@ yarn-error.log*
 .env
 
 src/data
+
+*.css
+
+src/styles/index.css

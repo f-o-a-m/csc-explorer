@@ -1,0 +1,108 @@
+.cardContainer{
+  @include shadow-l
+  @include flex-column;
+  @include radius-friendly;
+  margin-top: $d-1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.cardContainer h3 {
+  // margin-bottom: 1rem;
+}
+
+.title{
+  @include padding-s;
+  margin-top: 1rem;
+}
+
+.message{
+  @include padding-s;
+  margin-top: .5rem;
+}
+
+.description{
+  @include padding-s;
+  margin-top: .5rem;
+}
+
+.address{
+  word-break: break-all;
+}
+
+.top{
+    margin-top: 2rem;
+}
+
+.x{
+  position: absolute;
+  right: .6rem;
+  top: .1rem;
+  background-color: transparent;
+  outline: none;
+  border: 0px;
+  color: white;
+  font-size: 30px;
+  @include dim;
+}
+
+.x:hover{
+  opacity: 1;
+}
+
+.button-card{
+  @include pill;
+  @include all-blue-bg;
+  @include shadow-l;
+  padding: $d-1;
+  background-color: $transparent_light;
+  border: 1px solid $transparent_light;
+  color: white;
+  margin: 0 1rem 1rem 1rem;
+
+}
+
+.button-card:hover{
+  background-color: rgba($transparent_light, .2);
+}
+
+.dim{
+  @include dim;
+}
+
+.card-spacer-top{
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
+.card-spacer{
+  margin-top: .2rem;
+  margin-bottom: .3rem;
+}
+
+.cardBalance{
+  @include flex-column;
+  align-items: center;
+  color: black;
+  background-color: white;
+  border-radius: 0px 0px 20px 20px;
+  padding-top: 1rem;
+}
+
+
+.card-input{
+  @include pill;
+  @include padding-interface;
+  @include inner-shadow;
+  @include shadow-l;
+  width: 100%;
+  border: 1px solid $silver;
+  outline: none;
+  margin-top: .4rem;
+  margin-bottom: 1rem;
+  font-size: inherit;
+}

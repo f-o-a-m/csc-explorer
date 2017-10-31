@@ -1,21 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import DeckGL, {ScatterplotLayer} from 'deck.gl';
-import classnames from 'classnames'
+// import classnames from 'classnames'
 
 
 const DotLayerGL = ({mapData, viewport}) => {
-
-
-  const calcDotScale = (z, offset, multiplier, minViewport) => {
-    const scale = (minViewport - z + offset) * multiplier
-    return Math.floor(scale)
-  }
+  // this would be better for scaling dots but is not performant
+  // const calcDotScale = (z, offset, multiplier, minViewport) => {
+  //   const scale = (minViewport - z + offset) * multiplier
+  //   return Math.floor(scale)
+  // }
 
   let r
-
   const blue = [47, 128, 237]
   const green = [39, 174, 96]
-
   // forgive me
   const z = viewport.zoom
   if ( z > 15) {

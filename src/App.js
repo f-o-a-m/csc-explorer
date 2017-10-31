@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import base from './api/db'
@@ -11,7 +9,7 @@ import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 
-const DATA_SOURCE_NAME = 'data'
+const FAKE_DATA_SOURCE_NAME = 'data'
 
 class App extends Component{
   constructor(props) {
@@ -28,7 +26,7 @@ class App extends Component{
   componentDidMount = () => {
     this.resizeViewport()
     window.addEventListener('resize', this.resizeViewport)
-    base.listenTo(DATA_SOURCE_NAME, {
+    base.listenTo(FAKE_DATA_SOURCE_NAME, {
       context: this,
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
@@ -44,7 +42,11 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <SideBar actions={actions} />
+        <SideBar
+          viewport={mapStateToProps.viewport}
+          newCSC={this.props.newCSC}
+          actions={actions}
+          info={this.props.info}/>
         <TopBar actions={actions} />
         <MapControls actions={actions}/>
         <Map
@@ -60,19 +62,15 @@ class App extends Component{
 }
 
 const mapStateToProps = state => ({
-  cellsAreExtruded: state.mapControls.cellsAreExtruded, //bool for DeckGL extrusion
-  viewport: state.viewportControls.viewport, //it
+  viewport: state.viewportControls.viewport,
   info: state.getMapsItemInfo.info, //picker
-  mapData: state.setMapData.mapData
+  mapData: state.setMapData.mapData,
+  newCSC: state.makeNewCSC.newCSC,
 })
-
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(MapActions, dispatch)
 })
-
-
-
 
 export default connect(
   mapStateToProps,

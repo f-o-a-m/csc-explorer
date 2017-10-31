@@ -1,0 +1,107 @@
+// Breakpoints
+@mixin for-phone-only {
+  @media (max-width: 736px) { @content; }
+}
+
+@mixin for-tablet-down {
+  @media (max-width: 1024px) { @content; }
+}
+
+// padding, margin
+@mixin l-horizontal-padding{
+  padding-left: $d-3;
+  padding-right: $d-3;
+}
+
+@mixin padding-s {
+  padding: $sub-1 $d-1 $sub-1 $d-1;
+}
+
+@mixin padding-m {
+  padding: $d-1 $d-2 $d-1 $d-2;
+}
+
+@mixin padding-interface {
+  padding: $sub-4 $d-1 $sub-4 $d-1;
+}
+
+@mixin no-margin-padding {
+  margin:0;
+  padding:0;
+}
+
+// flexbox
+@mixin flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-all-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// shadow
+@mixin shadow-s {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@mixin shadow-l {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+@mixin inner-shadow {
+  box-shadow: inset 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+}
+
+// border radius
+@mixin pill {
+  border-radius: 999px;
+}
+
+@mixin pill-r {
+  border-radius: 0px 999px 999px 0px;
+}
+
+@mixin pill-l {
+  border-radius: 999px 0px 0px 999px;
+}
+
+@mixin radius-friendly {
+  border-radius: $d-2;
+}
+
+// color application
+@mixin all-blue-bg {
+  background-color: $pendingBlue;
+  border-color: $pendingBlue;
+  fill: $pendingBlue;
+}
+
+@mixin all-green-bg {
+  background-color: $activeGreen;
+  border-color: $activeGreen;
+  fill: $activeGreen;
+}
+
+@mixin all-gray-bg {
+  background-color: $darkGrey;
+  border-color: $darkGrey;
+  fill: $darkGrey;
+}
+
+@mixin all-pink-bg {
+  background-color: $pink;
+  border-color: $pink;
+  fill: $pink;
+}
+
+@mixin dim {
+  opacity: .6;
+}

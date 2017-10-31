@@ -1,0 +1,47 @@
+#sideBarContainer {
+  display: block;
+  width: $d-7;
+  padding: $d-1;
+  height: 100vh;
+  position: fixed;
+  color: white;
+  z-index: 800;
+    padding-top: 0px;
+}
+
+#searchbar{
+  @include pill;
+  @include padding-interface;
+  padding-left: 2.5rem; // for magnifying glass
+  @include inner-shadow;
+  @include shadow-l;
+  width: 100%;
+  z-index: 800;
+  border: 1px solid $silver;
+  outline: none;
+  margin-top: 1rem;
+  font-size: inherit;
+}
+
+#searchWrapper {
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  width: $d-7;
+}
+
+#glass {
+  @include flex-all-center;
+  height: 100%;
+  position: absolute;
+  left: 0.8rem;
+  top:8px;;
+  font-size: $t-3;
+}
+
+#cardWrapper{
+  padding-top: 3rem;
+  overflow: scroll;
+  height: 100vh;
+  width: $d-7;
+}

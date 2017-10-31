@@ -3,10 +3,10 @@ import React from 'react'
 const TopBar = (props) => {
   return (
     <header id={'topBarContainer'}>
-      <button className={'bold pill blue_bg'}>{'New CSC +'}</button>
-      <button className={'bold pill darkGrey_bg ml1 '}>
+      <button className={'button-newCSC'} onClick={(e) => props.actions.newMapsItem()}>{'New CSC +'}</button>
+      <button className={'button-foam'}>
         {'5FT'}
-        <img className={'ftimg ml1'} src={'/foam_token.png'} />
+        <img alt={''} className={'img-ft'} src={'/foam_token.png'} />
       </button>
     </header>
   )
