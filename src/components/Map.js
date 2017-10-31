@@ -16,35 +16,30 @@ class Map extends Component {
     }
   }
 
-  // this could probably be improved
   filterMapMarkers = (coords, viewport, metric) => {
     // get zoom level and calculate a geohash grid resolution to bin coordinates
     const z = viewport.zoom
-    let resolution = Math.floor((z - 1) * 0.5)
+    let res = Math.floor((z - 1) * 0.5) // geohash binning resolution
     let highlights = []
 
-    // a global threshold for showing popular items
-    const metricThresh = 0.95
+    // a global threshold for displaying highlighted items
+    const metricThresh = 0.96
 
-    // trim each coord geohash to resolution
-    let hashTrimmedCoords = coords.map(coord => {
-      let c = coord
-      c.geohash_trim = coord.geohash.substring(0, resolution)
-      return c
+    // get a geohash at a resolution appropriate for zoom level
+    const hasBins = coords.map(datum => {
+      return Object.assign({...datum}, {bin: datum.geohash.substring(0, res)} )
     })
 
-    // bin coords by their geohash owners
-    let binnedHashes = lodash.groupBy(hashTrimmedCoords, 'geohash_trim')
+    // group by geohash
+    const binned = lodash.groupBy(hasBins, 'bin')
 
-    // get the coords with the highest metric value, and the ones that pass metricThresh
-    Object.keys(binnedHashes).map(hash => {
-      let coords = binnedHashes[hash]
-      let max = coords.reduce((prev, current) => {
-        let result = (prev[metric] > current[metric]) ? prev : current
-        return result
-      })
+    // get the highest value in bin with respect to metric
+    Object.keys(binned).forEach(hashKey => {
+      const bin = binned[hashKey]
+      const max = lodash.maxBy(bin, metric)
       max[metric] > metricThresh ? highlights.push(max) : null
     })
+
     this.setState({highlights})
   }
 

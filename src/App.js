@@ -9,7 +9,7 @@ import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 
-const DATA_SOURCE_NAME = 'data'
+const FAKE_DATA_SOURCE_NAME = 'data'
 
 class App extends Component{
   constructor(props) {
@@ -26,7 +26,7 @@ class App extends Component{
   componentDidMount = () => {
     this.resizeViewport()
     window.addEventListener('resize', this.resizeViewport)
-    base.listenTo(DATA_SOURCE_NAME, {
+    base.listenTo(FAKE_DATA_SOURCE_NAME, {
       context: this,
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
