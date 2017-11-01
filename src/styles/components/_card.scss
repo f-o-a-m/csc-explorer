@@ -40,6 +40,7 @@
   width: 1.5rem;
   height: 1.5rem;
   background-color: transparent;
+  border: 1px solid transparent;
   @include pill;
   @include flex-all-center;
   @include dim;
@@ -48,6 +49,7 @@
 
 .button-closeCard:hover {
   background-color: $transparent_light;
+  border: 1px solid $transparent_light;
   opacity: 1;
   cursor: pointer;
 }
