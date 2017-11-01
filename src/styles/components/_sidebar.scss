@@ -6,7 +6,8 @@
   position: fixed;
   color: white;
   z-index: 800;
-    padding-top: 0px;
+  padding-top: 0;
+  pointer-events: none;
 }
 
 #searchbar{
@@ -21,6 +22,7 @@
   outline: none;
   margin-top: 1rem;
   font-size: inherit;
+  pointer-events: all;
 }
 
 #searchWrapper {
@@ -39,9 +41,9 @@
   font-size: $t-3;
 }
 
-#cardWrapper{
+#cardColumn {
   padding-top: 3rem;
-  overflow: scroll;
+  overflow: hidden;
   height: 100vh;
   width: $d-7;
 }

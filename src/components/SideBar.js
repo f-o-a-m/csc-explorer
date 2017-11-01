@@ -16,7 +16,7 @@ const SideBar = (props) => {
         <input id={'searchbar'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
       </div>
-      <div id={'cardWrapper'}>
+      <div id={'cardColumn'}>
       {props.newCSC ? <Card viewport={props.viewport} info={newCSC} actions={props.actions}/> : null}
       {
         data.map((info, i) => {

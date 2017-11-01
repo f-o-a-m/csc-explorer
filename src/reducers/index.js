@@ -9,14 +9,14 @@ const cards = [
     type: "INFO",
   },
   {
-    title: '',
+    title: 'Case Study',
     message: 'See how FOAM can help community sourced agriculture build sustainable community.',
     buttonText: 'See the Case Study',
     status: "STATUS_ACTIVE",
     type: "INFO",
   },
   {
-    title: '',
+    title: 'Add A Coordinate',
     message: 'Request address verification from the network.',
     buttonText: 'Create a Cryptospastial Coordinate',
     status: "STATUS_PROPOSAL",

@@ -1,32 +1,26 @@
 .cardContainer{
   @include shadow-l
-  @include flex-column;
   @include radius-friendly;
   margin-top: $d-1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
   width: 100%;
-  border-radius: 20px;
+  pointer-events: all;
+  user-select: all;
 }
 
-.cardContainer h3 {
-  // margin-bottom: 1rem;
+.card-lightWrap {
+  width: 100%;
+  height: 100%;
+  @include flex-column;
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
 }
 
-.title{
-  @include padding-s;
-  margin-top: 1rem;
+.title {
+  margin-bottom: .5rem;
 }
 
-.message{
-  @include padding-s;
-  margin-top: .5rem;
-}
 
 .description{
-  @include padding-s;
   margin-top: .5rem;
 }
 
@@ -35,39 +29,62 @@
 }
 
 .top{
-    margin-top: 2rem;
+  margin-top: $d-2;
 }
 
-.x{
+.button-closeCard{
   position: absolute;
   right: .6rem;
-  top: .1rem;
+  top: .6rem;
+  pointer-events: all;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: transparent;
-  outline: none;
-  border: 0px;
-  color: white;
-  font-size: 30px;
+  @include pill;
+  @include flex-all-center;
   @include dim;
+  transition: 200ms;
 }
 
-.x:hover{
+.button-closeCard:hover {
+  background-color: $transparent_light;
   opacity: 1;
+  cursor: pointer;
+}
+
+.button-closeCard span {
+  line-height: 0px;
+  transform: translateY(-1px);
+  font-size: 30px;
+  color: white;
+  padding: 0;
+  margin: 0;
 }
 
 .button-card{
   @include pill;
-  @include all-blue-bg;
   @include shadow-l;
+  flex-grow: 1;
   padding: $d-1;
   background-color: $transparent_light;
   border: 1px solid $transparent_light;
   color: white;
-  margin: 0 1rem 1rem 1rem;
-
+  margin-top: $d-1;
+  transition: 250ms;
+  font-size: $t-2;
+  font-weight: 600;
 }
 
 .button-card:hover{
   background-color: rgba($transparent_light, .2);
+  transform: translateY(-3px);
+  @include shadow-xl;
+}
+
+.button-card:active{
+  background-color: rgba($transparent_light, .2);
+  transform: translateY(0px);
+  @include shadow-l;
 }
 
 .dim{
@@ -75,7 +92,7 @@
 }
 
 .card-spacer-top{
-  margin-top: 1rem;
+  margin-top: $d-1;
   margin-bottom: .5rem;
 }
 
@@ -89,8 +106,9 @@
   align-items: center;
   color: black;
   background-color: white;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 1.8rem 1.8rem;
   padding-top: 1rem;
+  margin: 1.2rem -1.2rem -1.2rem -1.2rem;
 }
 
 
