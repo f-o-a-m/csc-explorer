@@ -10,6 +10,11 @@ const newCSC =
 
 const SideBar = (props) => {
   let data = props.info
+
+  const cards = data.map((info, i) => {
+    return <Card info={info} key={i} index={i} actions={props.actions}/>
+  })
+
   return (
     <aside id={'sideBarContainer'}>
       <div id={'searchWrapper'}>
@@ -18,13 +23,7 @@ const SideBar = (props) => {
       </div>
       <div id={'cardColumn'}>
       {props.newCSC ? <Card viewport={props.viewport} info={newCSC} actions={props.actions}/> : null}
-      {
-        data.map((info, i) => {
-          return (
-            <Card info={info} key={i} index={i} actions={props.actions}/>
-          )
-        })
-      }
+      { cards }
       </div>
     </aside>
   )

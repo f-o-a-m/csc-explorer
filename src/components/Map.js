@@ -98,7 +98,6 @@ class Map extends Component {
         {...props.viewport}
         mapStyle={'mapbox://styles/mapbox/dark-v9'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
-        ref={mapRef => this.mapRef = mapRef}
         mapboxApiAccessToken={TOKEN}>
         { this.state.highlights !== 0 ? this.renderMarkerList(this.state.highlights) : null }
         { props.mapData.length !== 0 ? <DotLayerGL viewport={props.viewport} mapData={props.mapData} /> : null }

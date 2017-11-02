@@ -28,7 +28,7 @@ const initialState = {
   mapData: [],
   info: cards,
   cellsAreExtruded: false,
-  newCSC: true,
+  newCSC: false,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -71,7 +71,6 @@ function getMapsItemInfo(state = initialState, action) {
     case 'GET_MAP_ITEM_INFO':
     action.info.type = "MARKER"
     return Object.assign({}, state, {
-      // info :[action.info, ...state.info], //adds to the list
       info : [action.info], //replaces the list
     })
     case 'REMOVE_MAP_ITEM_INFO':
@@ -91,7 +90,6 @@ function makeNewCSC(state = initialState, action) {
   switch (action.type){
     case 'NEW_MAP_ITEM':
     return Object.assign({}, state, {
-      // info :[action.info, ...state.info], //adds to the list
       newCSC : !state.newCSC, //replaces the list
     })
     default:
