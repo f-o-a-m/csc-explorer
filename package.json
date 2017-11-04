@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "all": "^0.0.0",
+    "foam.css": "https://github.com/f-o-a-m/foam.css#master",
     "classnames": "^2.2.5",
     "d3-request": "^1.0.6",
     "deck.gl": "^4.1.2",
@@ -24,10 +25,10 @@
     "viewport-mercator-project": "^4.1.1"
   },
   "scripts": {
-    "build-css": "node-sass src/ -o src/",
+    "build-css": "node-sass node_modules/foam.css/styles -o src/styles",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "start": "npm-run-all -p start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
