@@ -29,6 +29,7 @@ const initialState = {
   info: cards,
   cellsAreExtruded: false,
   newCSC: true,
+  sidebar: true,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -59,6 +60,17 @@ function mapControls(state = initialState, action) {
     case 'TOGGLE_CELL_EXTRUSION':
       return Object.assign({}, state, {
         cellsAreExtruded: !state.cellsAreExtruded,
+      })
+    default:
+      return state
+  }
+}
+
+function toggleSideBar(state = initialState, action) {
+  switch (action.type){
+    case 'TOGGLE_SIDEBAR':
+      return Object.assign({}, state, {
+        sidebar: !state.sidebar,
       })
     default:
       return state
@@ -126,6 +138,7 @@ const rootReducer = combineReducers({
   getMapsItemInfo,
   setMapData,
   makeNewCSC,
+  toggleSideBar,
 })
 
 export default rootReducer

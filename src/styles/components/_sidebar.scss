@@ -1,3 +1,9 @@
+
+.closed{
+  transform: translateX(-360px);
+  // left: -360px !important;
+}
+
 #sideBarContainer {
   display: block;
   width: $d-7;
@@ -6,7 +12,8 @@
   position: fixed;
   color: white;
   z-index: 800;
-    padding-top: 0px;
+  padding-top: 0px;
+  transition: transform .3s ease;
 }
 
 #searchbar{
@@ -21,6 +28,7 @@
   outline: none;
   margin-top: 1rem;
   font-size: inherit;
+  height: 40px;
 }
 
 #searchWrapper {
@@ -34,9 +42,43 @@
   @include flex-all-center;
   height: 100%;
   position: absolute;
-  left: 0.8rem;
-  top:8px;;
-  font-size: $t-3;
+  left: 1rem;
+  top: 0.5rem;
+  font-size: $t-2;
+}
+
+#sideBarCollapse{
+  width: 120px;
+  height: 40px;
+  background-color: rgba(0,0,0,.8);
+  color: white;
+  text-align: right;
+  font-size: 24px;
+  padding: .2rem;
+  border-radius: 20px;
+  float: right;
+  position: absolute;
+  margin-top: 1rem;
+  padding-right: 1rem;
+  top: 0;
+  transform: translateX(256px);
+  z-index: -99;
+  border: 1px solid #333;
+  transition: transform .3s ease;
+}
+
+.closed #sideBarCollapse{
+  transform: translateX(286px);
+}
+
+.closed #sideBarCollapse:hover{
+  transform: translateX(290px);
+}
+
+#sideBarCollapse:hover{
+  background-color: $pendingBlue;
+  cursor: pointer;
+  transform: translateX(250px);
 }
 
 #cardWrapper{
