@@ -8,6 +8,7 @@
   z-index: 800;
   padding-top: 0;
   pointer-events: none;
+  @include debug;
 }
 
 #searchbar{

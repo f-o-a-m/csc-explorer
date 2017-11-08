@@ -30,6 +30,23 @@
   padding:0;
 }
 
+// position and structure
+@mixin fixed-top-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@mixin full{
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin scroll-v{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 // flexbox
 @mixin flex-align-center {
   display: flex;
@@ -108,4 +125,10 @@
 
 @mixin dim {
   opacity: .6;
+}
+
+// debug
+@mixin debug {
+  border: 1px solid red;
+  background: rgba(100, 100, 100, 0.5);
 }
