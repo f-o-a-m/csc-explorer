@@ -9,14 +9,14 @@ const cards = [
     type: "INFO",
   },
   {
-    title: '',
+    title: 'Case Study',
     message: 'See how FOAM can help community sourced agriculture build sustainable community.',
     buttonText: 'See the Case Study',
     status: "STATUS_ACTIVE",
     type: "INFO",
   },
   {
-    title: '',
+    title: 'Add A Coordinate',
     message: 'Request address verification from the network.',
     buttonText: 'Create a Cryptospastial Coordinate',
     status: "STATUS_PROPOSAL",
@@ -83,7 +83,6 @@ function getMapsItemInfo(state = initialState, action) {
     case 'GET_MAP_ITEM_INFO':
     action.info.type = "MARKER"
     return Object.assign({}, state, {
-      // info :[action.info, ...state.info], //adds to the list
       info : [action.info], //replaces the list
     })
     case 'REMOVE_MAP_ITEM_INFO':
@@ -103,7 +102,6 @@ function makeNewCSC(state = initialState, action) {
   switch (action.type){
     case 'NEW_MAP_ITEM':
     return Object.assign({}, state, {
-      // info :[action.info, ...state.info], //adds to the list
       newCSC : !state.newCSC, //replaces the list
     })
     default:

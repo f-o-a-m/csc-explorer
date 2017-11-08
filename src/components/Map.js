@@ -83,11 +83,7 @@ class Map extends Component {
           longitude={datum.position[0]}
           latitude={datum.position[1]}
           ethereumAddress={datum.ethereumAddress}>
-          <Bubble
-            status={datum.status}
-            title={datum.title}
-            balance={datum.balance}
-            subTokens={datum.subTokens}/>
+          <Bubble data={datum} getMapsItemInfo={(e) => this.props.actions.getMapsItemInfo(datum)}/>
         </Marker>
       )
     })
@@ -102,7 +98,6 @@ class Map extends Component {
         {...props.viewport}
         mapStyle={'mapbox://styles/mapbox/dark-v9'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
-        ref={mapRef => this.mapRef = mapRef}
         mapboxApiAccessToken={TOKEN}>
         { this.state.highlights !== 0 ? this.renderMarkerList(this.state.highlights) : null }
         { props.mapData.length !== 0 ? <DotLayerGL viewport={props.viewport} mapData={props.mapData} /> : null }

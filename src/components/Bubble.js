@@ -1,27 +1,27 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Bubble = ({status, title, balance, subTokens}) => {
+const Bubble = ({data, getMapsItemInfo}) => {
 
-  const hasSubTokens = subTokens > 0 ? true : false
+  const hasSubTokens = data.subTokens > 0 ? true : false
 
   const tokenType = classnames({
-    'green_bg': status === 'STATUS_ACTIVE',
-    'blue_bg': status === 'STATUS_PROPOSAL',
+    'green_bg': data.status === 'STATUS_ACTIVE',
+    'blue_bg': data.status === 'STATUS_PROPOSAL',
   })
 
   const showSubTokens = classnames({
-    'hidden': !hasSubTokens,
+    'hidden': !data.hasSubTokens,
   })
 
   return (
-    <div className={`${tokenType} bubble-container`}>
+    <div className={`${tokenType} bubble-container`} onClick={getMapsItemInfo}>
       <span className={'bubble-body'}>
-        <p className={'bubble-title'}>{title}</p>
-        <p className={'bubble-balance'}>{balance}</p>
+        <p className={'bubble-title'}>{data.title}</p>
+        <p className={'bubble-balance'}>{data.balance}</p>
       </span>
       <span className={`${showSubTokens} bubble-drawer`}>
-        <p className={'bubble-tokens'}>{subTokens}</p>
+        <p className={'bubble-tokens'}>{data.subTokens}</p>
       </span>
       <svg className={'bubble-chevron'} width="13" height="10" viewBox="0 0 13 10" version="1.1">
         <g id="Canvas" transform="translate(-25353 1234)">

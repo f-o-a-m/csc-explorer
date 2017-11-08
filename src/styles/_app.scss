@@ -9,9 +9,15 @@ button{
 
 button:hover{
   cursor: pointer;
-  // filter: brightness(1.2);
 }
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+li, ol, ul {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }

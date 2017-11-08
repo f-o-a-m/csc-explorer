@@ -8,6 +8,7 @@ import Map from './components/Map'
 import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
+import Dash from './components/Dash'
 
 const FAKE_DATA_SOURCE_NAME = 'data'
 
@@ -42,6 +43,7 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
+        <Dash />
         <SideBar
           viewport={mapStateToProps.viewport}
           newCSC={this.props.newCSC}

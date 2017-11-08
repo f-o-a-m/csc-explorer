@@ -12,8 +12,10 @@
   position: fixed;
   color: white;
   z-index: 800;
-  padding-top: 0px;
   transition: transform .3s ease;
+  padding-top: 0;
+  pointer-events: none;
+  @include debug;
 }
 
 #searchbar{
@@ -29,6 +31,7 @@
   margin-top: 1rem;
   font-size: inherit;
   height: 40px;
+  pointer-events: all;
 }
 
 #searchWrapper {
@@ -81,9 +84,9 @@
   transform: translateX(250px);
 }
 
-#cardWrapper{
+#cardColumn {
   padding-top: 3rem;
-  overflow: scroll;
+  overflow: hidden;
   height: 100vh;
   width: $d-7;
 }
