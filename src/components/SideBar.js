@@ -16,10 +16,11 @@ const SideBar = (props) => {
   })
 
   return (
-    <aside id={'sideBarContainer'}>
+    <aside id={'sideBarContainer'} className={props.sidebar ? '' : 'closed'}>
       <div id={'searchWrapper'}>
         <input id={'searchbar'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
+        <div id={'sideBarCollapse'} onClick={(e) => props.actions.toggleSidebar()}> {props.sidebar ? '<' : '>'} </div>
       </div>
       <div id={'cardColumn'}>
       {props.newCSC ? <Card viewport={props.viewport} info={newCSC} actions={props.actions}/> : null}

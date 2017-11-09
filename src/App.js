@@ -48,7 +48,9 @@ class App extends Component{
           viewport={mapStateToProps.viewport}
           newCSC={this.props.newCSC}
           actions={actions}
-          info={this.props.info}/>
+          info={this.props.info}
+          sidebar={this.props.sidebar}
+        />
         <TopBar actions={actions} />
         <MapControls actions={actions}/>
         <Map
@@ -68,6 +70,7 @@ const mapStateToProps = state => ({
   info: state.getMapsItemInfo.info, //picker
   mapData: state.setMapData.mapData,
   newCSC: state.makeNewCSC.newCSC,
+  sidebar: state.toggleSideBar.sidebar,
 })
 
 const mapDispatchToProps = dispatch => ({
