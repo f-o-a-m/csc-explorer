@@ -65,6 +65,45 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.0.0.tgz#c1de4293081424da3ac30c23afa850af1019bb54"
 
+"@vx/curve@0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.143.tgz#022c6a8a07ec019ed5820f0214da21fd93645724"
+  dependencies:
+    d3-shape "^1.0.6"
+
+"@vx/group@0.0.143", "@vx/group@^0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.143.tgz#38dbd3fa2740d573c6fdfc691ebc15e85d3eb01b"
+  dependencies:
+    classnames "^2.2.5"
+
+"@vx/mock-data@^0.0.144":
+  version "0.0.144"
+  resolved "https://registry.yarnpkg.com/@vx/mock-data/-/mock-data-0.0.144.tgz#56f434dabd1f3afd53efe8466278cb32187b5c23"
+  dependencies:
+    d3-random "^1.0.3"
+
+"@vx/point@0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.143.tgz#7b6dfa611175ee1b74e3c392072589a79dadf265"
+
+"@vx/scale@^0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/scale/-/scale-0.0.143.tgz#4a13ab93f4d59cb487d6278b55606f2460091d0b"
+  dependencies:
+    d3-scale "^1.0.5"
+
+"@vx/shape@^0.0.146":
+  version "0.0.146"
+  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.146.tgz#52ef410ce06737eb4591dc6fb8be4237d31a46d5"
+  dependencies:
+    "@vx/curve" "0.0.143"
+    "@vx/group" "0.0.143"
+    "@vx/point" "0.0.143"
+    classnames "^2.2.5"
+    d3-shape "^1.2.0"
+    prop-types "^15.5.10"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -1894,9 +1933,17 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+d3-array@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.1.tgz#d1ca33de2f6ac31efadb8e050a021d7e2396d5dc"
+
 d3-collection@1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.4.tgz#342dfd12837c90974f33f1cc0a785aea570dcdc2"
+
+d3-color@1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.0.3.tgz#bc7643fca8e53a8347e2fbdaffa236796b58509b"
 
 d3-dispatch@1:
   version "1.0.3"
@@ -1910,9 +1957,27 @@ d3-dsv@1:
     iconv-lite "0.4"
     rw "1"
 
+d3-format@1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.2.0.tgz#6b480baa886885d4651dc248a8f4ac9da16db07a"
+
 d3-hexbin@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/d3-hexbin/-/d3-hexbin-0.2.2.tgz#9c5837dacfd471ab05337a9e91ef10bfc4f98831"
+
+d3-interpolate@1:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.1.5.tgz#69e099ff39214716e563c9aec3ea9d1ea4b8a79f"
+  dependencies:
+    d3-color "1"
+
+d3-path@1:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.5.tgz#241eb1849bd9e9e8021c0d0a799f8a0e8e441764"
+
+d3-random@^1.0.3:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-1.1.0.tgz#6642e506c6fa3a648595d2b2469788a8d12529d3"
 
 d3-request@^1.0.6:
   version "1.0.6"
@@ -1922,6 +1987,34 @@ d3-request@^1.0.6:
     d3-dispatch "1"
     d3-dsv "1"
     xmlhttprequest "1"
+
+d3-scale@^1.0.5:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.6.tgz#bce19da80d3a0cf422c9543ae3322086220b34ed"
+  dependencies:
+    d3-array "^1.2.0"
+    d3-collection "1"
+    d3-color "1"
+    d3-format "1"
+    d3-interpolate "1"
+    d3-time "1"
+    d3-time-format "2"
+
+d3-shape@^1.0.6, d3-shape@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.2.0.tgz#45d01538f064bafd05ea3d6d2cb748fd8c41f777"
+  dependencies:
+    d3-path "1"
+
+d3-time-format@2:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.1.0.tgz#a1d9540a1dc498817d44066b121b19a4a83e3531"
+  dependencies:
+    d3-time "1"
+
+d3-time@1:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.0.7.tgz#94caf6edbb7879bb809d0d1f7572bc48482f7270"
 
 d@1:
   version "1.0.0"

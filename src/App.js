@@ -27,7 +27,7 @@ class App extends Component{
   componentDidMount = () => {
     this.resizeViewport()
     window.addEventListener('resize', this.resizeViewport)
-    base.listenTo(FAKE_DATA_SOURCE_NAME, {
+    base.listenTo( FAKE_DATA_SOURCE_NAME, {
       context: this,
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
@@ -52,7 +52,7 @@ class App extends Component{
           sidebar={this.props.sidebar}
         />
         <TopBar actions={actions} />
-        <MapControls actions={actions}/>
+        <MapControls actions={actions} />
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
