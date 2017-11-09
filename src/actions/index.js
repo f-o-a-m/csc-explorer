@@ -7,3 +7,4 @@ export const newMapsItem = bool => ({type: 'NEW_MAP_ITEM', bool})
 export const setMapData = (mapData) => ({type: 'SET_MAP_DATA', mapData})
 
 export const toggleSidebar = bool => ({ type: 'TOGGLE_SIDEBAR', bool })
+export const toggleDash = bool => ({ type: 'TOGGLE_DASH', bool })

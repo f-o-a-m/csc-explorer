@@ -30,6 +30,7 @@ const initialState = {
   cellsAreExtruded: false,
   newCSC: true,
   sidebar: true,
+  dash: false,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -76,6 +77,19 @@ function toggleSideBar(state = initialState, action) {
       return state
   }
 }
+
+
+function toggleDash(state = initialState, action) {
+  switch (action.type){
+    case 'TOGGLE_DASH':
+      return Object.assign({}, state, {
+        dash: !state.dash,
+      })
+    default:
+      return state
+  }
+}
+
 
 // What's the data type when getting new info from the API?
 function getMapsItemInfo(state = initialState, action) {
@@ -137,6 +151,7 @@ const rootReducer = combineReducers({
   setMapData,
   makeNewCSC,
   toggleSideBar,
+  toggleDash,
 })
 
 export default rootReducer

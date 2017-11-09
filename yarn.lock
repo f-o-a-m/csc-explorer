@@ -65,11 +65,39 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.0.0.tgz#c1de4293081424da3ac30c23afa850af1019bb54"
 
+"@vx/bounds@0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/bounds/-/bounds-0.0.143.tgz#7534ff9c04412d79592697afe814fb45aaee3ed2"
+  dependencies:
+    prop-types "^15.5.10"
+
 "@vx/curve@0.0.143":
   version "0.0.143"
   resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.143.tgz#022c6a8a07ec019ed5820f0214da21fd93645724"
   dependencies:
     d3-shape "^1.0.6"
+
+"@vx/event@^0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/event/-/event-0.0.143.tgz#49b1493fe16ef7d7865405d2dcf267c0a95871d1"
+  dependencies:
+    "@vx/point" "0.0.143"
+
+"@vx/gradient@^0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/gradient/-/gradient-0.0.143.tgz#9ce212db8f9add9221c8eb142c5ac1026d13cab9"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.5.7"
+
+"@vx/grid@^0.0.146":
+  version "0.0.146"
+  resolved "https://registry.yarnpkg.com/@vx/grid/-/grid-0.0.146.tgz#baa9e6653a36c1103dd1def54d6df3ac0edceef4"
+  dependencies:
+    "@vx/group" "0.0.143"
+    "@vx/point" "0.0.143"
+    "@vx/shape" "0.0.146"
+    classnames "^2.2.5"
 
 "@vx/group@0.0.143", "@vx/group@^0.0.143":
   version "0.0.143"
@@ -83,7 +111,7 @@
   dependencies:
     d3-random "^1.0.3"
 
-"@vx/point@0.0.143":
+"@vx/point@0.0.143", "@vx/point@^0.0.143":
   version "0.0.143"
   resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.143.tgz#7b6dfa611175ee1b74e3c392072589a79dadf265"
 
@@ -93,7 +121,7 @@
   dependencies:
     d3-scale "^1.0.5"
 
-"@vx/shape@^0.0.146":
+"@vx/shape@0.0.146", "@vx/shape@^0.0.146":
   version "0.0.146"
   resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.146.tgz#52ef410ce06737eb4591dc6fb8be4237d31a46d5"
   dependencies:
@@ -102,6 +130,14 @@
     "@vx/point" "0.0.143"
     classnames "^2.2.5"
     d3-shape "^1.2.0"
+    prop-types "^15.5.10"
+
+"@vx/tooltip@^0.0.143":
+  version "0.0.143"
+  resolved "https://registry.yarnpkg.com/@vx/tooltip/-/tooltip-0.0.143.tgz#0c14524d9450264af597cacfcc5b5c2da5c49193"
+  dependencies:
+    "@vx/bounds" "0.0.143"
+    classnames "^2.2.5"
     prop-types "^15.5.10"
 
 abab@^1.0.3:

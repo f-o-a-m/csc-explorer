@@ -43,7 +43,10 @@ class App extends Component{
   const {actions, store, ...mapStateToProps} = this.props
     return (
       <div className={'app'}>
-        <Dash />
+        <Dash
+          actions={actions}
+          dash={this.props.dash}
+          />
         <SideBar
           viewport={mapStateToProps.viewport}
           newCSC={this.props.newCSC}
@@ -71,6 +74,7 @@ const mapStateToProps = state => ({
   mapData: state.setMapData.mapData,
   newCSC: state.makeNewCSC.newCSC,
   sidebar: state.toggleSideBar.sidebar,
+  dash: state.toggleDash.dash,
 })
 
 const mapDispatchToProps = dispatch => ({
