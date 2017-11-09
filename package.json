@@ -24,8 +24,8 @@
     "viewport-mercator-project": "^4.1.1"
   },
   "scripts": {
-    "build-css": "node-sass src/ -o src/",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "build-css": "node-sass src/foam.css/styles -o src/foam.css/dist",
+    "watch-css": "npm run build-css && node-sass src/foam.css/styles -o src/foam.css/dist --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
