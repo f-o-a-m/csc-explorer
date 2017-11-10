@@ -57,6 +57,7 @@ class App extends Component{
         <TopBar actions={actions} />
         <MapControls actions={actions}
           viewport={mapStateToProps.viewport}
+          layerTrayOpen={this.props.layerTrayOpen}
           unit={this.props.unit} />
         <Map
           mapData={mapStateToProps.mapData}
@@ -78,6 +79,7 @@ const mapStateToProps = state => ({
   sidebar: state.toggleSideBar.sidebar,
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,
+  layerTrayOpen: state.layerControl.layerTrayOpen
 })
 
 const mapDispatchToProps = dispatch => ({

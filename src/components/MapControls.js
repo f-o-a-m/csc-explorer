@@ -15,7 +15,7 @@ const MapControls = (props) => {
   }
   return (
     <footer id={'mapControlsContainer'}>
-      <button className={'button-layers'}>{'L'}</button>
+      <button className={'button-layers'} onClick={() => props.actions.toggleLayerTray()}>{'•'}</button>
       <button className={'button-location'} onClick={() => props.actions.toggleThroughUnits()}>{swapUnits()}</button>
       <button className={'button-zoomIn'} onClick={() => props.actions.zoom(0.5)}>{'+'}</button>
       <button className={'button-zoomOut'} onClick={() => props.actions.zoom(-0.5)}>{'-'}</button>

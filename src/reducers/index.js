@@ -33,6 +33,7 @@ const initialState = {
   newCSC: true,
   sidebar: true,
   dash: false,
+  layerTrayOpen: true,
   unitIndex: 0,
   unit: UNITS[0],
   viewport: {
@@ -173,6 +174,17 @@ function viewportControls(state = initialState, action) {
   }
 }
 
+function layerControl(state = initialState, action) {
+  switch (action.type){
+    case 'TOGGLE_LAYER_TRAY':
+    return Object.assign({}, state, {
+      layerTrayOpen: !state.layerTrayOpen, //replaces the list
+    })
+    default:
+      return state
+  }
+}
+
 
 const rootReducer = combineReducers({
   mapControls,
@@ -183,6 +195,7 @@ const rootReducer = combineReducers({
   toggleSideBar,
   toggleDash,
   toggleThroughUnits,
+  layerControl,
 })
 
 export default rootReducer

@@ -11,7 +11,7 @@ const Bubble = ({data, getMapsItemInfo}) => {
   })
 
   const showSubTokens = classnames({
-    'hidden': !data.hasSubTokens,
+    'hidden': data.subTokens === 0,
   })
 
   return (
