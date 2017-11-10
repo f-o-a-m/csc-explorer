@@ -24,6 +24,8 @@ const cards = [
   },
 ]
 
+const UNITS = ['LATLONG', 'GEOHASH']
+
 const initialState = {
   mapData: [],
   info: cards,
@@ -31,6 +33,8 @@ const initialState = {
   newCSC: true,
   sidebar: true,
   dash: false,
+  unitIndex: 0,
+  unit: UNITS[0],
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -68,7 +72,7 @@ function mapControls(state = initialState, action) {
 }
 
 function toggleSideBar(state = initialState, action) {
-  switch (action.type){
+  switch (action.type) {
     case 'TOGGLE_SIDEBAR':
       return Object.assign({}, state, {
         sidebar: !state.sidebar,
@@ -84,6 +88,24 @@ function toggleDash(state = initialState, action) {
     case 'TOGGLE_DASH':
       return Object.assign({}, state, {
         dash: !state.dash,
+      })
+    default:
+      return state
+  }
+}
+
+function toggleThroughUnits(state = initialState, action) {
+  switch (action.type){
+    case 'TOGGLE_THROUGH_UNITS':
+      let newIndex
+      if (state.unitIndex < UNITS.length - 1) {
+        newIndex = state.unitIndex  + 1
+      } else {
+        newIndex = 0
+      }
+      return Object.assign({}, state, {
+        unitIndex: newIndex,
+        unit: UNITS[newIndex],
       })
     default:
       return state
@@ -152,6 +174,7 @@ const rootReducer = combineReducers({
   makeNewCSC,
   toggleSideBar,
   toggleDash,
+  toggleThroughUnits,
 })
 
 export default rootReducer

@@ -8,3 +8,4 @@ export const setMapData = (mapData) => ({type: 'SET_MAP_DATA', mapData})
 
 export const toggleSidebar = bool => ({ type: 'TOGGLE_SIDEBAR', bool })
 export const toggleDash = bool => ({ type: 'TOGGLE_DASH', bool })
+export const toggleThroughUnits = () => ({ type: 'TOGGLE_THROUGH_UNITS' })

@@ -55,7 +55,9 @@ class App extends Component{
           sidebar={this.props.sidebar}
         />
         <TopBar actions={actions} />
-        <MapControls actions={actions} />
+        <MapControls actions={actions}
+          viewport={mapStateToProps.viewport}
+          unit={this.props.unit} />
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
@@ -75,6 +77,7 @@ const mapStateToProps = state => ({
   newCSC: state.makeNewCSC.newCSC,
   sidebar: state.toggleSideBar.sidebar,
   dash: state.toggleDash.dash,
+  unit: state.toggleThroughUnits.unit,
 })
 
 const mapDispatchToProps = dispatch => ({
