@@ -160,6 +160,14 @@ function viewportControls(state = initialState, action) {
       return Object.assign({}, state, {
         viewport : action.newViewport,
       })
+    case 'ZOOM':
+      return ({
+        ...state,
+        viewport: {
+          ...state.viewport,
+          zoom: state.viewport.zoom + action.zoom,
+        }
+      })
     default:
       return state
   }
