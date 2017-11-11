@@ -36,6 +36,7 @@ const initialState = {
   layerTrayOpen: true,
   unitIndex: 0,
   unit: UNITS[0],
+  userLocation: false,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -146,8 +147,19 @@ function makeNewCSC(state = initialState, action) {
   }
 }
 
-function viewportControls(state = initialState, action) {
+function setUserLocation(state = initialState, action) {
   switch (action.type){
+    case 'SET_USER_LOCATION':
+      return Object.assign({}, state, {
+        userLocation : action.location,
+      })
+    default:
+      return state
+    }
+}
+
+function viewportControls(state = initialState, action) {
+  switch (action.type) {
     case 'RESIZE_VIEWPORT':
       return ({
         ...state,
@@ -169,6 +181,17 @@ function viewportControls(state = initialState, action) {
           zoom: state.viewport.zoom + action.zoom,
         }
       })
+    case 'GO_TO_USER_LOCATION':
+      if (state.userLocation) {
+        return ({
+          ...state,
+          viewport: {
+            ...state.viewport,
+            latitude: state.userLocation.latitude,
+            longitude: state.userLocation.longitude,
+          }
+        })
+      }
     default:
       return state
   }
@@ -196,6 +219,7 @@ const rootReducer = combineReducers({
   toggleDash,
   toggleThroughUnits,
   layerControl,
+  setUserLocation,
 })
 
 export default rootReducer

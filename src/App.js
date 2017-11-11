@@ -32,6 +32,25 @@ class App extends Component{
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
     })
+    this.initGeolocation()
+  }
+
+  initGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getGeolocation)
+    } else {
+      console.error('Geolocation not supported by this browser') // or some other notification
+    }
+  }
+
+  getGeolocation = (position) => {
+    const latitude = position.coords.latitude
+    const longitude = position.coords.longitude
+    if (latitude && longitude) {
+      this.props.actions.setUserLocation({ latitude, longitude })
+    } else {
+      console.error('Invalid location data')
+    }
   }
 
   componentWillUnmount = () => {
@@ -55,10 +74,12 @@ class App extends Component{
           sidebar={this.props.sidebar}
         />
         <TopBar actions={actions} />
-        <MapControls actions={actions}
+        <MapControls
+          actions={actions}
           viewport={mapStateToProps.viewport}
           layerTrayOpen={this.props.layerTrayOpen}
-          unit={this.props.unit} />
+          unit={this.props.unit}
+          userLocation={this.props.userLocation}/>
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
@@ -79,7 +100,8 @@ const mapStateToProps = state => ({
   sidebar: state.toggleSideBar.sidebar,
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,
-  layerTrayOpen: state.layerControl.layerTrayOpen
+  layerTrayOpen: state.layerControl.layerTrayOpen,
+  userLocation: state.setUserLocation.userLocation,
 })
 
 const mapDispatchToProps = dispatch => ({
