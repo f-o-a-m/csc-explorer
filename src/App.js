@@ -101,7 +101,6 @@ const mapStateToProps = state => ({
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,
   layerTrayOpen: state.layerControl.layerTrayOpen,
-  userLocation: state.setUserLocation.userLocation,
 })
 
 const mapDispatchToProps = dispatch => ({
