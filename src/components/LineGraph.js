@@ -113,20 +113,7 @@ class LineGraph extends Component {
             strokeWidth={1}
             curve={curveMonotoneX}
           />
-          <Line
-            from={new Point({x:0, y:12})}
-            to={new Point({x:width, y:12})}
-            stroke={'#ffffff'}
-            opacity={0.5}
-            strokeWidth={1}
-          />
-          <Line
-            from={new Point({x:0, y:height-1})}
-            to={new Point({x:width, y:height-1})}
-            stroke={'#ffffff'}
-            opacity={0.5}
-            strokeWidth={1}
-          />
+
           <Bar
             x={0}
             y={0}
@@ -167,7 +154,7 @@ class LineGraph extends Component {
                 from={{ x: tooltipLeft, y: 0 }}
                 to={{ x: tooltipLeft, y: yMax }}
                 stroke="#2F80ED"
-                strokeWidth={2}
+                strokeWidth={1}
                 style={{ pointerEvents: 'none' }}
               />
               <circle
@@ -203,20 +190,20 @@ class LineGraph extends Component {
               style={{
                 backgroundColor: '#2F80ED',
                 color: 'white',
-                transform: 'translateX(-50%)',
+                transform: 'translate(-50%, -50%)',
                 borderRadius: 999,
               }}
             >
               {`$${yPrice(tooltipData)}`}
             </Tooltip>
             <Tooltip
-              top={yMax - 14}
+              bottom={0}
               left={tooltipLeft}
               style={{
                 backgroundColor: '#242424',
                 border: "1px solid #2F80ED",
                 color: 'white',
-                transform: 'translateX(-50%)',
+                transform: 'translate(-50%, -50%)',
                 borderRadius: 999,
                 whiteSpace: 'nowrap',
               }}
