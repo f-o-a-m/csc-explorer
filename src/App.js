@@ -64,13 +64,11 @@ class App extends Component{
       <div className={'app'}>
         <Dash
           actions={actions}
-          dash={this.props.dash}
-          />
+          dash={this.props.dash} />
         <SideBar
           viewport={mapStateToProps.viewport}
-          newCSC={this.props.newCSC}
           actions={actions}
-          info={this.props.info}
+          cardData={this.props.cards}
           sidebar={this.props.sidebar}
         />
         <TopBar actions={actions} />
@@ -78,8 +76,7 @@ class App extends Component{
           actions={actions}
           viewport={mapStateToProps.viewport}
           layerTrayOpen={this.props.layerTrayOpen}
-          unit={this.props.unit}
-          userLocation={this.props.userLocation}/>
+          unit={this.props.unit} />
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
@@ -94,9 +91,8 @@ class App extends Component{
 
 const mapStateToProps = state => ({
   viewport: state.viewportControls.viewport,
-  info: state.getMapsItemInfo.info, //picker
+  cards: state.cardControl.cards,
   mapData: state.setMapData.mapData,
-  newCSC: state.makeNewCSC.newCSC,
   sidebar: state.toggleSideBar.sidebar,
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,

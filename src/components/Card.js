@@ -95,7 +95,7 @@ class Card extends Component {
       <div className={`cardContainer ${statusStyle} ${cardType}`}>
         <button
           className={'button-closeCard'}
-          onClick={(e) => props.actions.removeMapsItemInfo(props.index)}>
+          onClick={(e) => props.actions.removeMapItemInfo(props.index)}>
           <span>{'×'}</span>
         </button>
         {content}

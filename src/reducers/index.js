@@ -24,11 +24,17 @@ const cards = [
   },
 ]
 
+const newMapItemCard = {
+    title: 'Create CSC',
+    status: "STATUS_INFO",
+    type: "SUBMIT",
+  }
+
 const UNITS = ['LATLONG', 'GEOHASH']
 
 const initialState = {
   mapData: [],
-  info: cards,
+  cards: cards,
   cellsAreExtruded: false,
   newCSC: true,
   sidebar: true,
@@ -117,41 +123,28 @@ function toggleThroughUnits(state = initialState, action) {
   }
 }
 
-
-// What's the data type when getting new info from the API?
-function getMapsItemInfo(state = initialState, action) {
+function cardControl(state = initialState, action) {
   switch (action.type){
     case 'GET_MAP_ITEM_INFO':
     action.info.type = "MARKER"
     return Object.assign({}, state, {
-      info : [action.info], //replaces the list
+      cards : [action.info],
+    })
+    case 'INIT_NEW_MAP_ITEM':
+    const newCards = [newMapItemCard, ...state.cards]
+    return Object.assign({}, state, {
+      cards : newCards,
     })
     case 'REMOVE_MAP_ITEM_INFO':
     return Object.assign({}, state, {
-      info : [
-          ...state.info.slice(0, action.index),
-          ...state.info.slice(action.index + 1)
+      cards : [
+          ...state.cards.slice(0, action.index),
+          ...state.cards.slice(action.index + 1)
       ]
     })
     default:
       return state
   }
-}
-
-// What's the data type when getting new info from the API?
-function makeNewCSC(state = initialState, action) {
-  switch (action.type){
-    case 'NEW_MAP_ITEM':
-    return Object.assign({}, state, {
-      newCSC : !state.newCSC, //replaces the list
-    })
-    default:
-      return state
-  }
-}
-
-function setUserLocation(state = initialState, action) {
-
 }
 
 function viewportControls(state = initialState, action) {
@@ -178,12 +171,10 @@ function viewportControls(state = initialState, action) {
         }
       })
     case 'SET_USER_LOCATION':
-      console.log('set', action.location)
       return Object.assign({}, state, {
         userLocation : action.location,
     })
     case 'GO_TO_USER_LOCATION':
-      console.log('goto', state.userLocation)
       if (state.userLocation.longitude && state.userLocation.latitude) {
         return ({
           ...state,
@@ -214,9 +205,8 @@ function layerControl(state = initialState, action) {
 const rootReducer = combineReducers({
   mapControls,
   viewportControls,
-  getMapsItemInfo,
+  cardControl,
   setMapData,
-  makeNewCSC,
   toggleSideBar,
   toggleDash,
   toggleThroughUnits,
