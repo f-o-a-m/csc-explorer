@@ -1,31 +1,27 @@
 import React from 'react'
-import Card from './Card'
+import classnames from 'classnames'
+import CardColumn from './CardColumn'
 
-const newCSC =
-  {
-    title: 'Create CSC',
-    status: "STATUS_INFO",
-    type: "SUBMIT",
-  }
 
 const SideBar = (props) => {
-  let data = props.info
+  const sideBarClasses = classnames({
+    'sidebar-open': props.sidebar,
+    'sidebar-closed': !props.sidebar,
+  })
 
-  const cards = data.map((info, i) => {
-    return <Card info={info} key={i} index={i} actions={props.actions}/>
+  const collapseSidebarClasses = classnames({
+    'button-collapseSidebar-open': props.sidebar,
+    'button-collapseSidebar-closed': !props.sidebar,
   })
 
   return (
-    <aside id={'sideBarContainer'} className={props.sidebar ? '' : 'closed'}>
+    <aside id={'sideBarContainer'} className={sideBarClasses}>
       <div id={'searchWrapper'}>
         <input id={'searchbar'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
-        <div id={'sideBarCollapse'} onClick={(e) => props.actions.toggleSidebar()}> {props.sidebar ? '<' : '>'} </div>
+        <button id={'button-collapseSidebar'} className={collapseSidebarClasses} onClick={(e) => props.actions.toggleSidebar()}>{'<'}</button>
       </div>
-      <div id={'cardColumn'}>
-      {props.newCSC ? <Card viewport={props.viewport} info={newCSC} actions={props.actions}/> : null}
-      { cards }
-      </div>
+      <CardColumn cardList={props.cardList} actions={props.actions} viewport={props.viewport}/>
     </aside>
   )
 }
