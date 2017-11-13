@@ -25,6 +25,10 @@ const DUMMY_TRANSACTIONS = [
   }
 ]
 
+const DUMMY_ACCOUNT = {
+
+}
+
 const Dash = (props) => {
   const dashStateClasses = classnames({
     'dash-closed': !props.dash,
@@ -32,11 +36,14 @@ const Dash = (props) => {
   })
   return (
     <aside id={'dash-container'} className={dashStateClasses}>
-        <TransactionList />
-        <span className={'dash-column-large'}>
-          <Stats />
-          <AccountInfo />
-        </span>
+      <span className={'dash-column-small'}>
+        <AccountGlance />
+        <CardColumn cardList={DUMMY_TRANSACTIONS} viewport={false} actions={props.actions} />
+      </span>
+      <span className={'dash-column-large'}>
+        <Stats />
+        <AccountInfo accountInfo={DUMMY_ACCOUNT} />
+      </span>
       <CloseButton closable={true} close={() => props.actions.toggleDash()} />
     </aside>
   )
@@ -47,17 +54,12 @@ const Stats = (props) => {
   const width = window.innerWidth - 360 - 32 - 32 - 32 - 32 - 32 - 32
   return (
     <section className={'dash-tile'}>
-      <h1>{'FOAM Network Information'}</h1>
+      <div className={'dash-heading'}>
+        <h1>{'FOAM Network Information'}</h1>
+        <RangeControl />
+      </div>
       <Hud />
       <div className={'dash-stats-d3'}>
-        <div className={'dash-stats-rangeControl'}>
-          <button className={'selected'}>{'1H'}</button>
-          <button className={''}>{'1D'}</button>
-          <button className={''}>{'1W'}</button>
-          <button className={''}>{'1M'}</button>
-          <button className={''}>{'1Y'}</button>
-          <button className={''}>{'All'}</button>
-        </div>
         <div className={'dash-linegraph-container'}>
           <LineGraph
             width = { width }
@@ -71,22 +73,26 @@ const Stats = (props) => {
 }
 
 const Hud = (props) => {
+  let tokenPriceStats = [
+    <StatDatum unit={'FT'} value={1} prefixSymbol />,
+    <StatDatum unit={'ETH'} value={0.165} />,
+    <StatDatum unit={'BTC'} value={0.023} />,
+  ]
+
+  let deltas = [
+    <StatDatum unit={'%'} value={-58.3} styleSign />,
+    <StatDatum unit={'ETH'} value={0.12} styleSign />,
+    <StatDatum unit={'BTX'} value={0.008} styleSign />,
+  ]
+
   return (
     <div className={'dash-stats-hud'}>
-      {
-      //  <h4>{'Foam Price'}</h4>
-      }
+      <StatModule stats={tokenPriceStats} title={'FOAM Token Price'}/>
+      <StatModule stats={deltas} title={'Change Over Time'} />
     </div>
   )
 }
 
-const TransactionList = (props) => {
-  return (
-    <span className={'dash-column-small'}>
-      <CardColumn cardList={DUMMY_TRANSACTIONS} viewport={false} actions={props.actions} />
-    </span>
-  )
-}
 
 const AccountInfo = (props) => {
   return (
@@ -94,6 +100,49 @@ const AccountInfo = (props) => {
       <h1>{'Account Information'}</h1>
 
     </section>
+  )
+}
+
+const StatDatum = ({ unit, value, styleSign, prefixSymbol }) => {
+  const valueStyle = classnames({
+    loss: styleSign && value < 0,
+    gain: styleSign && value > 0,
+  })
+  return (
+    <div className={'statDatum-wrapper'}>
+      { prefixSymbol ? <img className={'img-ft'} src={'/foam_token.png'} /> : null }
+      <div className={`statDatum-value ${valueStyle}`}>{ value }</div>
+      <div className={'statDatum-unit'}>{ unit }</div>
+    </div>
+  )
+}
+
+const StatModule = ({ title, stats }) => {
+  return (
+    <div className={'stat-module'}>
+      { stats }
+    </div>
+  )
+}
+
+const RangeControl = ({ setRange }) => {
+  return (
+    <div className={'dash-stats-rangeControl'}>
+      <button className={'selected'}>{'1H'}</button>
+      <button className={''}>{'1D'}</button>
+      <button className={''}>{'1W'}</button>
+      <button className={''}>{'1M'}</button>
+      <button className={''}>{'1Y'}</button>
+      <button className={''}>{'All'}</button>
+    </div>
+  )
+}
+
+const AccountGlance = ({ accountInfo }) => {
+  return (
+    <div className={'dash-accountStats'}>
+      <h3>{'Account Overview'}</h3>
+    </div>
   )
 }
 

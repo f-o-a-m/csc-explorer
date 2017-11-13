@@ -15,7 +15,7 @@ const CardColumn = ({actions, cardList, viewport}) => {
   })
 
   return (
-    <div id={'cardColumn'}>
+    <div className={'cardColumn'}>
       { cards }
     </div>
   )

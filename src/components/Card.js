@@ -92,19 +92,19 @@ class Card extends Component {
     let content
     switch (info.type) {
       case 'INFO':
-        content = <Info info={info} actions={actions}/>
+        content = <Info info={info} actions={actions} />
         break
       case 'MARKER':
-        content = <Marker info={info} actions={actions}/>
+        content = <Marker info={info} actions={actions} />
         break
       case 'SUBMIT':
-        content = <Submit info={info} actions={actions} viewport={viewport}/>
+        content = <Submit info={info} actions={actions} viewport={viewport}/ >
         break
       case 'TRANSACTION':
         content = <Transaction info={info} />
         break
       default:
-        content = <NoData info={info} actions={actions}/>
+        content = <NoData info={info} actions={actions} />
         break
     }
 

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import classnames from 'classnames'
+
 import base from './api/db'
 
 import * as MapActions from './actions'
+
 import Map from './components/Map'
 import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
@@ -60,11 +63,13 @@ class App extends Component{
 
  render () {
   const {actions, store, ...mapStateToProps} = this.props
+  const desat = classnames({ desat: this.props.dash })
     return (
       <div className={'app'}>
         <Dash
           actions={actions}
           dash={this.props.dash} />
+        <div className={`desatFilter ${desat}`} />
         <SideBar
           viewport={mapStateToProps.viewport}
           actions={actions}

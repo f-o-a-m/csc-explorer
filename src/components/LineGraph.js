@@ -80,26 +80,7 @@ class LineGraph extends Component {
             width={width}
             height={height}
             fill={'transparent'} />
-          <defs>
-            <linearGradient
-              id="gradient"
-              x1="0%"
-              y1="0%"
-              x2="0%"
-              y2="100%"
-            >
-              <stop
-                offset="0%"
-                stopColor="#FFFFFF"
-                stopOpacity={1}
-              />
-              <stop
-                offset="100%"
-                stopColor="#FFFFFF"
-                stopOpacity={0}
-              />
-            </linearGradient>
-          </defs>
+
           <LinePath
             data={stock}
             xScale={xScale}
