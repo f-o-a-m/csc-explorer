@@ -9,16 +9,18 @@ const DUMMY_TRANSACTIONS = [
     date: 'Jan 30th, 2017',
     title: 'Deposited to CSC',
     ethAddress: '0x4defA30195094963cFAc7285',
-    balance:'-1.23',
+    value:'-1.23',
+    unit: 'FT',
     closable: false,
     type: 'TRANSACTION',
     status: 'STATUS_INFO',
   },
   {
     date: 'Jan 29th, 2017',
-    title: 'Deposited to CSC',
+    title: 'Withdrew from CSC',
     ethAddress: '0x4defA30195sdf344cFAc7285',
-    balance:'-2.2',
+    value:'2.2',
+    unit: 'FT',
     closable: false,
     type: 'TRANSACTION',
     status: 'STATUS_INFO',
@@ -64,7 +66,7 @@ const Stats = (props) => {
         <div className={'dash-linegraph-container'}>
           <LineGraph
             width = { width }
-            height = {300}
+            height = { 300 }
             margin = {{ left:0, right:0, top:0, bottom: 0 }}
           />
         </div>
@@ -144,8 +146,10 @@ const AccountGlance = ({ accountInfo }) => {
   return (
     <div className={'dash-accountGlance'}>
       <h3>{'Account Overview'}</h3>
-      <StatDatum unit={'FT'} value={balFT} prefixSymbol />
-      <StatDatum unit={'ETH'} value={balEth} />
+      <div className={'stat-module'}>
+        <StatDatum unit={'FT'} value={balFT} prefixSymbol />
+        <StatDatum unit={'ETH'} value={balEth} />
+      </div>
     </div>
   )
 }

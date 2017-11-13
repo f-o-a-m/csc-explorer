@@ -64,20 +64,28 @@ function NoData() {
 }
 
 function Transaction({info}) {
-  const {date, title, ethAddress, balance} = info
+  const {date, title, ethAddress, value, unit} = info
+  const valueStyle = classnames({
+    loss: value < 0,
+    gain: value > 0,
+  })
   return (
     <span className={'card-lightWrap'}>
       <div className={'transaction-heading'}>
         <div className={'transaction-title'}>{title}</div>
-        <div className={'transaction-balance'}>{balance}<i>{' FT'}</i></div>
+        <div className={'transactionDatum-wrapper'}>
+          <div className={`transactionDatum-value ${valueStyle}`}>{ value }</div>
+          <div className={'transactionDatum-unit'}>{ unit }</div>
+        </div>
       </div>
       <div className={'transaction-metadata'}>
-        <div className={'transaction-date'}><i>{date}</i></div>
-        <div className={'transaction-address'}><i>{ethAddress}</i></div>
+        <div className={'transaction-date'}>{date}</div>
+        <div className={'transaction-address'}>{ethAddress}</div>
       </div>
     </span>
   )
 }
+
 
 class Card extends Component {
   render() {
