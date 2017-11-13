@@ -26,7 +26,8 @@ const DUMMY_TRANSACTIONS = [
 ]
 
 const DUMMY_ACCOUNT = {
-
+  balFT: 135,
+  balEth: 1.344,
 }
 
 const Dash = (props) => {
@@ -37,12 +38,12 @@ const Dash = (props) => {
   return (
     <aside id={'dash-container'} className={dashStateClasses}>
       <span className={'dash-column-small'}>
-        <AccountGlance />
+        <AccountGlance accountInfo={DUMMY_ACCOUNT} />
         <CardColumn cardList={DUMMY_TRANSACTIONS} viewport={false} actions={props.actions} />
       </span>
       <span className={'dash-column-large'}>
         <Stats />
-        <AccountInfo accountInfo={DUMMY_ACCOUNT} />
+        <AccountDetails />
       </span>
       <CloseButton closable={true} close={() => props.actions.toggleDash()} />
     </aside>
@@ -55,7 +56,7 @@ const Stats = (props) => {
   return (
     <section className={'dash-tile'}>
       <div className={'dash-heading'}>
-        <h1>{'FOAM Network Information'}</h1>
+        <h3>{'FOAM Network Information'}</h3>
         <RangeControl />
       </div>
       <Hud />
@@ -94,10 +95,10 @@ const Hud = (props) => {
 }
 
 
-const AccountInfo = (props) => {
+const AccountDetails = (props) => {
   return (
     <section className={'dash-tile'}>
-      <h1>{'Account Information'}</h1>
+      <h3>{'Account Details'}</h3>
 
     </section>
   )
@@ -139,9 +140,12 @@ const RangeControl = ({ setRange }) => {
 }
 
 const AccountGlance = ({ accountInfo }) => {
+  const { balEth, balFT } = accountInfo
   return (
-    <div className={'dash-accountStats'}>
+    <div className={'dash-accountGlance'}>
       <h3>{'Account Overview'}</h3>
+      <StatDatum unit={'FT'} value={balFT} prefixSymbol />
+      <StatDatum unit={'ETH'} value={balEth} />
     </div>
   )
 }

@@ -80,7 +80,6 @@ class LineGraph extends Component {
             width={width}
             height={height}
             fill={'transparent'} />
-
           <LinePath
             data={stock}
             xScale={xScale}
