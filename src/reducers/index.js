@@ -189,6 +189,7 @@ function viewportControls(state = initialState, action) {
           }
         })
       }
+      break
     default:
       return state
   }

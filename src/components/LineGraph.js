@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 
-import { AreaClosed, Line, Bar, LinePath } from '@vx/shape'
+import { Line, Bar, LinePath } from '@vx/shape'
 import { appleStock } from '@vx/mock-data'
 import { curveMonotoneX } from '@vx/curve'
-import { LinearGradient } from '@vx/gradient'
-import { GridRows, GridColumns } from '@vx/grid'
 import { scaleTime, scaleLinear } from '@vx/scale'
 import { withTooltip, Tooltip } from '@vx/tooltip'
 import { localPoint } from '@vx/event'
-import { Point } from '@vx/point'
 import { extent, max, bisector } from 'd3-array'
 import { timeFormat } from 'd3-time-format'
 

@@ -3,8 +3,6 @@ import classnames from 'classnames'
 
 const Bubble = ({data, getMapItemInfo}) => {
 
-  const hasSubTokens = data.subTokens > 0 ? true : false
-
   const tokenType = classnames({
     'green_bg': data.status === 'STATUS_ACTIVE',
     'blue_bg': data.status === 'STATUS_PROPOSAL',
