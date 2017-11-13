@@ -68,7 +68,7 @@ class App extends Component{
         <SideBar
           viewport={mapStateToProps.viewport}
           actions={actions}
-          cardData={this.props.cards}
+          cardList={this.props.cardList}
           sidebar={this.props.sidebar}
         />
         <TopBar actions={actions} />
@@ -91,7 +91,7 @@ class App extends Component{
 
 const mapStateToProps = state => ({
   viewport: state.viewportControls.viewport,
-  cards: state.cardControl.cards,
+  cardList: state.cardControl.cardList,
   mapData: state.setMapData.mapData,
   sidebar: state.toggleSideBar.sidebar,
   dash: state.toggleDash.dash,

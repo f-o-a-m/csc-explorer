@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
+import { CloseButton } from './Atomics'
 
 function Info({info, actions}) {
   return (
@@ -62,42 +63,54 @@ function NoData() {
   )
 }
 
+function Transaction({info}) {
+  const {date, title, ethAddress, balance} = info
+  return (
+    <span className={'card-lightWrap'}>
+      <div className={'transaction-heading'}>
+        <div className={'transaction-title'}>{title}</div>
+        <div className={'transaction-balance'}>{balance}<i>{' FT'}</i></div>
+      </div>
+      <div className={'transaction-metadata'}>
+        <div className={'transaction-date'}><i>{date}</i></div>
+        <div className={'transaction-address'}><i>{ethAddress}</i></div>
+      </div>
+    </span>
+  )
+}
+
 class Card extends Component {
   render() {
-    const props = this.props
-    const cardType = classnames({
-      'info': props.info.type === 'INFO',
-      'marker': props.info.status === 'MARKER',
-    })
+    const { info, actions, viewport, index } = this.props
 
     const statusStyle = classnames({
-      'green_bg': props.info.status === 'STATUS_ACTIVE',
-      'blue_bg': props.info.status === 'STATUS_PROPOSAL',
-      'darkGrey_bg': props.info.status === 'STATUS_INFO',
+      'green_bg': info.status === 'STATUS_ACTIVE',
+      'blue_bg': info.status === 'STATUS_PROPOSAL',
+      'darkGrey_bg': info.status === 'STATUS_INFO',
     })
 
     let content
-    switch (props.info.type) {
+    switch (info.type) {
       case 'INFO':
-        content = <Info info={props.info} actions={props.actions}/>
+        content = <Info info={info} actions={actions}/>
         break
       case 'MARKER':
-        content = <Marker info={props.info} actions={props.actions}/>
+        content = <Marker info={info} actions={actions}/>
         break
       case 'SUBMIT':
-        content = <Submit info={props.info} actions={props.actions} viewport={props.viewport}/>
+        content = <Submit info={info} actions={actions} viewport={viewport}/>
+        break
+      case 'TRANSACTION':
+        content = <Transaction info={info} />
         break
       default:
-        content = <NoData info={props.info} actions={props.actions}/>
+        content = <NoData info={info} actions={actions}/>
         break
     }
+
     return (
-      <div className={`cardContainer ${statusStyle} ${cardType}`}>
-        <button
-          className={'button-closeCard'}
-          onClick={(e) => props.actions.removeMapItemInfo(props.index)}>
-          <span>{'×'}</span>
-        </button>
+      <div className={`cardContainer ${statusStyle}`}>
+        <CloseButton closable={info.closable} close={() => actions.removeMapItemInfo(index)} />
         {content}
       </div>
     )

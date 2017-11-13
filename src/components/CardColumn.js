@@ -2,9 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 import Card from './Card'
 
-const CardColumn = ({actions, cardData, viewport}) => {
+const CardColumn = ({actions, cardList, viewport}) => {
 
-  const cards = cardData.map((info, i) => {
+  const cards = cardList.map((info, i) => {
     return (
       <Card
         info={info}

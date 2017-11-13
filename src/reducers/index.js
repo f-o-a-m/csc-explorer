@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
 
-const cards = [
+const initalCardList = [
   {
     title: 'Welcome to FOAM',
     message: 'We are a protocol built to store and verify spatial addresses. Feel free to browse the map or take a look at the options below!',
     buttonText: 'Claim Your 5 FOAM tokens',
     status: "STATUS_INFO",
     type: "INFO",
+    closable: true,
   },
   {
     title: 'Case Study',
@@ -14,6 +15,7 @@ const cards = [
     buttonText: 'See the Case Study',
     status: "STATUS_ACTIVE",
     type: "INFO",
+    closable: true,
   },
   {
     title: 'Add A Coordinate',
@@ -21,6 +23,7 @@ const cards = [
     buttonText: 'Create a Cryptospastial Coordinate',
     status: "STATUS_PROPOSAL",
     type: "INFO",
+    closable: true,
   },
 ]
 
@@ -28,13 +31,14 @@ const newMapItemCard = {
     title: 'Create CSC',
     status: "STATUS_INFO",
     type: "SUBMIT",
+    closable: true,
   }
 
 const UNITS = ['LATLONG', 'GEOHASH']
 
 const initialState = {
   mapData: [],
-  cards: cards,
+  cardList: initalCardList,
   cellsAreExtruded: false,
   newCSC: true,
   sidebar: true,
@@ -128,18 +132,18 @@ function cardControl(state = initialState, action) {
     case 'GET_MAP_ITEM_INFO':
     action.info.type = "MARKER"
     return Object.assign({}, state, {
-      cards : [action.info],
+      cardList : [action.info],
     })
     case 'INIT_NEW_MAP_ITEM':
-    const newCards = [newMapItemCard, ...state.cards]
+    const newCards = [newMapItemCard, ...state.cardList]
     return Object.assign({}, state, {
-      cards : newCards,
+      cardList : newCards,
     })
     case 'REMOVE_MAP_ITEM_INFO':
     return Object.assign({}, state, {
-      cards : [
-          ...state.cards.slice(0, action.index),
-          ...state.cards.slice(action.index + 1)
+      cardList : [
+          ...state.cardList.slice(0, action.index),
+          ...state.cardList.slice(action.index + 1)
       ]
     })
     default:

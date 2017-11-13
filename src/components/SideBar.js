@@ -22,7 +22,7 @@ const SideBar = (props) => {
         <div id={'glass'}>{'🔎'}</div>
         <button id={'button-collapseSidebar'} className={collapseSidebarClasses} onClick={(e) => props.actions.toggleSidebar()}>{'<'}</button>
       </div>
-      <CardColumn cardData={props.cardData} actions={props.actions} viewport={props.viewport}/>
+      <CardColumn cardList={props.cardList} actions={props.actions} viewport={props.viewport}/>
     </aside>
   )
 }

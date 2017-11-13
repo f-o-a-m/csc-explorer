@@ -1,6 +1,29 @@
 import React from 'react'
 import classnames from 'classnames'
 import LineGraph from './LineGraph'
+import CardColumn from './CardColumn'
+import { CloseButton } from './Atomics'
+
+const DUMMY_TRANSACTIONS = [
+  {
+    date: 'Jan 30th, 2017',
+    title: 'Deposited to CSC',
+    ethAddress: '0x4defA30195094963cFAc7285',
+    balance:'-1.23',
+    closable: false,
+    type: 'TRANSACTION',
+    status: 'STATUS_INFO',
+  },
+  {
+    date: 'Jan 29th, 2017',
+    title: 'Deposited to CSC',
+    ethAddress: '0x4defA30195sdf344cFAc7285',
+    balance:'-2.2',
+    closable: false,
+    type: 'TRANSACTION',
+    status: 'STATUS_INFO',
+  }
+]
 
 const Dash = (props) => {
   const dashStateClasses = classnames({
@@ -14,11 +37,7 @@ const Dash = (props) => {
           <Stats />
           <AccountInfo />
         </span>
-      <button
-        className={'button-closeDash'}
-        onClick={() => props.actions.toggleDash()}>
-        <span>{'×'}</span>
-      </button>
+      <CloseButton closable={true} close={() => props.actions.toggleDash()} />
     </aside>
   )
 }
@@ -64,6 +83,7 @@ const Hud = (props) => {
 const TransactionList = (props) => {
   return (
     <span className={'dash-column-small'}>
+      <CardColumn cardList={DUMMY_TRANSACTIONS} viewport={false} actions={props.actions} />
     </span>
   )
 }
