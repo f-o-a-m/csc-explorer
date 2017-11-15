@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import classnames from 'classnames'
+
 import base from './api/db'
 
 import * as MapActions from './actions'
+
 import Map from './components/Map'
 import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
+import Dash from './components/Dash'
 
 const FAKE_DATA_SOURCE_NAME = 'data'
 
@@ -26,11 +30,30 @@ class App extends Component{
   componentDidMount = () => {
     this.resizeViewport()
     window.addEventListener('resize', this.resizeViewport)
-    base.listenTo(FAKE_DATA_SOURCE_NAME, {
+    base.listenTo( FAKE_DATA_SOURCE_NAME, {
       context: this,
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
     })
+    this.initGeolocation()
+  }
+
+  initGeolocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getGeolocation)
+    } else {
+      console.error('Geolocation not supported by this browser') // or some other notification
+    }
+  }
+
+  getGeolocation = (position) => {
+    const latitude = position.coords.latitude
+    const longitude = position.coords.longitude
+    if (latitude && longitude) {
+      this.props.actions.setUserLocation({ latitude, longitude })
+    } else {
+      console.error('Invalid location data')
+    }
   }
 
   componentWillUnmount = () => {
@@ -40,15 +63,25 @@ class App extends Component{
 
  render () {
   const {actions, store, ...mapStateToProps} = this.props
+  const desat = classnames({ desat: this.props.dash })
     return (
       <div className={'app'}>
+        <Dash
+          actions={actions}
+          dash={this.props.dash} />
+        <div className={`desatFilter ${desat}`} />
         <SideBar
           viewport={mapStateToProps.viewport}
-          newCSC={this.props.newCSC}
           actions={actions}
-          info={this.props.info}/>
+          cardList={this.props.cardList}
+          sidebar={this.props.sidebar}
+        />
         <TopBar actions={actions} />
-        <MapControls actions={actions}/>
+        <MapControls
+          actions={actions}
+          viewport={mapStateToProps.viewport}
+          layerTrayOpen={this.props.layerTrayOpen}
+          unit={this.props.unit} />
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
@@ -63,9 +96,12 @@ class App extends Component{
 
 const mapStateToProps = state => ({
   viewport: state.viewportControls.viewport,
-  info: state.getMapsItemInfo.info, //picker
+  cardList: state.cardControl.cardList,
   mapData: state.setMapData.mapData,
-  newCSC: state.makeNewCSC.newCSC,
+  sidebar: state.toggleSideBar.sidebar,
+  dash: state.toggleDash.dash,
+  unit: state.toggleThroughUnits.unit,
+  layerTrayOpen: state.layerControl.layerTrayOpen,
 })
 
 const mapDispatchToProps = dispatch => ({
