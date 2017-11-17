@@ -1,5 +1,5 @@
 [![Latest release](http://img.shields.io/github/release/f-o-a-m/foam.proto-frontend.svg?branch=master)](https://github.com/f-o-a-m/foam.proto-frontend/releases)
-[![Build status](https://travis-ci.com/f-o-a-m/foam.proto-frontend.svg?branch=master)](https://travis-ci.com/f-o-a-m/foam.proto-frontend?branch=master)
+[![Build status](https://travis-ci.com/f-o-a-m/foam.proto-frontend.svg?branch=travis)](https://travis-ci.com/f-o-a-m/foam.proto-frontend?branch=travis)
 
 # foam.proto-frontend
 
