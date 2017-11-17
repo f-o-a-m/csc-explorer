@@ -1,4 +1,4 @@
-# Foam.proto-frontend
+# foam.proto-frontend
 
 ## Installation
 
