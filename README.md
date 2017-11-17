@@ -1,4 +1,13 @@
-# Foam.proto-frontend
+# foam.proto-frontend
+
+## Installation
+
+We use git submodules so make sure you clone recursively:
+
+```bash
+git clone --recursive https://github.com/f-o-a-m/foam.proto-frontend
+cd foam.proto-frontend
+```
 
 ## On first run:
 1. `npm install` or `yarn add all`
