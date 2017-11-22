@@ -1,13 +1,6 @@
 import React from 'react'
 import ngeohash from 'ngeohash'
 
-const LAYER_LIST = [
-  {
-    title: 'Heatmap',
-    key: 'HEATMAP',
-  },
-]
-
 const MapControls = (props) => {
   const swapUnits = () => {
     switch (props.unit) {
@@ -20,21 +13,14 @@ const MapControls = (props) => {
         return `${gh}`
     }
   }
+
   return (
     <footer id={'mapControlsContainer'}>
-      <button className={'button-layers'} onClick={() => props.actions.toggleLayerTray()}>{'•'}</button>
       <button className={'button-location'} onClick={() => props.actions.toggleThroughUnits()}>{swapUnits()}</button>
       <button className={'button-zoomIn'} onClick={() => props.actions.zoom(0.5)}>{'+'}</button>
       <button className={'button-zoomOut'} onClick={() => props.actions.zoom(-0.5)}>{'-'}</button>
       <button className={'button-zenith'} onClick={() => props.actions.goToUserLocation()}>{'⦿'}</button>
-      <Layers {...props} />
     </footer>
-  )
-}
-
-const Layers = (props) => {
-  return (
-    <div />
   )
 }
 

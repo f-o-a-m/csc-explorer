@@ -74,6 +74,7 @@ class Map extends Component {
     this.getHighlights(culled, e, metric)
     // tell redux
     this.props.actions.onViewportChange(e)
+    this.props.actions.evalLayers(e.zoom)
   }
 
   renderMarkerList = (coords) => {

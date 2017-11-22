@@ -2,15 +2,18 @@
 
 ## On first run:
 1. `npm install` or `yarn add all`
+2. Then, add the foam.css with the following:
+3. `cd src`
+4. `git clone` the foam.css repo in `/src`
+5. Switch to feature branch if necessary
 
 ## Thereafter:
-1. `npm run start` or `yarn start`, both of which run webpack, watch `/src` for changes to `.scss` files and compile sass
+1. `npm run start` or `yarn start`
 
 ## Notes:
-Sass files are imported into `index.scss`. `.scss` files prefixed with `_` will be ignored by node-sass, which is the preprocessor.
+SCSS/CSS is now stored in another repo called foam.CSS
 
 ## Branches:
-- `master` branch that is the reference for other's working on the Purescript Index frontend
-- `Staging`, for coordination between General Trademark
-- `foam.css` stores reference SCSS/CSS
+- `master` branch serves as reference for others working on the Purescript side of the Index.
+- `staging`, for coordination between General Trademark
 - a bunch of feature branches

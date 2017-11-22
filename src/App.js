@@ -12,6 +12,7 @@ import SideBar from './components/SideBar'
 import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 import Dash from './components/Dash'
+import LayerControls from './components/LayerControls'
 
 const FAKE_DATA_SOURCE_NAME = 'data'
 
@@ -66,29 +67,40 @@ class App extends Component{
   const desat = classnames({ desat: this.props.dash })
     return (
       <div className={'app'}>
+
         <Dash
           actions={actions}
           dash={this.props.dash} />
+
         <div className={`desatFilter ${desat}`} />
+
         <SideBar
-          viewport={mapStateToProps.viewport}
+          viewport={this.props.viewport}
           actions={actions}
           cardList={this.props.cardList}
-          sidebar={this.props.sidebar}
-        />
+          sidebar={this.props.sidebar} />
+
         <TopBar actions={actions} />
+
         <MapControls
           actions={actions}
-          viewport={mapStateToProps.viewport}
-          layerTrayOpen={this.props.layerTrayOpen}
+          viewport={this.props.viewport}
           unit={this.props.unit} />
+
+        <LayerControls
+          actions={actions}
+          layerTrayOpen={this.props.layerTrayOpen}
+          layerList={this.props.layerList}
+          zoom={this.props.viewport.zoom} />
+
         <Map
           mapData={mapStateToProps.mapData}
           dispatch={store.dispatch}
           actions={actions}
           info={mapStateToProps.info}
           cellsAreExtruded={mapStateToProps.cellsAreExtruded}
-          viewport={mapStateToProps.viewport} />
+          viewport={this.props.viewport} />
+
       </div>
     )
   }
@@ -102,6 +114,7 @@ const mapStateToProps = state => ({
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,
   layerTrayOpen: state.layerControl.layerTrayOpen,
+  layerList: state.layerControl.layers,
 })
 
 const mapDispatchToProps = dispatch => ({
