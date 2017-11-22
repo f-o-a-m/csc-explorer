@@ -250,9 +250,6 @@ function layerControl(state = initialState, action) {
     })
     case 'TOGGLE_LAYER':
       return {
-        // copy the state, make a unmutated array of layers.
-        // if layer key matches action.key, change layer property with copy of
-        // other local layer object properties. if not, return the layer object
         ...state,
         layers: state.layers.map(layer => {
           if (layer.key === action.key) {
@@ -265,7 +262,7 @@ function layerControl(state = initialState, action) {
       return {
         ...state,
         layers: state.layers.map(layer => layer.key === action.key ?
-          { ...layer, state: 'ON' } :
+          { ...layer, state: layerOn(layer, action.zoom) } :
           layer
         )
       }
