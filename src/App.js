@@ -37,18 +37,19 @@ class App extends Component{
       then(data){ this.props.actions.setMapData(data) }
     })
     this.getGeolocation()
-    .then((position) => {
-      const {latitude, longitude} = position.coords
-      if (latitude && longitude) {
-        this.props.actions.setUserLocation({ latitude, longitude })
-      } else {
+      .then((position) => {
+        const {latitude, longitude} = position.coords
+        if (latitude && longitude) {
+          this.props.actions.setUserLocation({ latitude, longitude })
+        } else {
+          this.props.actions.geolocationRejection()
+          console.error('Invalid location data')
+        }
+      })
+      .catch((err) => {
+        console.error(err)
         this.props.actions.geolocationRejection()
-        console.error('Invalid location data')
-      }
-    })
-    .catch((err) => {
-      this.props.actions.geolocationRejection()
-    })
+      })
   }
 
   getGeolocation = (options) => {
@@ -56,9 +57,6 @@ class App extends Component{
         navigator.geolocation.getCurrentPosition(resolve, reject, options)
       })
     }
-
-
-
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.props.actions.resizeViewport(window.innerWidth, window.innerHeight))
@@ -97,6 +95,8 @@ class App extends Component{
             unit={this.props.unit}
             geolocation={this.props.geolocation} />
         </footer>
+
+        <div className={'depth'} />
 
         <Map
           mapData={mapStateToProps.mapData}

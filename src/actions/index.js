@@ -28,8 +28,11 @@ export const toggleLayer = (key, zoom) => ({ type: 'TOGGLE_LAYER', key, zoom })
 export const openLayer = key => ({ type: 'OPEN_LAYER', key })
 export const closeLayer = key => ({ type: 'CLOSE_LAYER', key })
 export const evalLayers = (zoom) => ({ type: 'EVAL_LAYERS', zoom })
+export const toggleLayerDialog = (key) => ({ type: 'TOGGLE_LAYER_DIALOG', key })
+export const closeLayerDialog = (key) => ({ type: 'CLOSE_LAYER_DIALOG', key })
+export const openLayerDialog = (key) => ({type: 'OPEN_LAYER_DIALOG', key })
 
-//Misc
-export const setUserLocation = (location) => ({type: 'SET_USER_LOCATION', location})
-export const geolocationApproval = () => ({type: 'GEOLOCATION_APPROVAL'})
-export const geolocationRejection = () => ({type: 'GEOLOCATION_REJECTION'})
+// Geolocation
+export const setUserLocation = (location) => ({ type: 'SET_USER_LOCATION', location })
+export const geolocationApproval = () => ({ type: 'GEOLOCATION_APPROVAL' })
+export const geolocationRejection = () => ({ type: 'GEOLOCATION_REJECTION' })

@@ -17,7 +17,7 @@ const SideBar = (props) => {
   return (
     <aside id={'sideBarContainer'} className={sideBarClasses}>
       <div id={'searchWrapper'}>
-        <input id={'searchbar'} placeholder={'Search the FOAM network'}/>
+        <input type={'text'} id={'searchbar'} placeholder={'Search the FOAM network'}/>
         <div id={'glass'}>{'🔎'}</div>
         <button id={'button-collapseSidebar'} className={collapseSidebarClasses} onClick={(e) => props.actions.toggleSidebar()}>{'<'}</button>
       </div>

@@ -34,7 +34,6 @@ const newMapItemCard = {
     closable: true,
   }
 
-// 'ACTIVE' 'INACTIVE' 'OFF'
 const layers = [
   {
     title: 'Heatmap',
@@ -42,6 +41,8 @@ const layers = [
     state: 'ON',
     upperLimit: 6,
     lowerLimit: 1,
+    controls: false,
+    controlsOpen: false,
   },
   {
     title: 'Labels',
@@ -49,6 +50,8 @@ const layers = [
     state: 'ON',
     upperLimit: 10,
     lowerLimit: 5,
+    controls: false,
+    controlsOpen: false,
   },
   {
     title: 'Beacons',
@@ -56,6 +59,8 @@ const layers = [
     state: 'ON',
     upperLimit: 14,
     lowerLimit: 2,
+    controls: false,
+    controlsOpen: false,
   },
   {
     title: 'Bots',
@@ -63,6 +68,8 @@ const layers = [
     state: 'ON',
     upperLimit: 9,
     lowerLimit: 5,
+    controls: true,
+    controlsOpen: false,
   },
   {
     title: 'Triangulation',
@@ -70,6 +77,8 @@ const layers = [
     state: 'ON',
     upperLimit: 8,
     lowerLimit: 5,
+    controls: false,
+    controlsOpen: false,
   },
 ]
 
@@ -248,7 +257,7 @@ function viewportControls(state = initialState, action) {
           })
         }
       }
-      break
+      return state
     default:
       return state
   }
@@ -292,6 +301,32 @@ function layerControl(state = initialState, action) {
         layers: state.layers.map(layer => {
           return {...layer, state: evalLayer(layer, action.zoom)}
         })
+      }
+    case 'TOGGLE_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => {
+          if (layer.key === action.key) {
+            return Object.assign({}, layer, { controlsOpen: !layer.controlsOpen } )
+          }
+          return layer
+        })
+      }
+    case 'OPEN_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, controlsOpen: true } :
+          layer
+        )
+      }
+    case 'CLOSE_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, controlsOpen: false } :
+          layer
+        )
       }
     default:
       return state

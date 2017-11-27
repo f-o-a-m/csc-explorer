@@ -66,12 +66,12 @@ class Map extends Component {
 
   onViewportChange = (e, mapData) => {
     // get items that are in viewport
-    const bb = this.getProjectedViewportPolygon(e, window)
-    const culled = mapData.filter(datum => {
-      let point = {latitude: datum.position[1], longitude: datum.position[0]}
-      return geolib.isPointInside(point, bb) && datum[metric] > threshold
-    })
-    this.getHighlights(culled, e, metric)
+    // const bb = this.getProjectedViewportPolygon(e, window)
+    // const culled = mapData.filter(datum => {
+    //   let point = {latitude: datum.position[1], longitude: datum.position[0]}
+    //   return geolib.isPointInside(point, bb) && datum[metric] > threshold
+    // })
+    // this.getHighlights(culled, e, metric)
     // tell redux
     this.props.actions.onViewportChange(e)
     this.props.actions.evalLayers(e.zoom)
@@ -93,15 +93,12 @@ class Map extends Component {
 
   render() {
     const props = this.props
-
     return (
       <MapGL
         {...props.viewport}
         mapStyle={'mapbox://styles/mapbox/dark-v9'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
         mapboxApiAccessToken={TOKEN}>
-        { this.state.highlights !== 0 ? this.renderMarkerList(this.state.highlights) : null }
-        { props.mapData.length !== 0 ? <DotLayerGL viewport={props.viewport} mapData={props.mapData} /> : null }
       </MapGL>
     )
   }
