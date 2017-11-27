@@ -85,6 +85,7 @@ const initialState = {
   layerTrayOpen: true,
   unitIndex: 0,
   unit: UNITS[0],
+  geolocation: false,
   userLocation: {
     longitude: false,
     latitude: false,
@@ -224,17 +225,28 @@ function viewportControls(state = initialState, action) {
     case 'SET_USER_LOCATION':
       return Object.assign({}, state, {
         userLocation : action.location,
+        geolocation: true,
+    })
+    case 'GEOLOCATION_REJECTION':
+      return Object.assign({}, state, {
+        geolocation: false,
+      })
+    case 'GEOLOCATION_APPROVAL':
+    return Object.assign({}, state, {
+      geolocation: true,
     })
     case 'GO_TO_USER_LOCATION':
-      if (state.userLocation.longitude && state.userLocation.latitude) {
-        return ({
-          ...state,
-          viewport: {
-            ...state.viewport,
-            latitude: state.userLocation.latitude,
-            longitude: state.userLocation.longitude,
-          }
-        })
+      if (state.geolocation) {
+        if (state.userLocation.longitude && state.userLocation.latitude) {
+          return ({
+            ...state,
+            viewport: {
+              ...state.viewport,
+              latitude: state.userLocation.latitude,
+              longitude: state.userLocation.longitude,
+            }
+          })
+        }
       }
       break
     default:

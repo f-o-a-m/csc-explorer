@@ -31,3 +31,5 @@ export const evalLayers = (zoom) => ({ type: 'EVAL_LAYERS', zoom })
 
 //Misc
 export const setUserLocation = (location) => ({type: 'SET_USER_LOCATION', location})
+export const geolocationApproval = () => ({type: 'GEOLOCATION_APPROVAL'})
+export const geolocationRejection = () => ({type: 'GEOLOCATION_REJECTION'})

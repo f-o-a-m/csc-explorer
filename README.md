@@ -1,7 +1,7 @@
 # Foam.proto-frontend
 
 ## On first run:
-1. `npm install` or `yarn add all`
+1. `npm install` or `yarn add`
 2. Then, add the foam.css with the following:
 3. `cd src`
 4. `git clone` the foam.css repo in `/src`

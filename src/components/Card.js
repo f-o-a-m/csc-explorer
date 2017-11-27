@@ -90,11 +90,10 @@ function Transaction({info}) {
 class Card extends Component {
   render() {
     const { info, actions, viewport, index } = this.props
-
     const statusStyle = classnames({
       'green_bg': info.status === 'STATUS_ACTIVE',
       'blue_bg': info.status === 'STATUS_PROPOSAL',
-      'darkGrey_bg': info.status === 'STATUS_INFO',
+      'darkestGrey_bg': info.status === 'STATUS_INFO',
     })
 
     let content

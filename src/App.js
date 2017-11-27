@@ -36,26 +36,29 @@ class App extends Component{
       asArray: true,
       then(data){ this.props.actions.setMapData(data) }
     })
-    this.initGeolocation()
+    this.getGeolocation()
+    .then((position) => {
+      const {latitude, longitude} = position.coords
+      if (latitude && longitude) {
+        this.props.actions.setUserLocation({ latitude, longitude })
+      } else {
+        this.props.actions.geolocationRejection()
+        console.error('Invalid location data')
+      }
+    })
+    .catch((err) => {
+      this.props.actions.geolocationRejection()
+    })
   }
 
-  initGeolocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.getGeolocation)
-    } else {
-      console.error('Geolocation not supported by this browser') // or some other notification
+  getGeolocation = (options) => {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, options)
+      })
     }
-  }
 
-  getGeolocation = (position) => {
-    const latitude = position.coords.latitude
-    const longitude = position.coords.longitude
-    if (latitude && longitude) {
-      this.props.actions.setUserLocation({ latitude, longitude })
-    } else {
-      console.error('Invalid location data')
-    }
-  }
+
+
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.props.actions.resizeViewport(window.innerWidth, window.innerHeight))
@@ -82,16 +85,18 @@ class App extends Component{
 
         <TopBar actions={actions} />
 
-        <MapControls
-          actions={actions}
-          viewport={this.props.viewport}
-          unit={this.props.unit} />
-
-        <LayerControls
-          actions={actions}
-          layerTrayOpen={this.props.layerTrayOpen}
-          layerList={this.props.layerList}
-          zoom={this.props.viewport.zoom} />
+        <footer id={'mainFooter'}>
+          <LayerControls
+            actions={actions}
+            layerTrayOpen={this.props.layerTrayOpen}
+            layerList={this.props.layerList}
+            zoom={this.props.viewport.zoom} />
+          <MapControls
+            actions={actions}
+            viewport={this.props.viewport}
+            unit={this.props.unit}
+            geolocation={this.props.geolocation} />
+        </footer>
 
         <Map
           mapData={mapStateToProps.mapData}
@@ -114,6 +119,7 @@ const mapStateToProps = state => ({
   dash: state.toggleDash.dash,
   unit: state.toggleThroughUnits.unit,
   layerTrayOpen: state.layerControl.layerTrayOpen,
+  geolocation: state.viewportControls.geolocation,
   layerList: state.layerControl.layers,
 })
 
