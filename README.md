@@ -1,4 +1,16 @@
-# Foam.proto-frontend
+[![Latest release](http://img.shields.io/github/release/f-o-a-m/foam.proto-frontend.svg?branch=master)](https://github.com/f-o-a-m/foam.proto-frontend/releases)
+[![Build status](https://travis-ci.com/f-o-a-m/foam.proto-frontend.svg?branch=travis)](https://travis-ci.com/f-o-a-m/foam.proto-frontend?branch=travis)
+
+# foam.proto-frontend
+
+## Installation
+
+We use git submodules so make sure you clone recursively:
+
+```bash
+git clone --recursive https://github.com/f-o-a-m/foam.proto-frontend
+cd foam.proto-frontend
+```
 
 ## On first run:
 1. `npm install` or `yarn add all`
