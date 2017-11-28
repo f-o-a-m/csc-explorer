@@ -7,6 +7,7 @@ const LayerControls = ({ zoom, layerList, actions, layerTrayOpen }) => {
       <button
         className={'layers-tray-button'}
         onClick={() => actions.toggleLayerTray()}>
+        <div className={'layer-tray-icon'} />
         {'Layers'}
       </button>
       <Layers actions={actions} layerTrayOpen={layerTrayOpen} layers={layerList} zoom={zoom}/>
@@ -54,11 +55,11 @@ const LayerToggle = ({ toggleLayer, toggleLayerDialog, layer }) => {
   return (
     <div className={`layerControl-pill-container ${trayButtonType}`}>
       { controls ? <LayerPopup layer={layer} /> : null }
-      <div className={`${status} layer-indicator`} />
-      {title}
-      <button className={'layer-param-button'} onClick={(e) => handleToggleLayerDialog(e)} />
-      <div className={'toggle-wrapper'} onClick={(e) => handleToggleLayer(e)} />
-
+      <div className={'toggle-wrapper'} onClick={(e) => handleToggleLayer(e)} >
+        <div className={`${status} layer-indicator`} />
+        {title}
+        <button className={'layer-param-button'} onClick={(e) => handleToggleLayerDialog(e)} />
+      </div>
     </div>
   )
 }
