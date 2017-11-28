@@ -34,6 +34,54 @@ const newMapItemCard = {
     closable: true,
   }
 
+const layers = [
+  {
+    title: 'Heatmap',
+    key: 'HEATMAP',
+    state: 'ON',
+    upperLimit: 6,
+    lowerLimit: 1,
+    controls: false,
+    controlsOpen: false,
+  },
+  {
+    title: 'Labels',
+    key: 'LABELS',
+    state: 'ON',
+    upperLimit: 10,
+    lowerLimit: 5,
+    controls: false,
+    controlsOpen: false,
+  },
+  {
+    title: 'Beacons',
+    key: 'BEACONS',
+    state: 'ON',
+    upperLimit: 14,
+    lowerLimit: 2,
+    controls: false,
+    controlsOpen: false,
+  },
+  {
+    title: 'Bots',
+    key: 'BOTS',
+    state: 'ON',
+    upperLimit: 9,
+    lowerLimit: 5,
+    controls: true,
+    controlsOpen: false,
+  },
+  {
+    title: 'Triangulation',
+    key: 'TRIANGULATION',
+    state: 'ON',
+    upperLimit: 8,
+    lowerLimit: 5,
+    controls: false,
+    controlsOpen: false,
+  },
+]
+
 const UNITS = ['LATLONG', 'GEOHASH']
 
 const initialState = {
@@ -43,13 +91,15 @@ const initialState = {
   newCSC: true,
   sidebar: true,
   dash: false,
-  layerTrayOpen: true,
+  layerTrayOpen: false,
   unitIndex: 0,
   unit: UNITS[0],
+  geolocation: false,
   userLocation: {
     longitude: false,
     latitude: false,
   },
+  layers,
   viewport: {
     altitude: 1.5,
     width: 500,
@@ -92,11 +142,18 @@ function toggleSideBar(state = initialState, action) {
       return Object.assign({}, state, {
         sidebar: !state.sidebar,
       })
+    case 'OPEN_SIDEBAR':
+      return Object.assign({}, state, {
+        sidebar: true,
+      })
+    case 'CLOSE_SIDEBAR':
+      return Object.assign({}, state, {
+        sidebar: false,
+      })
     default:
       return state
   }
 }
-
 
 function toggleDash(state = initialState, action) {
   switch (action.type){
@@ -177,19 +234,30 @@ function viewportControls(state = initialState, action) {
     case 'SET_USER_LOCATION':
       return Object.assign({}, state, {
         userLocation : action.location,
+        geolocation: true,
+    })
+    case 'GEOLOCATION_REJECTION':
+      return Object.assign({}, state, {
+        geolocation: false,
+      })
+    case 'GEOLOCATION_APPROVAL':
+    return Object.assign({}, state, {
+      geolocation: true,
     })
     case 'GO_TO_USER_LOCATION':
-      if (state.userLocation.longitude && state.userLocation.latitude) {
-        return ({
-          ...state,
-          viewport: {
-            ...state.viewport,
-            latitude: state.userLocation.latitude,
-            longitude: state.userLocation.longitude,
-          }
-        })
+      if (state.geolocation) {
+        if (state.userLocation.longitude && state.userLocation.latitude) {
+          return ({
+            ...state,
+            viewport: {
+              ...state.viewport,
+              latitude: state.userLocation.latitude,
+              longitude: state.userLocation.longitude,
+            }
+          })
+        }
       }
-      break
+      return state
     default:
       return state
   }
@@ -199,11 +267,95 @@ function layerControl(state = initialState, action) {
   switch (action.type){
     case 'TOGGLE_LAYER_TRAY':
     return Object.assign({}, state, {
-      layerTrayOpen: !state.layerTrayOpen, //replaces the list
+      layerTrayOpen: !state.layerTrayOpen,
     })
+    case 'TOGGLE_LAYER':
+      return {
+        ...state,
+        layers: state.layers.map(layer => {
+          if (layer.key === action.key) {
+            return Object.assign({}, layer, { state: layerToggle(layer, action.zoom) } )
+          }
+          return layer
+        })
+      }
+    case 'OPEN_LAYER':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, state: layerOn(layer, action.zoom) } :
+          layer
+        )
+      }
+    case 'CLOSE_LAYER':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, state: 'OFF' } :
+          layer
+        )
+      }
+    case 'EVAL_LAYERS':
+      return {
+        ...state,
+        layers: state.layers.map(layer => {
+          return {...layer, state: evalLayer(layer, action.zoom)}
+        })
+      }
+    case 'TOGGLE_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => {
+          if (layer.key === action.key) {
+            return Object.assign({}, layer, { controlsOpen: !layer.controlsOpen } )
+          }
+          return layer
+        })
+      }
+    case 'OPEN_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, controlsOpen: true } :
+          layer
+        )
+      }
+    case 'CLOSE_LAYER_DIALOG':
+      return {
+        ...state,
+        layers: state.layers.map(layer => layer.key === action.key ?
+          { ...layer, controlsOpen: false } :
+          layer
+        )
+      }
     default:
       return state
   }
+}
+
+function layerOn(layer, zoom) {
+  if (layer.upperLimit > zoom && layer.lowerLimit < zoom)  {
+    return 'ON'
+  }
+  return 'HIDDEN'
+}
+
+function layerOff() {
+  return 'OFF'
+}
+
+function layerToggle(layer, zoom) {
+  if (layer.state === 'ON' || layer.state === 'HIDDEN') {
+    return layerOff()
+  }
+  return layerOn(layer, zoom)
+}
+
+function evalLayer(layer, zoom) {
+  if (layer.state === 'ON' || layer.state === 'HIDDEN') {
+    return layerOn(layer, zoom)
+  }
+  return 'OFF'
 }
 
 

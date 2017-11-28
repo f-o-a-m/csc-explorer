@@ -1,0 +1,35 @@
+<svg width="28" height="28" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Frame 4</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3771 8715)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 3771 -8715L 3799 -8715L 3799 -8687L 3771 -8687L 3771 -8715Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Frame 4" clip-path="url(#clip-0)">
+<g id="Group 4.4" opacity="0.4">
+<g id="Ellipse 2">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 3799 -8687)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 3799 -8687)" fill="#FFF"/>
+</g>
+</g>
+<g id="Ellipse 2.1">
+<use xlink:href="#path2_fill" transform="matrix(-1 -1.22465e-16 -1.22465e-16 1 3787 -8703)" fill="#FFF"/>
+</g>
+<g id="Ellipse 2.2">
+<use xlink:href="#path2_fill" transform="matrix(-1 -1.22465e-16 -1.22465e-16 1 3780 -8703)" fill="#FFF"/>
+</g>
+<g id="Ellipse 2.3">
+<use xlink:href="#path2_fill" transform="matrix(-1 -1.22465e-16 -1.22465e-16 1 3794 -8703)" fill="#FFF"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 28 14C 28 21.732 21.732 28 14 28C 6.26801 28 0 21.732 0 14C 0 6.26801 6.26801 0 14 0C 21.732 0 28 6.26801 28 14Z"/>
+<path id="path1_stroke_2x" d="M 27 14C 27 21.1797 21.1797 27 14 27L 14 29C 22.2843 29 29 22.2843 29 14L 27 14ZM 14 27C 6.8203 27 1 21.1797 1 14L -1 14C -1 22.2843 5.71573 29 14 29L 14 27ZM 1 14C 1 6.8203 6.8203 1 14 1L 14 -1C 5.71573 -1 -1 5.71573 -1 14L 1 14ZM 14 1C 21.1797 1 27 6.8203 27 14L 29 14C 29 5.71573 22.2843 -1 14 -1L 14 1Z"/>
+<path id="path2_fill" d="M 4 2C 4 3.10457 3.10457 4 2 4C 0.895431 4 0 3.10457 0 2C 0 0.895431 0.895431 0 2 0C 3.10457 0 4 0.895431 4 2Z"/>
+</defs>
+</svg>

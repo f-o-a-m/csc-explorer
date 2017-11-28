@@ -10,7 +10,7 @@ const DotLayerGL = ({mapData, viewport}) => {
   //   return Math.floor(scale)
   // }
 
-  let r
+  let r = 2
   const blue = [47, 128, 237]
   const green = [39, 174, 96]
   // forgive me

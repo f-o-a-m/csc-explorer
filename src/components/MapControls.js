@@ -1,14 +1,9 @@
 import React from 'react'
 import ngeohash from 'ngeohash'
-
-const LAYER_LIST = [
-  {
-    title: 'Heatmap',
-    key: 'HEATMAP',
-  },
-]
+import classnames from 'classnames'
 
 const MapControls = (props) => {
+
   const swapUnits = () => {
     switch (props.unit) {
       case 'LATLONG':
@@ -20,21 +15,19 @@ const MapControls = (props) => {
         return `${gh}`
     }
   }
+
+  const geolocationStyle = classnames({
+    'blue-text': props.geolocation,
+    'red-text': !props.geolocation,
+  })
+
   return (
     <footer id={'mapControlsContainer'}>
-      <button className={'button-layers'} onClick={() => props.actions.toggleLayerTray()}>{'•'}</button>
       <button className={'button-location'} onClick={() => props.actions.toggleThroughUnits()}>{swapUnits()}</button>
       <button className={'button-zoomIn'} onClick={() => props.actions.zoom(0.5)}>{'+'}</button>
       <button className={'button-zoomOut'} onClick={() => props.actions.zoom(-0.5)}>{'-'}</button>
-      <button className={'button-zenith'} onClick={() => props.actions.goToUserLocation()}>{'⦿'}</button>
-      <Layers {...props} />
+      <button className={`button-zenith ${geolocationStyle}`} onClick={() => props.actions.goToUserLocation()}>{'⦿'}</button>
     </footer>
-  )
-}
-
-const Layers = (props) => {
-  return (
-    <div />
   )
 }
 
