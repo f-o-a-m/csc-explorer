@@ -71,6 +71,11 @@ class LayerPopup extends Component {
       'layer-popup-closed': !layer.controlsOpen,
     })
 
+    const controlStyle = classnames({
+      'slider-on': layer.state === 'ON',
+      'slider-hidden': layer.state === 'HIDDEN',
+    })
+
     const horizontalTravel = 318 - 16 // width of slider - width of knob
     const inputY = this.state.value
     const yMin = 0
@@ -96,7 +101,7 @@ class LayerPopup extends Component {
               value={this.state.value}
               onChange={(e) => this.handleChange(e)}
               step={'0.125'}
-              className={'slider'} />
+              className={`slider ${controlStyle}`} />
               <div className={'scale'}>
                 <h3>{yMin}</h3>
                 <h3 className={'currentVal'} style={{'left': `${outputX}px`}}>{this.state.value}</h3>
