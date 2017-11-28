@@ -41,11 +41,24 @@ const LayerToggle = ({ toggleLayer, toggleLayerDialog, layer }) => {
     'layer-hasSettings': controls,
     'layer-noSettings': !controls,
   })
+  const handleToggleLayer = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleLayer()
+  }
+  const handleToggleLayerDialog = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleLayerDialog()
+  }
   return (
-    <div className={'layerControl-toggle-pill-container'}>
+    <div className={`layerControl-pill-container ${trayButtonType}`}>
       { controls ? <LayerPopup layer={layer} /> : null }
-      <button className={`layer-name-button ${trayButtonType}`} onClick={() => toggleLayerDialog()}>{title}</button>
-      <button className={'layer-toggle-button'} onClick={() => toggleLayer()}><div className={`${status} indicator`} /></button>
+      <div className={`${status} layer-indicator`} />
+      {title}
+      <button className={'layer-param-button'} onClick={(e) => handleToggleLayerDialog(e)} />
+      <div className={'toggle-wrapper'} onClick={(e) => handleToggleLayer(e)} />
+
     </div>
   )
 }
@@ -74,6 +87,7 @@ class LayerPopup extends Component {
     const controlStyle = classnames({
       'slider-on': layer.state === 'ON',
       'slider-hidden': layer.state === 'HIDDEN',
+      'slider-off': layer.state === 'OFF',
     })
 
     const horizontalTravel = 318 - 16 // width of slider - width of knob
