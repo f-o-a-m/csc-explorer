@@ -23,7 +23,7 @@ cd foam.proto-frontend
 1. `npm run start` or `yarn start`
 
 ## Notes:
-SCSS/CSS is now stored in another repo called foam.CSS
+SCSS/CSS is now stored in another repo called `foam.css`
 
 ## Branches:
 - `master` branch serves as reference for others working on the Purescript side of the Index.
