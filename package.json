@@ -12,7 +12,6 @@
     "@vx/scale": "^0.0.143",
     "@vx/shape": "^0.0.146",
     "@vx/tooltip": "^0.0.143",
-    "all": "^0.0.0",
     "classnames": "^2.2.5",
     "d3-request": "^1.0.6",
     "deck.gl": "^4.1.2",
