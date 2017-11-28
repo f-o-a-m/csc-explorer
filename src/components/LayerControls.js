@@ -59,7 +59,8 @@ class LayerPopup extends Component {
   }
 
   handleChange = (e) => {
-    e.target.value !== this.state.value ? this.setState({value: e.target.value}) : null
+    const val = parseFloat(e.target.value)
+    val !== this.state.value ? this.setState({value: val}) : null
   }
 
   render() {
@@ -94,7 +95,7 @@ class LayerPopup extends Component {
               max={`${yMax}`}
               value={this.state.value}
               onChange={(e) => this.handleChange(e)}
-              step={'0.25'}
+              step={'0.125'}
               className={'slider'} />
               <div className={'scale'}>
                 <h3>{yMin}</h3>
