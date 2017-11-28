@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import classnames from 'classnames'
 
 const LayerControls = ({ zoom, layerList, actions, layerTrayOpen }) => {
@@ -50,30 +50,74 @@ const LayerToggle = ({ toggleLayer, toggleLayerDialog, layer }) => {
   )
 }
 
-const LayerPopup = ({layer}) => {
-  const popupMotionStyles = classnames({
-    'layer-popup-open': layer.controlsOpen,
-    'layer-popup-closed': !layer.controlsOpen,
-  })
-  return (
-    <div className={`${popupMotionStyles} layer-popup-container`}>
-      <div className={'layer-popup-header'}><h3>{layer.title}</h3></div>
-      <div className={'layer-popup-content'}>
-        <h3>{'Bot Speed'}</h3>
-        <input min="1" max="100" value="50" type="range" className={'slider'}/>
-      </div>
-      <svg className={'layer-popup-chevron'} width="14" height="10" viewBox="0 0 14 10" version="1.1">
-        <g id="Canvas" transform="scale(1) translate(-25353 1234)">
-          <g id="Polygon 4">
-            <use xlinkHref="#path0_fill" transform="matrix(-1 1.22465e-16 -1.22465e-16 -1 25365.8 -1223.92)"/>
+class LayerPopup extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: 0,
+    }
+  }
+
+  handleChange = (e) => {
+    e.target.value !== this.state.value ? this.setState({value: e.target.value}) : null
+  }
+
+  render() {
+    const { layer } = this.props
+
+    const popupMotionStyles = classnames({
+      'layer-popup-open': layer.controlsOpen,
+      'layer-popup-closed': !layer.controlsOpen,
+    })
+
+    const horizontalTravel = 318 - 16 // width of slider - width of knob
+    const inputY = this.state.value
+    const yMin = 0
+    const yMax = 10
+    const xMin = 0
+    const xMax = horizontalTravel
+    const percent = (inputY - yMin) / (yMax - yMin)
+    const outputX = percent * (xMax - xMin) + xMin
+
+    return (
+      <div className={`${popupMotionStyles} layer-popup-container`}>
+        <div className={'layer-popup-header'}>
+          <h3>{layer.title}</h3>
+        </div>
+        <div className={'layer-popup-content'}>
+
+          <div className={'layer-pop-control'}>
+            <h3>{'Bot Speed'}</h3>
+            <input
+              type={'range'}
+              min={`${yMin}`}
+              max={`${yMax}`}
+              value={this.state.value}
+              onChange={(e) => this.handleChange(e)}
+              step={'0.25'}
+              className={'slider'} />
+              <div className={'scale'}>
+                <h3>{yMin}</h3>
+                <h3 className={'currentVal'} style={{'left': `${outputX}px`}}>{this.state.value}</h3>
+                <h3>{yMax}</h3>
+              </div>
+          </div>
+
+        </div>
+        <svg className={'layer-popup-chevron'} width="14" height="10" viewBox="0 0 14 10" version="1.1">
+          <g id="Canvas" transform="scale(1) translate(-25353 1234)">
+            <g id="Polygon 4">
+              <use xlinkHref="#path0_fill" transform="matrix(-1 1.22465e-16 -1.22465e-16 -1 25365.8 -1223.92)"/>
+            </g>
           </g>
-        </g>
-        <defs>
-          <path id="path0_fill" d="M 5.53761 1.33392C 5.93023 0.713994 6.83462 0.713994 7.22724 1.33392L 12.7648 10.0775L 0 10.0775L 5.53761 1.33392Z"/>
-        </defs>
-      </svg>
-    </div>
-  )
+          <defs>
+            <path id="path0_fill" d="M 5.53761 1.33392C 5.93023 0.713994 6.83462 0.713994 7.22724 1.33392L 12.7648 10.0775L 0 10.0775L 5.53761 1.33392Z"/>
+          </defs>
+        </svg>
+      </div>
+    )
+
+  }
 }
 
 export default LayerControls
