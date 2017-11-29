@@ -25,6 +25,7 @@ yarn-error.log*
 .env
 
 src/data
+src/foam.css
 
 *.css
 

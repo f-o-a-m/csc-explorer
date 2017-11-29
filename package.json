@@ -32,6 +32,7 @@
     "viewport-mercator-project": "^4.1.1"
   },
   "scripts": {
+    "preinstall": "git submodule init && git submodule update && cd src/foam.css/ && git checkout master",
     "build-css": "node-sass src/foam.css/styles -o src/foam.css/dist",
     "watch-css": "npm run build-css && node-sass src/foam.css/styles -o src/foam.css/dist --watch --recursive",
     "start-js": "react-scripts start",
