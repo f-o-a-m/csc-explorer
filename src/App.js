@@ -30,6 +30,7 @@ class App extends Component{
 
   componentDidMount = () => {
     this.resizeViewport()
+    this.props.actions.evalLayers(this.props.viewport.zoom)
     window.addEventListener('resize', this.resizeViewport)
     base.listenTo( FAKE_DATA_SOURCE_NAME, {
       context: this,

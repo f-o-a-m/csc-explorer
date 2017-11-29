@@ -91,7 +91,7 @@ const initialState = {
   newCSC: true,
   sidebar: true,
   dash: false,
-  layerTrayOpen: true,
+  layerTrayOpen: false,
   unitIndex: 0,
   unit: UNITS[0],
   geolocation: false,
