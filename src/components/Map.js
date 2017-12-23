@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
-import MapGL, {Marker} from 'react-map-gl'
+import MapGL, {experimental, Marker} from 'react-map-gl'
 import lodash from 'lodash'
-import {PerspectiveMercatorViewport} from 'viewport-mercator-project'
+import { PerspectiveMercatorViewport } from 'viewport-mercator-project'
 import geolib from 'geolib'
+import { Motion, spring } from 'react-motion'
 // import classnames from 'classnames'
 
 import DotLayerGL from './DotLayerGL'
 import Bubble from './Bubble'
 
-const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
+import mapStyle from '../foam.css/mapStyle.json'
+
+const TOKEN = 'pk.eyJ1IjoiZ2F0a2luc28iLCJhIjoiY2phbGE1ZmppMDBwbzJ3bXZ3dW93cngzZyJ9.XJk_Di1QXbLJhFoRZ8zz0g'
 
 const metric = 'popularity'
 // a global threshold for displaying highlighted items
@@ -90,16 +93,30 @@ class Map extends Component {
     })
   }
 
-
   render() {
-    const props = this.props
+    const { mapData, viewport } = this.props
+    const motionStyle = {
+      latitude: spring(viewport.latitude, { stiffness: 170, damping: 26, precision: 0.00001 }),
+      longitude: spring(viewport.longitude, { stiffness: 170, damping: 26, precision: 0.00001 }),
+      zoom: spring(viewport.zoom, { stiffness: 170, damping: 26, precision: 0.00001 }),
+      pitch: spring(viewport.pitch, { stiffness: 160, damping: 26, precision: 0.00001 }),
+      bearing: spring(viewport.bearing, { stiffness: 160, damping: 26, precision: 0.00001 }),
+    }
     return (
-      <MapGL
-        {...props.viewport}
-        mapStyle={'mapbox://styles/mapbox/dark-v9'}
-        onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
-        mapboxApiAccessToken={TOKEN}>
-      </MapGL>
+      <Motion style={motionStyle}>
+        { ({ latitude, longitude, zoom, pitch, bearing }) => <MapGL
+            {...viewport}
+            latitude={latitude}
+            longitude={longitude}
+            zoom={zoom}
+            pitch={pitch}
+            bearing={bearing}
+            mapStyle={mapStyle}
+            onViewportChange={(e) => this.onViewportChange(e, mapData)}
+            mapboxApiAccessToken={TOKEN}>
+          </MapGL>
+        }
+      </Motion>
     )
   }
 }

@@ -110,7 +110,7 @@ const initialState = {
     minZoom: 1,
     maxZoom: 17,
     pitch: 40.5,
-    bearing: -27.396674584323023
+    bearing: -27.396674584323023,
   },
 }
 
