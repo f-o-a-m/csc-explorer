@@ -1,50 +1,48 @@
 import React from 'react';
 import DeckGL, {ScatterplotLayer} from 'deck.gl';
-// import classnames from 'classnames'
 
-
-const DotLayerGL = ({mapData, viewport}) => {
-  // this would be better for scaling dots but is not performant
-  // const calcDotScale = (z, offset, multiplier, minViewport) => {
-  //   const scale = (minViewport - z + offset) * multiplier
-  //   return Math.floor(scale)
-  // }
-
-  let r = 2
+const DotLayerGL = (props) => {
+  let r = 10
+  const updateTrigger = props.shouldUpdate;
   const blue = [47, 128, 237]
-  const green = [39, 174, 96]
-  // forgive me
-  const z = viewport.zoom
-  if ( z > 15) {
-    r = 2
-  } else if (z > 14) {
-    r = 4
-  } else if (z > 13) {
-    r = 8
-  } else if (z > 11) {
-    r = 16
-  } else if (z > 9) {
-    r = 32
-  } else {
-    r = 64
-  }
+  const blue2 = [47, 128, 237, 50]
+  const pink = [244, 128, 104]
 
   const layer = new ScatterplotLayer({
     id: 'scatterplot-layer',
-    data: mapData,
+    data: props.mapData,
     radiusScale: 2,
     outline: false,
-    getColor: d => d.status === 'STATUS_PROPOSAL' ? blue : green,
-    getRadius: e => r,
+    pickable: true,
+    getColor: d => blue,
+    getRadius: e => e.picked ? r*5 : r,
+    onClick: props.onClick,
+    // onHover: props.onHover,
     minRadius: 10,
     updateTriggers: {
-       getRadius: r
+       // getRadius: updateTrigger,
+       getColor: updateTrigger
      },
      fp64: true,
   });
 
-  return (<DeckGL {...viewport} layers={[layer]} />);
-}
+  const layer2 = new ScatterplotLayer({
+    id: 'scatterplot-layer',
+    data: [props.mapData[props.selected]],
+    radiusScale: 2,
+    outline: false,
+    pickable: true,
+    getColor: d => d.picked ? blue2 : blue2,
+    getRadius: e => e.picked ? r*5 : r,
+    minRadius: 10,
+    updateTriggers: {
+       getRadius: updateTrigger,
+       getColor: updateTrigger
+     },
+     fp64: true,
+  });
 
+  return (<DeckGL {...props.viewport} layers={[layer, layer2]} />);
+}
 
 export default DotLayerGL

@@ -3,7 +3,6 @@ import MapGL, {Marker} from 'react-map-gl'
 import lodash from 'lodash'
 import {PerspectiveMercatorViewport} from 'viewport-mercator-project'
 import geolib from 'geolib'
-// import classnames from 'classnames'
 
 import DotLayerGL from './DotLayerGL'
 import Bubble from './Bubble'
@@ -13,12 +12,14 @@ const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ
 const metric = 'popularity'
 // a global threshold for displaying highlighted items
 const threshold = 0.85
+let lastPicked = {}
 
 class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
       highlights: [],
+      lastPicked: {}
     }
   }
 
@@ -65,14 +66,6 @@ class Map extends Component {
   }
 
   onViewportChange = (e, mapData) => {
-    // get items that are in viewport
-    // const bb = this.getProjectedViewportPolygon(e, window)
-    // const culled = mapData.filter(datum => {
-    //   let point = {latitude: datum.position[1], longitude: datum.position[0]}
-    //   return geolib.isPointInside(point, bb) && datum[metric] > threshold
-    // })
-    // this.getHighlights(culled, e, metric)
-    // tell redux
     this.props.actions.onViewportChange(e)
     this.props.actions.evalLayers(e.zoom)
   }
@@ -83,13 +76,38 @@ class Map extends Component {
         <Marker
           longitude={datum.position[0]}
           latitude={datum.position[1]}
-          ethereumAddress={datum.ethereumAddress}>
-          <Bubble data={datum} getMapItemInfo={(e) => this.props.actions.getMapItemInfo(datum)}/>
+          ethereumAddress={datum.ethereumAddress}
+          style={'cursor:pointer'}>
         </Marker>
       )
     })
   }
 
+  onMapClick = (event) =>{
+    console.log(event + ' ' + 'clicked map')
+  }
+
+  _onHover = (info) => {
+    console.log(info.index + ' ' + 'hovered point')
+    if(info){
+      this.setState({buttonClicked: false})
+    }
+  }
+
+  _onClick = (info) => {
+    let data = this.props.mapData
+    let key = data[info.index].key
+    if(lastPicked !== data[info.index]){
+      lastPicked.picked = false //reset old one
+      data[info.index].picked = true //set a new one
+      lastPicked = data[info.index]
+    }
+
+    this.props.actions.setMapData(data)
+    this.props.actions.getMapItemInfo(data[info.index])
+
+    this.setState({data: data, item: info, key: key, buttonClicked: true})
+    }
 
   render() {
     const props = this.props
@@ -98,7 +116,18 @@ class Map extends Component {
         {...props.viewport}
         mapStyle={'mapbox://styles/mapbox/dark-v9'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
-        mapboxApiAccessToken={TOKEN}>
+        mapboxApiAccessToken={TOKEN}
+        onClick={this.onMapClick}>
+        { this.state.highlights !== 0 ? this.renderMarkerList(this.state.highlights) : null }
+        { props.mapData.length !== 0 ?
+          <DotLayerGL
+            viewport={props.viewport}
+            mapData={props.mapData}
+            selected={this.state.key}
+            onClick={this._onClick}
+            // onHover={this._onHover}
+            shouldUpdate={this.state.buttonClicked}
+          /> : null }
       </MapGL>
     )
   }
