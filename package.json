@@ -3,7 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "all": "^0.0.0",
+    "@vx/event": "^0.0.143",
+    "@vx/gradient": "^0.0.143",
+    "@vx/grid": "^0.0.146",
+    "@vx/group": "^0.0.143",
+    "@vx/mock-data": "^0.0.144",
+    "@vx/point": "^0.0.143",
+    "@vx/scale": "^0.0.143",
+    "@vx/shape": "^0.0.146",
+    "@vx/tooltip": "^0.0.143",
     "classnames": "^2.2.5",
     "d3-request": "^1.0.6",
     "deck.gl": "^4.1.2",
@@ -24,8 +32,9 @@
     "viewport-mercator-project": "^4.1.1"
   },
   "scripts": {
-    "build-css": "node-sass src/ -o src/",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "preinstall": "git submodule init && git submodule update && cd src/foam.css/ && git checkout master",
+    "build-css": "node-sass src/foam.css/styles -o src/foam.css/dist",
+    "watch-css": "npm run build-css && node-sass src/foam.css/styles -o src/foam.css/dist --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",

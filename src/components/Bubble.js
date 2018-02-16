@@ -1,9 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Bubble = ({data, getMapsItemInfo}) => {
-
-  const hasSubTokens = data.subTokens > 0 ? true : false
+const Bubble = ({data, getMapItemInfo}) => {
 
   const tokenType = classnames({
     'green_bg': data.status === 'STATUS_ACTIVE',
@@ -11,11 +9,11 @@ const Bubble = ({data, getMapsItemInfo}) => {
   })
 
   const showSubTokens = classnames({
-    'hidden': !data.hasSubTokens,
+    'hidden': data.subTokens === 0,
   })
 
   return (
-    <div className={`${tokenType} bubble-container`} onClick={getMapsItemInfo}>
+    <div className={`${tokenType} bubble-container`} onClick={getMapItemInfo}>
       <span className={'bubble-body'}>
         <p className={'bubble-title'}>{data.title}</p>
         <p className={'bubble-balance'}>{data.balance}</p>

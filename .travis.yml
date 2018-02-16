@@ -1,0 +1,17 @@
+language: node_js
+dist: trusty
+sudo: required
+node_js: stable
+install:
+  - npm install -g bower yarn
+  - npm install
+script:
+  - npm run build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  local_dir: build
+  on:
+    branch: travis

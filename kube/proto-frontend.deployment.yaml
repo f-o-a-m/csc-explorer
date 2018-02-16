@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: proto-frontend
+  namespace: foam
+spec:
+  selector:
+    matchLabels:
+      app: proto-frontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: proto-frontend
+    spec:
+      containers:
+      - name: nginx
+        image: docker.kube-system.svc.cluster.local/foam/proto-frontend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
