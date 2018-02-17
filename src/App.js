@@ -13,6 +13,7 @@ import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 import Dash from './components/Dash'
 import LayerControls from './components/LayerControls'
+import WelcomeModal from './components/WelcomeModal'
 
 const FAKE_DATA_SOURCE_NAME = 'data'
 
@@ -69,6 +70,7 @@ class App extends Component{
   const desat = classnames({ desat: this.props.dash })
     return (
       <div className={'app'}>
+        <WelcomeModal />
 
         <Dash
           actions={actions}
