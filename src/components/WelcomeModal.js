@@ -12,6 +12,7 @@ const WelcomeModal = (props) => {
           <div className="welcome-modal-column">
               <img className="icon" src="/icons/icon-1.png"/>
             <h2>The Map</h2>
+            <h3>Controlling the Map</h3>
             <p>By using the mouse you can pan, zoom and rotate the map in 3D.</p>
             <p>Layers can be turned on or off with the layer control menu in the lower right-hand side of the app. Some layers only appear at certain zoom levels.</p>
             <h3>Items On The Map</h3>
