@@ -7,6 +7,8 @@ const WelcomeModal = (props) => {
         <div className="top">
           <h1>Welcome to the Spatial Index</h1>
           <p>The Spatial Index is a visual explorer for smart contracts and geospatial applications on blockchain. We think of it as a cross between a Bloomberg trading terminal and Google Maps. As an open-source web-app, built with our purescript-web3 library, it will be used to a) allow users to interact with our protocol visually and b) as cornerstone in the large variety of decentralized applications that can be built on top of our protocols.</p>
+          <p>When you are ready to begin... lorem ipsum dolar</p>
+          <button className={'button-card'}>{'Authenticate'}</button>
         </div>
         <div className="bottom">
           <div className="welcome-modal-column">
@@ -21,8 +23,8 @@ const WelcomeModal = (props) => {
             <p>Beacons are like local GPS satellites. They form zones which are used to locate a user.</p>
             <p><b>Bots</b></p>
             <p>In lieu of physical infrastructure, this app simulates car movement with Uber data.</p>
-            <p><b>Arcs</b></p>
-            <p>Arcs are the visual representation of the communication between Beacons and Bots.</p>
+            <p><b>Triangulations</b></p>
+            <p>The zones of coverage offered by Beacons are visualized as triangulations, with Arcs tracking the location of Bots as they move by.</p>
           </div>
           <div className="welcome-modal-column">
               <img className="icon" src="/icons/icon-2.png"/>
@@ -35,8 +37,9 @@ const WelcomeModal = (props) => {
               <li>Metamask should open. Ensure that you are on the Ropsten Test Net. </li>
               <li>Add extra gas to ensure timely transaction. 20-50 gwei is recommended.</li>
               <li>Press submit in Metamask.</li>
-              <li>Go to the ‘Send’ tab in Metamask.</li>
-              <li>If you press the ‘…’ button you should be able to see your transaction progress on Etherscan.</li>
+              <li>Go to the ‘SENT’ tab in Metamask and press the ‘…’ button to see your transaction progress on Etherscan.</li>
+              <li>Type name of your beacon in the search and click on the popup card to see the dashboard.</li>
+              <li>Close the dashboard and the map will zoom onto your beacon location.</li>
             </ol>
           </div>
           <div className="welcome-modal-column">
@@ -45,7 +48,9 @@ const WelcomeModal = (props) => {
               <p>You can use Metamask to add testnet FOAM tokens to a Metamask wallet. To do so: </p>
               <ol>
                 <li>Click ‘Aquire FOAM Tokens’ in the top right-hand corner of the app viewport. This will open Metamask.</li>
-                <li>Fill out the ‘Create A CSC’ form on the lefthand side of the viewport.</li>
+                <li>Add extra gas to ensure timely transaction. 20-50 gwei is recommended.</li>
+                <li>Press Submit. The quantity of testnet FOAM tokens per transaction is predefined.</li>
+                <li>The balance in the top right corner should change.</li>
               </ol>
           </div>
         </div>
