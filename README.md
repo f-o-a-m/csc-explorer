@@ -3,6 +3,10 @@
 
 # css-explorer
 
+## Try it
+
+The app is hosted [here](http://f-o-a-m.github.io/css-explorer/)
+
 ## Installation
 
 We use git submodules so make sure you clone recursively:
