@@ -1,11 +1,11 @@
-[![Latest release](http://img.shields.io/github/release/f-o-a-m/css-explorer.svg?branch=master)](https://github.com/f-o-a-m/css-explorer/releases)
-[![Build status](https://travis-ci.org/f-o-a-m/css-explorer.svg?&branch=master)](https://travis-ci.org/f-o-a-m/css-explorer?branch=master)
+[![Latest release](http://img.shields.io/github/release/f-o-a-m/csc-explorer.svg?branch=master)](https://github.com/f-o-a-m/csc-explorer/releases)
+[![Build status](https://travis-ci.org/f-o-a-m/csc-explorer.svg?&branch=master)](https://travis-ci.org/f-o-a-m/csc-explorer?branch=master)
 
-# css-explorer
+# csc-explorer
 
 ## Try it
 
-The app is hosted [here](https://f-o-a-m.github.io/css-explorer/)
+The app is hosted [here](https://f-o-a-m.github.io/csc-explorer/)
 
 ## Installation
 
