@@ -1,0 +1,20 @@
+language: node_js
+dist: trusty
+sudo: required
+node_js: stable
+git:
+  submodules: false
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+install:
+  - npm i
+script:
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  local_dir: public
+  on:
+    branch: master
