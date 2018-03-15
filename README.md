@@ -18,10 +18,6 @@ cd css-explorer
 
 ## On first run:
 1. `npm install` or `yarn add`
-2. Then, add the foam.css with the following:
-3. `cd src`
-4. `git clone` the foam.css repo in `/src`
-5. Switch to feature branch if necessary
 
 ## Thereafter:
 1. `npm run start` or `yarn start`
