@@ -4,27 +4,17 @@ const initalCardList = [
   {
     title: 'Welcome to FOAM',
     message: 'We are a protocol built to store and verify spatial addresses. Feel free to browse the map or take a look at the options below!',
-    buttonText: 'Claim Your 5 FOAM tokens',
     status: "STATUS_INFO",
     type: "INFO",
     closable: true,
   },
   {
-    title: 'Case Study',
-    message: 'See how FOAM can help community sourced agriculture build sustainable community.',
-    buttonText: 'See the Case Study',
+    title: 'FOAM API',
+    message: 'You can create spatial blockchain queries using our API.',
     status: "STATUS_ACTIVE",
     type: "INFO",
     closable: true,
-  },
-  {
-    title: 'Add A Coordinate',
-    message: 'Request address verification from the network.',
-    buttonText: 'Create a Cryptospastial Coordinate',
-    status: "STATUS_PROPOSAL",
-    type: "INFO",
-    closable: true,
-  },
+  }
 ]
 
 const newMapItemCard = {

@@ -7,9 +7,6 @@ function Info({info, actions}) {
     <span className={'card-lightWrap'}>
       <h3>{info.title}</h3>
       <p>{info.message}</p>
-      <button className={'button-card'}>
-        {info.buttonText}
-      </button>
     </span>
   )
 }

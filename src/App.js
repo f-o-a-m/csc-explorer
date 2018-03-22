@@ -12,7 +12,6 @@ import * as MapActions from './actions'
 
 import Map from './components/Map'
 import SideBar from './components/SideBar'
-import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 import Dash from './components/Dash'
 import LayerControls from './components/LayerControls'
@@ -41,18 +40,18 @@ class App extends Component{
         , params: {xmin:-1000, ymin:-1000, xmax:1000, ymax:1000}
         , headers: headers
         })
-          .then(r => { return _.map(r.data, (b,i) => { var l = geohash.decode(b.beaconGeohash);
+          .then(r => { console.log(r.data); return _.map(r.data, (b,i) => { var l = geohash.decode(b.beaconGeohash);
                                                        return { position: [l.lon, l.lat]
-                                                                , address: "address name"
+                                                                , address: "address"
                                                                 , geohash: b.beaconGeohash
                                                                 , key: i
                                                                 , balance: 0
-                                                                , category: "tech"
-                                                                , ethereumAddress: "0x000"
+                                                                , category: ""
+                                                                , ethereumAddress: b.beaconBeaconAddress
                                                                 , popularity: 0.12
                                                                 , status: "STATUS_PROPOSAL"
                                                                 , subTokens: 0
-                                                                , title: "abba"
+                                                                , title: b.beaconName
                                                               }
                                                      }
                                    )
@@ -106,8 +105,6 @@ class App extends Component{
           cardList={this.props.cardList}
           sidebar={this.props.sidebar} />
 
-        <TopBar actions={actions} />
-
         <footer id={'mainFooter'}>
           <LayerControls
             actions={actions}
@@ -116,7 +113,7 @@ class App extends Component{
             zoom={this.props.viewport.zoom} />
           <MapControls
             actions={actions}
-            viewport={this.props.viewport}
+        viewport={this.props.viewport}
             unit={this.props.unit}
             geolocation={this.props.geolocation} />
         </footer>

@@ -16,11 +16,6 @@ const SideBar = (props) => {
 
   return (
     <aside id={'sideBarContainer'} className={sideBarClasses}>
-      <div id={'searchWrapper'}>
-        <input type={'text'} id={'searchbar'} placeholder={'Search the FOAM network'}/>
-        <div id={'glass'}>{'🔎'}</div>
-        <button id={'button-collapseSidebar'} className={collapseSidebarClasses} onClick={(e) => props.actions.toggleSidebar()}>{'<'}</button>
-      </div>
       <CardColumn cardList={props.cardList} actions={props.actions} viewport={props.viewport}/>
     </aside>
   )
