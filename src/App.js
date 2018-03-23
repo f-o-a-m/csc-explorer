@@ -3,18 +3,20 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
 
-import base from './api/db'
+import _ from 'lodash'
+
+import axios from 'axios'
+import geohash from 'latlon-geohash'
 
 import * as MapActions from './actions'
 
 import Map from './components/Map'
 import SideBar from './components/SideBar'
-import TopBar from './components/TopBar'
 import MapControls from './components/MapControls'
 import Dash from './components/Dash'
 import LayerControls from './components/LayerControls'
 
-const FAKE_DATA_SOURCE_NAME = 'data'
+var headers = {'Authorization': "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJkYXQiOiIyY2UyYWRjZTVlZmUzYTRhZDlmNDUyNWExNTc4YWUyMzZhMDEzNjY5In0.AvONC6EaU02hvmHfKOj8DK2Ur6krtdpZmibvL__R6XAOLGrDhAMrpURcUNfF_D33QQ6LQQPlYjdPGjAX36JcVQ"};
 
 class App extends Component{
   constructor(props) {
@@ -32,11 +34,32 @@ class App extends Component{
     this.resizeViewport()
     this.props.actions.evalLayers(this.props.viewport.zoom)
     window.addEventListener('resize', this.resizeViewport)
-    base.listenTo( FAKE_DATA_SOURCE_NAME, {
-      context: this,
-      asArray: true,
-      then(data){ this.props.actions.setMapData(data) }
-    })
+      axios(
+        { method: 'get'
+        , url: 'https://api-beta.foam.space/beacon'
+        , params: {xmin:-1000, ymin:-1000, xmax:1000, ymax:1000}
+        , headers: headers
+        })
+          .then(r => { console.log(r.data); return _.map(r.data, (b,i) => { var l = geohash.decode(b.beaconGeohash);
+                                                       return { position: [l.lon, l.lat]
+                                                              , address: "address"
+                                                              , geohash: b.beaconGeohash
+                                                              , key: i
+                                                              , balance: 0
+                                                              , category: ""
+                                                              , ethereumAddress: b.beaconBeaconAddress
+                                                              , popularity: 0.12
+                                                              , status: "STATUS_PROPOSAL"
+                                                              , subTokens: 0
+                                                              , title: b.beaconName
+                                                              }
+                                                     }
+                                   )
+                     }
+               )
+    //      .then(data => {console.log(data); return data})
+          .then(data => { this.props.actions.setMapData(data) })
+
     this.getGeolocation()
       .then((position) => {
         const {latitude, longitude} = position.coords
@@ -82,8 +105,6 @@ class App extends Component{
           cardList={this.props.cardList}
           sidebar={this.props.sidebar} />
 
-        <TopBar actions={actions} />
-
         <footer id={'mainFooter'}>
           <LayerControls
             actions={actions}
@@ -92,7 +113,7 @@ class App extends Component{
             zoom={this.props.viewport.zoom} />
           <MapControls
             actions={actions}
-            viewport={this.props.viewport}
+        viewport={this.props.viewport}
             unit={this.props.unit}
             geolocation={this.props.geolocation} />
         </footer>
