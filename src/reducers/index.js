@@ -26,50 +26,14 @@ const newMapItemCard = {
 
 const layers = [
   {
-    title: 'Heatmap',
-    key: 'HEATMAP',
-    state: 'ON',
-    upperLimit: 6,
-    lowerLimit: 1,
-    controls: false,
-    controlsOpen: false,
-  },
-  {
-    title: 'Labels',
-    key: 'LABELS',
-    state: 'ON',
-    upperLimit: 10,
-    lowerLimit: 5,
-    controls: false,
-    controlsOpen: false,
-  },
-  {
-    title: 'Beacons',
-    key: 'BEACONS',
+    title: 'CSCs',
+    key: 'CSC',
     state: 'ON',
     upperLimit: 14,
     lowerLimit: 2,
     controls: false,
     controlsOpen: false,
-  },
-  {
-    title: 'Bots',
-    key: 'BOTS',
-    state: 'ON',
-    upperLimit: 9,
-    lowerLimit: 5,
-    controls: true,
-    controlsOpen: false,
-  },
-  {
-    title: 'Triangulation',
-    key: 'TRIANGULATION',
-    state: 'ON',
-    upperLimit: 8,
-    lowerLimit: 5,
-    controls: false,
-    controlsOpen: false,
-  },
+  }
 ]
 
 const UNITS = ['LATLONG', 'GEOHASH']

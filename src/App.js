@@ -42,16 +42,16 @@ class App extends Component{
         })
           .then(r => { console.log(r.data); return _.map(r.data, (b,i) => { var l = geohash.decode(b.beaconGeohash);
                                                        return { position: [l.lon, l.lat]
-                                                                , address: "address"
-                                                                , geohash: b.beaconGeohash
-                                                                , key: i
-                                                                , balance: 0
-                                                                , category: ""
-                                                                , ethereumAddress: b.beaconBeaconAddress
-                                                                , popularity: 0.12
-                                                                , status: "STATUS_PROPOSAL"
-                                                                , subTokens: 0
-                                                                , title: b.beaconName
+                                                              , address: "address"
+                                                              , geohash: b.beaconGeohash
+                                                              , key: i
+                                                              , balance: 0
+                                                              , category: ""
+                                                              , ethereumAddress: b.beaconBeaconAddress
+                                                              , popularity: 0.12
+                                                              , status: "STATUS_PROPOSAL"
+                                                              , subTokens: 0
+                                                              , title: b.beaconName
                                                               }
                                                      }
                                    )
