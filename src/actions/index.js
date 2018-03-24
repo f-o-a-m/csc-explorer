@@ -20,6 +20,8 @@ export const toggleDash = bool => ({ type: 'TOGGLE_DASH', bool })
 // Map Controls
 export const toggleThroughUnits = () => ({ type: 'TOGGLE_THROUGH_UNITS' })
 export const goToUserLocation = () => ({ type: 'GO_TO_USER_LOCATION' })
+export const goToLocation = (position) => ({type: 'GO_TO_LOCATION', position})
+
 export const zoom = zoom => ({ type: 'ZOOM', zoom})
 
 // Layer Control

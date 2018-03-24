@@ -211,6 +211,16 @@ function viewportControls(state = initialState, action) {
           })
         }
       }
+    case 'GO_TO_LOCATION':
+      return ({
+        ...state,
+        viewport: {
+          ...state.viewport,
+          latitude: action.position[1],
+          longitude: action.position[0],
+          zoom: 15
+        }
+      })
       return state
     default:
       return state

@@ -34,31 +34,35 @@ class App extends Component{
     this.resizeViewport()
     this.props.actions.evalLayers(this.props.viewport.zoom)
     window.addEventListener('resize', this.resizeViewport)
-      axios(
-        { method: 'get'
-        , url: 'https://api-beta.foam.space/beacon'
-        , params: {xmin:-1000, ymin:-1000, xmax:1000, ymax:1000}
-        , headers: headers
+
+    axios(
+      {
+        method: 'get',
+        url: 'https://api-beta.foam.space/beacon',
+        params: { xmin: -1000, ymin: -1000, xmax: 1000, ymax: 1000 },
+        headers: headers
+      })
+        .then(r => {
+          return _.map(r.data, (b, i) => {
+            let l = geohash.decode(b.beaconGeohash)
+            return {
+              position: [l.lon, l.lat]
+              , address: "address"
+              , geohash: b.beaconGeohash
+              , key: i
+              , balance: 0
+              , category: ""
+              , ethereumAddress: b.beaconBeaconAddress
+              , popularity: 0.12
+              , status: "STATUS_PROPOSAL"
+              , subTokens: 0
+              , title: b.beaconName
+            }
+          })
         })
-          .then(r => { console.log(r.data); return _.map(r.data, (b,i) => { var l = geohash.decode(b.beaconGeohash);
-                                                       return { position: [l.lon, l.lat]
-                                                              , address: "address"
-                                                              , geohash: b.beaconGeohash
-                                                              , key: i
-                                                              , balance: 0
-                                                              , category: ""
-                                                              , ethereumAddress: b.beaconBeaconAddress
-                                                              , popularity: 0.12
-                                                              , status: "STATUS_PROPOSAL"
-                                                              , subTokens: 0
-                                                              , title: b.beaconName
-                                                              }
-                                                     }
-                                   )
-                     }
-               )
-    //      .then(data => {console.log(data); return data})
-          .then(data => { this.props.actions.setMapData(data) })
+          .then(data => {
+            this.props.actions.setMapData(data)
+          })
 
     this.getGeolocation()
       .then((position) => {
