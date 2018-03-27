@@ -39,7 +39,7 @@ class App extends Component{
       {
         method: 'get',
         url: 'https://api-beta.foam.space/beacon',
-        params: { xmin: -1000, ymin: -1000, xmax: 1000, ymax: 1000 },
+        params: { lat_min: -1000, lon_min: -1000, lat_max: 1000, lon_max: 1000 },
         headers: headers
       })
         .then(r => {

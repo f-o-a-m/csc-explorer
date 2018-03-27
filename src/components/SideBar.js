@@ -28,7 +28,7 @@ const SideBar = (props) => {
 
             if (event.key === 'Enter') {
 
-              let searchUrl = 'https://api-beta.foam.space/search?q=' + event.target.value;
+              let searchUrl = 'https://api-beta.foam.space/search?query=' + event.target.value;
               let headers = { 'Authorization': "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJkYXQiOiIyY2UyYWRjZTVlZmUzYTRhZDlmNDUyNWExNTc4YWUyMzZhMDEzNjY5In0.AvONC6EaU02hvmHfKOj8DK2Ur6krtdpZmibvL__R6XAOLGrDhAMrpURcUNfF_D33QQ6LQQPlYjdPGjAX36JcVQ" };
               
               axios.get(searchUrl, { headers: headers })
