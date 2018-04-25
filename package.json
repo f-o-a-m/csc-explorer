@@ -21,7 +21,7 @@
     "lodash": "^4.17.4",
     "luma.gl": "^4.0.3",
     "ngeohash": "^0.6.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.8.3",
     "rbush": "^2.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
