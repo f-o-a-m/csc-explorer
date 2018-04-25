@@ -114,7 +114,7 @@ class Map extends Component {
     return (
       <MapGL
         {...props.viewport}
-        mapStyle={'mapbox://styles/allanwalker/cjbgrhpxv2dbp2rqshlep2mmz'}
+        mapStyle={'mapbox://styles/allanwalker/cjgdye489000k2smqencypv4r'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
         mapboxApiAccessToken={TOKEN}
         onClick={this.onMapClick}>
