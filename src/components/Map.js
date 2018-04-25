@@ -7,7 +7,7 @@ import geolib from 'geolib'
 import DotLayerGL from './DotLayerGL'
 import Bubble from './Bubble'
 
-const TOKEN = 'pk.eyJ1IjoiY2FsbGlsIiwiYSI6ImNqN3V4eTVyazJqbWUzN25xdXNydzdrMXQifQ.Rsie4DpcanGTzTJgw8INWA'
+const TOKEN = 'pk.eyJ1IjoiYWxsYW53YWxrZXIiLCJhIjoiY2phbHVlOHQ4MnZscDMycGJoaTdiaHRxOCJ9.OYLAoMVg6e3Ih4r65WJuvA'
 
 const metric = 'popularity'
 // a global threshold for displaying highlighted items
@@ -114,7 +114,7 @@ class Map extends Component {
     return (
       <MapGL
         {...props.viewport}
-        mapStyle={'mapbox://styles/callil/cja9xom971xnt2rsuuu9d3go1'}
+        mapStyle={'mapbox://styles/allanwalker/cjgdye489000k2smqencypv4r'}
         onViewportChange={(e) => this.onViewportChange(e, this.props.mapData)}
         mapboxApiAccessToken={TOKEN}
         onClick={this.onMapClick}>
