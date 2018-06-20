@@ -12,8 +12,8 @@ The app is hosted [here](https://f-o-a-m.github.io/csc-explorer/)
 We use git submodules so make sure you clone recursively:
 
 ```bash
-git clone --recursive https://github.com/f-o-a-m/css-explorer
-cd css-explorer
+git clone --recursive https://github.com/f-o-a-m/csc-explorer
+cd csc-explorer
 ```
 
 ## On first run:
