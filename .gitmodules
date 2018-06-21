@@ -1,4 +1,4 @@
 [submodule "src/foam.css"]
 	path = src/foam.css
 	url = http://github.com/f-o-a-m/foam.css
-	branch = master
+	branch = a789a7f94eba09ffcc0023287c7f6c99c0dc2944
